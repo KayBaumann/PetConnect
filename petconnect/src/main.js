@@ -9,6 +9,7 @@ import './assets/styles.css';
 import en from './locales/en.json';
 import de from './locales/de.json';
 import fr from './locales/fr.json';
+import it from './locales/it.json';
 
 // i18n konfigurieren
 const i18n = createI18n({
@@ -18,6 +19,7 @@ const i18n = createI18n({
     en,
     de,
     fr,
+    it,
   },
 });
 

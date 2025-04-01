@@ -2,6 +2,8 @@
     "home": "Bienvenue sur PetConnect",
     "about": "À propos de nous",
     "search": "Rechercher des animaux",
-    "contact": "Contact"
+    "contact": "Contact",
+    "aboutTitle": "À propos de nous",
+    "aboutDescription": "Ceci est la page à propos."
   }
   

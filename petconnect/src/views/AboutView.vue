@@ -1,10 +1,10 @@
 <!-- src/views/AboutView.vue -->
 <template>
-    <div>
-      <h1>About Us</h1>
-      <p>This is the about page.</p>
-    </div>
-  </template>
+  <div>
+    <h1>{{ $t('aboutTitle') }}</h1>
+    <p>{{ $t('aboutDescription') }}</p>
+  </div>
+</template>
   
   <script>
   export default {
