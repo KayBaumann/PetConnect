@@ -1,19 +1,29 @@
 <template>
   <div id="app">
     <!-- Global Navbar -->
-    <header>
+    <header :class="{ hidden: isNavbarHidden }">
       <nav>
         <ul>
           <li><router-link to="/">{{ $t('home') }}</router-link></li>
           <li><router-link to="/search">{{ $t('search') }}</router-link></li>
           <li><router-link to="/about">{{ $t('about') }}</router-link></li>
-          <li>
-            <button @click="toggleDropdown">{{ $t('language') }}</button>
-            <ul v-if="showDropdown" class="dropdown-menu">
-              <li id="dropdown" @click="changeLanguage('en')">English</li>
-              <li id="dropdown" @click="changeLanguage('de')">Deutsch</li>
-              <li id="dropdown" @click="changeLanguage('fr')">Français</li>
-              <li id="dropdown" @click="changeLanguage('it')">Italiano</li>
+          <li class="dropdown">
+            <button>
+              <img :src="currentLanguageIcon" :alt="currentLanguageAlt" />
+            </button>
+            <ul class="dropdown-menu">
+              <li @click="changeLanguage('en')">
+                <img :src="languageIcons.en.src" alt="English" />
+              </li>
+              <li @click="changeLanguage('de')">
+                <img :src="languageIcons.de.src" alt="Deutsch" />
+              </li>
+              <li @click="changeLanguage('fr')">
+                <img :src="languageIcons.fr.src" alt="Français" />
+              </li>
+              <li @click="changeLanguage('it')">
+                <img :src="languageIcons.it.src" alt="Italiano" />
+              </li>
             </ul>
           </li>
         </ul>
@@ -30,28 +40,60 @@ export default {
   name: 'App',
   data() {
     return {
-      showDropdown: false, 
+      languageIcons: {
+        en: { src: '/src/assets/united-kingdom.png', alt: 'English' },
+        de: { src: '/src/assets/german.png', alt: 'Deutsch' },
+        fr: { src: '/src/assets/france.png', alt: 'Français' },
+        it: { src: '/src/assets/italy.png', alt: 'Italiano' }
+      },
+      currentLocale: 'en', // Initialize with a default language
+      isNavbarHidden: false,
+      lastScrollPosition: 0
     };
   },
-  methods: {
-    toggleDropdown() {
-      this.showDropdown = !this.showDropdown;
+  computed: {
+    currentLanguageIcon() {
+      return this.languageIcons[this.currentLocale]?.src || '/src/assets/united-kingdom.png';
     },
-    changeLanguage(language) {
-      this.$i18n.locale = language; 
-      this.showDropdown = false;
+    currentLanguageAlt() {
+      return this.languageIcons[this.currentLocale]?.alt || 'English';
     }
+  },
+  methods: {
+    changeLanguage(language) {
+      this.currentLocale = language; // Update the reactive property
+      this.$i18n.locale = language; // Update the i18n locale
+    },
+    handleScroll() {
+      const currentScrollPosition = window.scrollY;
+      this.isNavbarHidden = currentScrollPosition > this.lastScrollPosition && currentScrollPosition > 100;
+      this.lastScrollPosition = currentScrollPosition;
+    }
+  },
+  mounted() {
+    this.currentLocale = this.$i18n.locale; // Sync currentLocale with the initial i18n locale
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.handleScroll);
   }
 };
 </script>
 
 <style scoped>
-/* Global Navbar Styles */
+/* Modern Navbar Styles */
 header {
-  background-color: #333;
-  padding: 15px 20px;
-  color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
+  background-color: #1f2937; /* Dark gray background */
+  padding: 15px 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out;
+}
+
+header.hidden {
+  transform: translateY(-100%);
 }
 
 nav ul {
@@ -59,48 +101,87 @@ nav ul {
   padding: 0;
   margin: 0;
   display: flex;
-  gap: 20px; /* Increase spacing between links */
-  justify-content: center; /* Center the navigation links */
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
 }
 
 nav ul li {
-  display: inline;
+  position: relative;
 }
 
 nav ul li a {
-  color: white;
+  color: #ffffff; /* White text */
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
   font-size: 1rem;
-  padding: 5px 10px; /* Add padding for better clickability */
-  border-radius: 5px; /* Rounded corners for hover effect */
-  transition: background-color 0.3s, color 0.3s;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 nav ul li a:hover {
-  background-color: #f0a500; /* Highlight link on hover */
-  color: #333;
+  background-color: #374151; /* Slightly lighter gray */
+  transform: scale(1.05); /* Subtle zoom effect */
 }
 
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: #374151; /* Slightly lighter gray */
+  transform: scale(1.1); /* Subtle zoom effect */
+}
+
+button img {
+  width: 32px; /* Larger icon size */
+  height: 32px;
+  border-radius: 50%; /* Circular icons */
+}
+
+/* Modern Dropdown Menu */
 .dropdown-menu {
+  display: none;
   position: absolute;
-  background-color: #f0f0f0;
-  border: 1px solid #ddd;
+  top: 110%; /* Position below the button */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #1f2937; /* Dark gray background */
+  border-radius: 8px;
   list-style: none;
-  padding: 0;
-  margin-top: 5px;
+  padding: 10px 0;
+  margin: 0;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 10;
 }
 
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
 .dropdown-menu li {
-  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
   cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.dropdown-menu li img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
 }
 
 .dropdown-menu li:hover {
-  background-color: #ddd;
-}
-#dropdown {
-  color: black;
+  background-color: #374151; /* Slightly lighter gray */
+  transform: scale(1.05); /* Subtle zoom effect */
 }
 </style>
