@@ -4,6 +4,15 @@
     "search": "Search Pets",
     "contact": "Contact",
     "aboutTitle": "About Us",
-    "aboutDescription": "This is the about page."
-  }
-  
+    "aboutDescription": "This is the about page.",
+    "homeDescription": "Connecting you with your furry friends in a modern way.",
+    "ctaLookingForPet": "I am looking for a pet",
+    "ctaOfferingPet": "I am offering a pet",
+    "ctaWantToHelp": "I want to help",
+    "advertisements": "Advertisements",
+    "donate": "Donate",
+    "donateTitle": "Support Our Mission",
+    "donateDescription": "Your donation helps us connect more people with their future furry friends.",
+    "donateAmount": "Enter donation amount:",
+    "donateNow": "Donate Now"
+}

@@ -7,24 +7,27 @@
           <li><router-link to="/">{{ $t('home') }}</router-link></li>
           <li><router-link to="/search">{{ $t('search') }}</router-link></li>
           <li><router-link to="/about">{{ $t('about') }}</router-link></li>
-          <li class="dropdown">
-            <button>
-              <img :src="currentLanguageIcon" :alt="currentLanguageAlt" />
-            </button>
-            <ul class="dropdown-menu">
-              <li @click="changeLanguage('en')">
-                <img :src="languageIcons.en.src" alt="English" />
-              </li>
-              <li @click="changeLanguage('de')">
-                <img :src="languageIcons.de.src" alt="Deutsch" />
-              </li>
-              <li @click="changeLanguage('fr')">
-                <img :src="languageIcons.fr.src" alt="Français" />
-              </li>
-              <li @click="changeLanguage('it')">
-                <img :src="languageIcons.it.src" alt="Italiano" />
-              </li>
-            </ul>
+          <li><router-link to="/donate">{{ $t('donate') }}</router-link></li>
+          <li class="dropdown" @mouseenter="showDropdown" @mouseleave="hideDropdown">
+            <div class="dropdown-trigger">
+              <button>
+                <img :src="currentLanguageIcon" :alt="currentLanguageAlt" />
+              </button>
+              <ul class="dropdown-menu" v-show="isDropdownVisible">
+                <li @click="changeLanguage('en')">
+                  <img :src="languageIcons.en.src" alt="English" />
+                </li>
+                <li @click="changeLanguage('de')">
+                  <img :src="languageIcons.de.src" alt="Deutsch" />
+                </li>
+                <li @click="changeLanguage('fr')">
+                  <img :src="languageIcons.fr.src" alt="Français" />
+                </li>
+                <li @click="changeLanguage('it')">
+                  <img :src="languageIcons.it.src" alt="Italiano" />
+                </li>
+              </ul>
+            </div>
           </li>
         </ul>
       </nav>
@@ -48,7 +51,8 @@ export default {
       },
       currentLocale: 'en', // Initialize with a default language
       isNavbarHidden: false,
-      lastScrollPosition: 0
+      lastScrollPosition: 0,
+      isDropdownVisible: false // Track dropdown visibility
     };
   },
   computed: {
@@ -63,11 +67,18 @@ export default {
     changeLanguage(language) {
       this.currentLocale = language; // Update the reactive property
       this.$i18n.locale = language; // Update the i18n locale
+      this.isDropdownVisible = false; // Close dropdown after selection
     },
     handleScroll() {
       const currentScrollPosition = window.scrollY;
       this.isNavbarHidden = currentScrollPosition > this.lastScrollPosition && currentScrollPosition > 100;
       this.lastScrollPosition = currentScrollPosition;
+    },
+    showDropdown() {
+      this.isDropdownVisible = true;
+    },
+    hideDropdown() {
+      this.isDropdownVisible = false;
     }
   },
   mounted() {
@@ -145,11 +156,18 @@ button img {
   border-radius: 50%; /* Circular icons */
 }
 
+/* Dropdown Trigger Area */
+.dropdown-trigger {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px; /* Increase hover area */
+}
+
 /* Modern Dropdown Menu */
 .dropdown-menu {
-  display: none;
+  display: block;
   position: absolute;
-  top: 110%; /* Position below the button */
+  top: 100%; /* Adjusted to align with the trigger */
   left: 50%;
   transform: translateX(-50%);
   background-color: #1f2937; /* Dark gray background */
@@ -159,10 +177,15 @@ button img {
   margin: 0;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.dropdown:hover .dropdown-menu {
-  display: block;
+.dropdown:hover .dropdown-menu,
+.dropdown-menu:hover {
+  opacity: 1;
+  visibility: visible;
 }
 
 .dropdown-menu li {

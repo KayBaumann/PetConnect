@@ -5,14 +5,18 @@
     <div class="hero-section">
       <div class="hero-text">
         <h1>{{ $t('home') }}</h1>
-        <p>Connecting you with your furry friends in a modern way.</p>
-        <button class="cta-button">Get Started</button>
+        <p>{{ $t('homeDescription') }}</p>
+        <div class="cta-buttons">
+          <button class="cta-button">{{ $t('ctaLookingForPet') }}</button>
+          <button class="cta-button">{{ $t('ctaOfferingPet') }}</button>
+          <button class="cta-button">{{ $t('ctaWantToHelp') }}</button>
+        </div>
       </div>
     </div>
 
     <!-- Advertisement Section -->
     <div class="advertisement-section">
-      <h2>Advertisements</h2>
+      <h2>{{ $t('advertisements') }}</h2>
       <div class="advertisements">
         <div class="advertisement-card" v-for="ad in exampleAds" :key="ad.id">
           <img :src="ad.image" :alt="ad.title" class="ad-image" />
@@ -102,6 +106,13 @@ export default {
   margin-bottom: 25px;
 }
 
+.cta-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
 .cta-button {
   background-color: #2563eb; /* Modern blue */
   color: white;
@@ -111,6 +122,7 @@ export default {
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
+  text-align: center;
 }
 
 .cta-button:hover {

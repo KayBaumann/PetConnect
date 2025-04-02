@@ -4,6 +4,15 @@
     "search": "Cerca animali",
     "contact": "Contatti",
     "aboutTitle": "Chi siamo",
-    "aboutDescription": "Questa è la pagina 'Chi siamo'."
-  }
-  
+    "aboutDescription": "Questa è la pagina 'Chi siamo'.",
+    "homeDescription": "Connettiti con i tuoi amici pelosi in modo moderno.",
+    "ctaLookingForPet": "Sto cercando un animale",
+    "ctaOfferingPet": "Sto offrendo un animale",
+    "ctaWantToHelp": "Voglio aiutare",
+    "advertisements": "Annunci",
+    "donate": "Dona",
+    "donateTitle": "Sostieni la nostra missione",
+    "donateDescription": "La tua donazione ci aiuta a connettere più persone con i loro futuri amici pelosi.",
+    "donateAmount": "Inserisci l'importo della donazione:",
+    "donateNow": "Dona ora"
+}

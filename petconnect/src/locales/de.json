@@ -4,6 +4,15 @@
     "search": "Haustiere suchen",
     "contact": "Kontakt",
     "aboutTitle": "Über uns",
-    "aboutDescription": "Dies ist die Über-uns-Seite."
-  }
-  
+    "aboutDescription": "Dies ist die Über-uns-Seite.",
+    "homeDescription": "Verbinde dich auf moderne Weise mit deinen pelzigen Freunden.",
+    "ctaLookingForPet": "Ich suche ein Haustier",
+    "ctaOfferingPet": "Ich biete ein Haustier an",
+    "ctaWantToHelp": "Ich möchte helfen",
+    "advertisements": "Anzeigen",
+    "donate": "Spenden",
+    "donateTitle": "Unterstützen Sie unsere Mission",
+    "donateDescription": "Ihre Spende hilft uns, mehr Menschen mit ihren zukünftigen pelzigen Freunden zu verbinden.",
+    "donateAmount": "Spendenbetrag eingeben:",
+    "donateNow": "Jetzt spenden"
+}
