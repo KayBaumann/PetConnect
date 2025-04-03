@@ -4,6 +4,7 @@ import AboutView from '../views/AboutView.vue';
 import SearchView from '../views/SearchView.vue';
 import DonateView from '../views/DonateView.vue';
 import AdvertisementView from '../views/AdvertisementView.vue';
+import LoginView from '../views/LoginView.vue';
 
 const routes = [
   {
@@ -31,6 +32,11 @@ const routes = [
     name: 'advertisement',
     component: AdvertisementView,
     props: true, // Pass route params as props
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: LoginView,
   },
 ];
 

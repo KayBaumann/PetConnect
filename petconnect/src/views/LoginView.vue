@@ -1,0 +1,100 @@
+<template>
+    <div class="login-view">
+      <h1>{{ $t('loginTitle') }}</h1>
+      <form @submit.prevent="handleLogin">
+        <div class="form-group">
+          <label for="email">{{ $t('email') }}</label>
+          <input
+            type="email"
+            id="email"
+            v-model="email"
+            placeholder="Enter your email"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">{{ $t('password') }}</label>
+          <input
+            type="password"
+            id="password"
+            v-model="password"
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+        <button type="submit">{{ $t('loginButton') }}</button>
+      </form>
+    </div>
+  </template>
+  
+  <script>
+  export default {
+    name: 'LoginView',
+    data() {
+      return {
+        email: '',
+        password: ''
+      };
+    },
+    methods: {
+      handleLogin() {
+        // Placeholder for login logic
+        if (this.email && this.password) {
+          alert(`Logged in as: ${this.email}`);
+        } else {
+          alert('Please fill in all fields.');
+        }
+      }
+    }
+  };
+  </script>
+  
+  <style scoped>
+  .login-view {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #1f2937;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #374151;
+  }
+  </style>

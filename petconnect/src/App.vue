@@ -29,6 +29,7 @@
               </ul>
             </div>
           </li>
+          <li><router-link to="/login">{{ $t('Login') }}</router-link></li> 
         </ul>
       </nav>
     </header>

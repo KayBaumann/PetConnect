@@ -1,13 +1,18 @@
 {
-    "home": "Bienvenue sur PetConnect",
-    "about": "À propos de nous",
-    "search": "Rechercher des animaux",
-    "contact": "Contact",
-    "aboutTitle": "À propos de nous",
-    "aboutDescription": "Ceci est la page à propos.",
-    "homeDescription": "Connectez-vous avec vos amis à fourrure de manière moderne.",
-    "ctaLookingForPet": "Je cherche un animal",
-    "ctaOfferingPet": "Je propose un animal",
-    "ctaWantToHelp": "Je veux aider",
-    "advertisements": "Publicités"
-  }
+  "home": "Bienvenue sur PetConnect",
+  "about": "À propos de nous",
+  "search": "Rechercher des animaux",
+  "contact": "Contact",
+  "aboutTitle": "À propos de nous",
+  "aboutDescription": "Ceci est la page à propos.",
+  "homeDescription": "Vous connecter avec vos amis à fourrure d'une manière moderne.",
+  "ctaLookingForPet": "Je cherche un animal",
+  "ctaOfferingPet": "Je propose un animal",
+  "ctaWantToHelp": "Je veux aider",
+  "advertisements": "Publicités",
+  "donate": "Faire un don",
+  "donateTitle": "Soutenez notre mission",
+  "donateDescription": "Votre don nous aide à connecter plus de personnes avec leurs futurs compagnons à fourrure.",
+  "donateAmount": "Entrez le montant du don :",
+  "donateNow": "Faire un don maintenant"
+}
