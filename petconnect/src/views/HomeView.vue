@@ -18,10 +18,16 @@
     <div class="advertisement-section">
       <h2>{{ $t('advertisements') }}</h2>
       <div class="advertisements">
-        <div class="advertisement-card" v-for="ad in exampleAds" :key="ad.id">
-          <img :src="ad.image" :alt="ad.title" class="ad-image" />
-          <h3 class="ad-title">{{ ad.title }}</h3>
-          <p class="ad-description">{{ ad.description }}</p>
+        <div
+          class="advertisement-card"
+          v-for="ad in exampleAds"
+          :key="ad.id"
+        >
+          <router-link :to="`/advertisement/${ad.id}`">
+            <img :src="ad.image" :alt="ad.title" class="ad-image" />
+            <h3 class="ad-title">{{ ad.title }}</h3>
+            <p class="ad-description">{{ ad.description }}</p>
+          </router-link>
         </div>
       </div>
     </div>
@@ -164,6 +170,11 @@ export default {
 .advertisement-card:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.advertisement-card a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .ad-image {

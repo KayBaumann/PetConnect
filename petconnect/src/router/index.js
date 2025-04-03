@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue';
 import AboutView from '../views/AboutView.vue';
 import SearchView from '../views/SearchView.vue';
 import DonateView from '../views/DonateView.vue';
+import AdvertisementView from '../views/AdvertisementView.vue';
 
 const routes = [
   {
@@ -24,6 +25,12 @@ const routes = [
     path: '/donate',
     name: 'donate',
     component: DonateView,
+  },
+  {
+    path: '/advertisement/:id',
+    name: 'advertisement',
+    component: AdvertisementView,
+    props: true, // Pass route params as props
   },
 ];
 
