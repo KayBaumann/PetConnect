@@ -1,14 +1,14 @@
 const express = require('express');
-const Pet = require('../models/Pet'); // ← nutzt dein Schema
+const Pet = require('../models/Pet');
 const router = express.Router();
 
-// Alle Tiere abrufen
+// All pets
 router.get('/', async (req, res) => {
   const pets = await Pet.find();
   res.json(pets);
 });
 
-// Neues Tier hinzufügen
+// add new pet
 router.post('/', async (req, res) => {
   const newPet = new Pet(req.body);
   await newPet.save();
