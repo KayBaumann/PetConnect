@@ -14,5 +14,7 @@
   "donateTitle": "Soutenez notre mission",
   "donateDescription": "Votre don nous aide à connecter plus de personnes avec leurs futurs compagnons à fourrure.",
   "donateAmount": "Entrez le montant du don :",
-  "donateNow": "Faire un don maintenant"
+  "donateNow": "Faire un don maintenant",
+  "loginButton": "Se connecter",
+  "registerButton": "S'inscrire"
 }

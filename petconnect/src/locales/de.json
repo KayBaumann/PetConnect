@@ -14,5 +14,13 @@
     "donateTitle": "Unterstützen Sie unsere Mission",
     "donateDescription": "Ihre Spende hilft uns, mehr Menschen mit ihren zukünftigen pelzigen Freunden zu verbinden.",
     "donateAmount": "Spendenbetrag eingeben:",
-    "donateNow": "Jetzt spenden"
+    "donateNow": "Jetzt spenden",
+    "loginButton": "Einloggen",
+    "registerButton": "Registrieren",
+    "pwPlaceholder": "Gib dein Passwort ein",
+    "emailPlaceholder": "Gib deine E-Mail-Adresse ein",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "loginTitle": "Einloggen"
+
 }

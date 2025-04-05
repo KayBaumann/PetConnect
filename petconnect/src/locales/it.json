@@ -14,5 +14,7 @@
     "donateTitle": "Sostieni la nostra missione",
     "donateDescription": "La tua donazione ci aiuta a connettere più persone con i loro futuri amici pelosi.",
     "donateAmount": "Inserisci l'importo della donazione:",
-    "donateNow": "Dona ora"
+    "donateNow": "Dona ora",
+    "loginButton": "Accedi",
+    "registerButton": "Registrati"
 }

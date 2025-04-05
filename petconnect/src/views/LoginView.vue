@@ -8,7 +8,7 @@
             type="email"
             id="email"
             v-model="email"
-            placeholder="Enter your email"
+            :placeholder="$t('emailPlaceholder')"
             required
           />
         </div>
@@ -18,11 +18,12 @@
             type="password"
             id="password"
             v-model="password"
-            placeholder="Enter your password"
+            :placeholder="$t('pwPlaceholder')"
             required
           />
         </div>
         <button type="submit">{{ $t('loginButton') }}</button>
+        <button style="margin-top:10px">{{ $t('registerButton') }}</button>
       </form>
     </div>
   </template>
