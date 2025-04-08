@@ -19,9 +19,9 @@
       <h2>{{ $t('advertisements') }}</h2>
       <div class="advertisements">
         <div
-          class="advertisement-card"
-          v-for="ad in exampleAds"
-          :key="ad.id"
+        class="advertisement-card"
+        v-for="ad in ads"
+        :key="ad._id"
         >
           <router-link :to="`/advertisement/${ad.id}`">
             <img :src="ad.image" :alt="ad.title" class="ad-image" />
@@ -35,31 +35,23 @@
 </template>
 
 <script>
-export default {
+import api from '../api';
+
+export default 
+{
   name: 'HomeView',
   data() {
     return {
-      exampleAds: [
-        {
-          id: 1,
-          title: 'Adopt Bella',
-          description: 'Bella is a friendly Labrador looking for a loving home.',
-          image: '/src/assets/dog1.png'
-        },
-        {
-          id: 2,
-          title: 'Adopt Max',
-          description: 'Max is a playful Golden Retriever who loves adventures.',
-          image: '/src/assets/dog2.jpg'
-        },
-        {
-          id: 3,
-          title: 'Adopt Luna',
-          description: 'Luna is a sweet cat who enjoys cuddles and naps.',
-          image: '/src/assets/cat1.jpg'
-        }
-      ]
+      ads: []
     };
+  },
+  async created() {
+    try {
+      const res = await api.get('/pets');
+      this.ads = res.data;
+    } catch (err) {
+      console.error('Error loading pets:', err);
+    }
   }
 };
 </script>
