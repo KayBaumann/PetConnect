@@ -29,6 +29,8 @@
   </template>
   
   <script>
+  import api from '../api';
+  
   export default {
     name: 'LoginView',
     data() {
@@ -38,12 +40,23 @@
       };
     },
     methods: {
-      handleLogin() {
-        // Placeholder for login logic
-        if (this.email && this.password) {
-          alert(`Logged in as: ${this.email}`);
-        } else {
+      async handleLogin() {
+        if (!this.email || !this.password) {
           alert('Please fill in all fields.');
+          return;
+        }
+        try {
+          const res = await api.post('/auth/login', {
+            email: this.email,
+            password: this.password
+          });
+          console.log(res.data);
+          alert('Login successful');
+          this.$router.push('/');
+        } 
+        catch (err) {
+          console.error(err);
+          alert(err.response?.data?.message || 'Login failed');
         }
       }
     }
