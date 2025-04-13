@@ -2,10 +2,17 @@ const express = require('express');
 const Pet = require('../models/Pet');
 const router = express.Router();
 
-// All pets
+// All pets  
 router.get('/', async (req, res) => {
-  const pets = await Pet.find();
-  res.json(pets);
+  console.log('GET /api/pets request received'); // Log the request
+  try {
+    const pets = await Pet.find(); // Fetch all pets from MongoDB
+    console.log('Pets fetched from database:', pets); // Log the fetched pets
+    res.json(pets); // Return pets as JSON
+  } catch (err) {
+    console.error('Error fetching pets:', err); // Log the error
+    res.status(500).json({ message: 'Error fetching pets', error: err.message });
+  }
 });
 
 // add new pet

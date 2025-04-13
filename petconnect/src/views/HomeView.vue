@@ -18,16 +18,23 @@
     <div class="advertisement-section">
       <h2>{{ $t('advertisements') }}</h2>
       <div class="advertisements">
+        <!-- Add a fallback message if ads array is empty -->
+        <p v-if="ads.length === 0">No pets available to display.</p>
         <div
-        class="advertisement-card"
-        v-for="ad in ads"
-        :key="ad._id"
+          class="advertisement-card"
+          v-for="ad in ads"
+          :key="ad._id"
         >
-          <router-link :to="`/advertisement/${ad.id}`">
-            <img :src="ad.image" :alt="ad.title" class="ad-image" />
-            <h3 class="ad-title">{{ ad.title }}</h3>
-            <p class="ad-description">{{ ad.description }}</p>
-          </router-link>
+          <img
+            v-if="ad.image"
+            :src="ad.image"
+            :alt="ad.name"
+            class="ad-image"
+          />
+          <h3 class="ad-title">{{ ad.name }}</h3>
+          <p class="ad-description">Species: {{ ad.species }}</p>
+          <p class="ad-description">Age: {{ ad.age }} years</p>
+          <p class="ad-description">Adopted: {{ ad.adopted ? 'Yes' : 'No' }}</p>
         </div>
       </div>
     </div>
@@ -37,22 +44,30 @@
 <script>
 import api from '../api';
 
-export default 
-{
+export default {
   name: 'HomeView',
   data() {
     return {
-      ads: []
+      ads: [], // Store fetched pets here
     };
   },
   async created() {
+    console.log('Fetching pets from backend...'); // Log before making the API call
     try {
-      const res = await api.get('/pets');
-      this.ads = res.data;
+      const res = await api.get('/pets'); // Fetch pets from the backend
+      this.ads = res.data.map((ad) => ({
+        name: ad.name,
+        species: ad.species,
+        age: ad.age,
+        adopted: ad.adopted,
+        image: ad.image || '/src/assets/default-pet.jpg', // Use default image if none provided
+      })); // Transform the data to exclude unnecessary fields like _id
+      console.log('Pets loaded in frontend:', this.ads); // Log the loaded pets
     } catch (err) {
-      console.error('Error loading pets:', err);
+      console.error('Error fetching pets in frontend:', err); // Log any errors
+      alert('Failed to load pets. Please try again later.'); // Show an error message
     }
-  }
+  },
 };
 </script>
 
@@ -162,11 +177,6 @@ export default
 .advertisement-card:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.advertisement-card a {
-  text-decoration: none;
-  color: inherit;
 }
 
 .ad-image {
