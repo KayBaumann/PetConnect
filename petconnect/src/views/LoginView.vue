@@ -23,7 +23,7 @@
           />
         </div>
         <button type="submit">{{ $t('loginButton') }}</button>
-        <button style="margin-top:10px">{{ $t('registerButton') }}</button>
+        <button style="margin-top:10px" @click.prevent="handleRegister">{{ $t('registerButton') }}</button>
       </form>
     </div>
   </template>
@@ -57,6 +57,25 @@
         catch (err) {
           console.error(err);
           alert(err.response?.data?.message || 'Login failed');
+        }
+      },
+      async handleRegister() {
+        if (!this.email || !this.password) {
+          alert('Please fill in all fields.');
+          return;
+        }
+        try {
+          console.log('Sending registration request:', { email: this.email, password: this.password }); // Log the request payload
+          const res = await api.post('/auth/register', {
+            email: this.email,
+            password: this.password,
+          });
+          console.log('Registration response:', res.data); // Log the response
+          alert('Registration successful');
+          this.$router.push('/login');
+        } catch (err) {
+          console.error('Registration error:', err.response?.data || err);
+          alert(err.response?.data?.message || 'Registration failed');
         }
       }
     }

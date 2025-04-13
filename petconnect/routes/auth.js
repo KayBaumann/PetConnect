@@ -26,5 +26,31 @@ router.post('/login', async (req, res) => {
     }
   });
   
+// Register
+router.post('/register', async (req, res) => {
+  console.log('Register route hit'); // Log to confirm the route is hit
+  const { email, password } = req.body;
+  console.log('Register attempt:', email, password); // Log the incoming data
+
+  try {
+    if (!email || !password) {
+      return res.status(400).json({ message: 'Email and password are required' });
+    }
+
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ message: 'Email already in use' });
+    }
+
+    const newUser = new User({ email, password });
+    const savedUser = await newUser.save();
+    console.log('Saved user:', savedUser); // Log the saved user
+
+    res.status(201).json({ message: 'Registration successful', userId: savedUser._id });
+  } catch (err) {
+    console.error('Error during registration:', err);
+    res.status(500).json({ message: 'Server error', error: err });
+  }
+});
 
 module.exports = router;
