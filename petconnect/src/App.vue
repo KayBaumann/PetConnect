@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <!-- Global Navbar -->
     <header :class="{ hidden: isNavbarHidden }">
       <nav>
         <ul>
@@ -8,7 +7,9 @@
           <li><router-link to="/search">{{ $t('search') }}</router-link></li>
           <li><router-link to="/about">{{ $t('about') }}</router-link></li>
           <li><router-link to="/donate">{{ $t('donate') }}</router-link></li>
-          <li><router-link to="/proflie">{{ $t('profile') }}</router-link></li>
+          <li v-if="isAuthenticated"><router-link to="/profile">{{ $t('profile') }}</router-link></li>
+
+          <!-- Sprache Dropdown -->
           <li class="dropdown" @mouseenter="showDropdown" @mouseleave="hideDropdown">
             <div class="dropdown-trigger">
               <button>
@@ -30,12 +31,13 @@
               </ul>
             </div>
           </li>
-          <li><router-link to="/login">{{ $t('Login') }}</router-link></li> 
+
+          <li v-if="!isAuthenticated"><router-link to="/login">{{ $t('Login') }}</router-link></li>
+          <li v-else><button @click="logout">{{ $t('Logout') }}</button></li>
         </ul>
       </nav>
     </header>
 
-    <!-- Router View for Dynamic Components -->
     <router-view />
   </div>
 </template>
@@ -51,10 +53,10 @@ export default {
         fr: { src: '/src/assets/france.png', alt: 'Français' },
         it: { src: '/src/assets/italy.png', alt: 'Italiano' }
       },
-      currentLocale: 'en', // Initialize with a default language
+      currentLocale: 'en',
       isNavbarHidden: false,
       lastScrollPosition: 0,
-      isDropdownVisible: false // Track dropdown visibility
+      isDropdownVisible: false
     };
   },
   computed: {
@@ -63,13 +65,16 @@ export default {
     },
     currentLanguageAlt() {
       return this.languageIcons[this.currentLocale]?.alt || 'English';
+    },
+    isAuthenticated() {
+      return localStorage.getItem('isAuthenticated') === 'true';
     }
   },
   methods: {
     changeLanguage(language) {
-      this.currentLocale = language; // Update the reactive property
-      this.$i18n.locale = language; // Update the i18n locale
-      this.isDropdownVisible = false; // Close dropdown after selection
+      this.currentLocale = language;
+      this.$i18n.locale = language;
+      this.isDropdownVisible = false;
     },
     handleScroll() {
       const currentScrollPosition = window.scrollY;
@@ -81,13 +86,18 @@ export default {
     },
     hideDropdown() {
       this.isDropdownVisible = false;
+    },
+    logout() {
+      localStorage.setItem('isAuthenticated', 'false');
+      this.$router.push('/');
+      window.location.reload();
     }
   },
   mounted() {
-    this.currentLocale = this.$i18n.locale; // Sync currentLocale with the initial i18n locale
+    this.currentLocale = this.$i18n.locale;
     window.addEventListener('scroll', this.handleScroll);
   },
-  beforeDestroy() {
+  beforeUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
   }
 };

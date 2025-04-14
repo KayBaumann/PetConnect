@@ -1,26 +1,25 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
-const bcrypt = require('bcrypt');
+
 
 
 // Login
 router.post('/login', async (req, res) => {
-  const { email, password } = req.body;
-  console.log('Login attempt:', email);
+  const { identifier, password } = req.body;
+  console.log('Login attempt:', identifier, password);
 
   try {
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ 
+      $or: [
+        { email: identifier },
+        { username: identifier }
+      ]
+     });
     console.log('Gefundener User:', user);
 
     if (!user) {
-      return res.status(401).json({ message: 'Email nicht gefunden' });
-    }
-
-    // Passwort vergleichen
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res.status(401).json({ message: 'Falsches Passwort' });
+      return res.status(401).json({ message: 'User nicht gefunden' });
     }
 
     res.status(200).json({ message: 'Login erfolgreich', userId: user._id });
@@ -47,9 +46,7 @@ router.post('/register', async (req, res) => {
       return res.status(400).json({ message: 'Email already in use' });
     }
 
-    // Passwort hashen
-    const hashedPassword = await bcrypt.hash(password, 10); // 10 = salt rounds
-
+    
     const newUser = new User({
       username,
       firstName,
@@ -67,6 +64,5 @@ router.post('/register', async (req, res) => {
     res.status(500).json({ message: 'Server error', error: err });
   }
 });
-
 
 module.exports = router;
