@@ -1,7 +1,37 @@
 <template>
-    <div class="login-view">
-      <h1>{{ $t('loginTitle') }}</h1>
-      <form @submit.prevent="handleLogin">
+    <div class="register-view">
+      <h1>{{ $t('registerTitle') }}</h1>
+      <form @submit.prevent="handleRegister">
+        <div class="form-group">
+          <label for="username">{{ $t('username') }}</label>
+          <input
+            type="text"
+            id="username"
+            v-model="username"
+            :placeholder="$t('usernamePlaceholder')"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="firstname">{{ $t('firstname') }}</label>
+          <input
+            type="text"
+            id="firstname"
+            v-model="firstname"
+            :placeholder="$t('firstnamePlaceholder')"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="lastname">{{ $t('lastname') }}</label>
+          <input
+            type="text"
+            id="lastname"
+            v-model="lastname"
+            :placeholder="$t('lastnamePlaceholder')"
+            required
+          />
+        </div>
         <div class="form-group">
           <label for="email">{{ $t('email') }}</label>
           <input
@@ -22,8 +52,17 @@
             required
           />
         </div>
-        <button type="submit">{{ $t('loginButton') }}</button>
-        <router-link to="/register" class="register-link">{{ $t('register') }}</router-link>
+        <div class="form-group">
+          <label for="confirmPassword">{{ $t('confirmPassword') }}</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            v-model="confirmPassword"
+            :placeholder="$t('confirmPwPlaceholder')"
+            required
+          />
+        </div>
+        <button type="submit">{{ $t('registerButton') }}</button>
       </form>
     </div>
   </template>
@@ -32,45 +71,38 @@
   import api from '../api';
   
   export default {
-    name: 'LoginView',
+    name: 'RegisterView',
     data() {
       return {
+        username: '',
+        firstname: '',
+        lastname: '',
         email: '',
-        password: ''
+        password: '',
+        confirmPassword: ''
       };
     },
     methods: {
-      async handleLogin() {
-        if (!this.email || !this.password) {
+      async handleRegister() {
+        if (!this.username || !this.firstname || !this.lastname || !this.email || !this.password || !this.confirmPassword) {
           alert('Please fill in all fields.');
           return;
         }
+  
+        if (this.password !== this.confirmPassword) {
+          alert('Passwords do not match.');
+          return;
+        }
+  
         try {
-          const res = await api.post('/auth/login', {
+          const res = await api.post('/auth/register', {
+            username: this.username,
+            firstname: this.firstname,
+            lastname: this.lastname,
             email: this.email,
             password: this.password
           });
-          console.log(res.data);
-          alert('Login successful');
-          this.$router.push('/');
-        } 
-        catch (err) {
-          console.error(err);
-          alert(err.response?.data?.message || 'Login failed');
-        }
-      },
-      async handleRegister() {
-        if (!this.email || !this.password) {
-          alert('Please fill in all fields.');
-          return;
-        }
-        try {
-          console.log('Sending registration request:', { email: this.email, password: this.password }); // Log the request payload
-          const res = await api.post('/auth/register', {
-            email: this.email,
-            password: this.password,
-          });
-          console.log('Registration response:', res.data); // Log the response
+          console.log('Registration response:', res.data);
           alert('Registration successful');
           this.$router.push('/login');
         } catch (err) {
@@ -83,16 +115,7 @@
   </script>
   
   <style scoped>
-
-  .register-link {
-    display: block;
-    margin-top: 15px;
-    text-align: center;
-    color: #1f2937;
-    text-decoration: none;
-  }
-
-  .login-view {
+  .register-view {
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
@@ -140,3 +163,4 @@
     background-color: #374151;
   }
   </style>
+  

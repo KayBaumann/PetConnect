@@ -8,6 +8,7 @@
           <li><router-link to="/search">{{ $t('search') }}</router-link></li>
           <li><router-link to="/about">{{ $t('about') }}</router-link></li>
           <li><router-link to="/donate">{{ $t('donate') }}</router-link></li>
+          <li><router-link to="/proflie">{{ $t('profile') }}</router-link></li>
           <li class="dropdown" @mouseenter="showDropdown" @mouseleave="hideDropdown">
             <div class="dropdown-trigger">
               <button>

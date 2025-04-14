@@ -21,6 +21,16 @@
     "emailPlaceholder": "Gib deine E-Mail-Adresse ein",
     "email": "E-Mail",
     "password": "Passwort",
-    "loginTitle": "Einloggen"
+    "loginTitle": "Einloggen",
+    "registerTitle": "Registrieren",
+    "register": "Registrieren",
+    "username": "Benutzername",
+    "firstname": "Vorname",
+    "lastname": "Nachname",
+    "confirmPassword": "Passwort bestätigen",
+    "usernamePlaceholder": "Gib deinen Benutzernamen ein",
+    "firstnamePlaceholder": "Gib deinen Vornamen ein",
+    "lastnamePlaceholder": "Gib deinen Nachnamen ein",
+    "confirmPwPlaceholder": "Gib dein Passwort erneut ein"
 
 }

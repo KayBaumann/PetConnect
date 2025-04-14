@@ -5,6 +5,8 @@ import SearchView from '../views/SearchView.vue';
 import DonateView from '../views/DonateView.vue';
 import AdvertisementView from '../views/AdvertisementView.vue';
 import LoginView from '../views/LoginView.vue';
+import RegisterView from '../views/RegisterView.vue';
+import ProfileView from '../views/ProfileView.vue';
 
 const routes = [
   {
@@ -31,13 +33,25 @@ const routes = [
     path: '/advertisement/:id',
     name: 'advertisement',
     component: AdvertisementView,
-    props: true, // Pass route params as props
+    props: true, 
   },
   {
     path: '/login',
     name: 'login',
     component: LoginView,
+    meta: { requiresAuth: false },
   },
+  {
+    path: '/register',
+    name: 'register',
+    component: RegisterView,
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: ProfileView,
+    meta: { requiresAuth: true },
+  }
 ];
 
 const router = createRouter({
