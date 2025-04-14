@@ -19,22 +19,25 @@
       <h2>{{ $t('advertisements') }}</h2>
       <div class="advertisements">
         <p v-if="ads.length === 0">No pets available to display.</p>
-        <div
-          class="advertisement-card"
+        <router-link
           v-for="ad in ads"
           :key="ad._id"
+          :to="{ name: 'advertisement', params: { id: ad._id } }"
+          class="advertisement-card-link"
         >
-          <img
-            v-if="ad.image"
-            :src="ad.image"
-            :alt="ad.name"
-            class="ad-image"
-          />
-          <h3 class="ad-title">{{ ad.name }}</h3>
-          <p class="ad-description">Species: {{ ad.species }}</p>
-          <p class="ad-description">Age: {{ ad.age }} years</p>
-          <p class="ad-description">Adopted: {{ ad.adopted ? 'Yes' : 'No' }}</p>
-        </div>
+          <div class="advertisement-card">
+            <img
+              v-if="ad.image"
+              :src="ad.image"
+              :alt="ad.name"
+              class="ad-image"
+            />
+            <h3 class="ad-title">{{ ad.name }}</h3>
+            <p class="ad-description">Species: {{ ad.species }}</p>
+            <p class="ad-description">Age: {{ ad.age }} years</p>
+            <p class="ad-description">Adopted: {{ ad.adopted ? 'Yes' : 'No' }}</p>
+          </div>
+        </router-link>
       </div>
     </div>
   </div>
@@ -155,6 +158,11 @@ export default {
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
+}
+
+.advertisement-card-link {
+  text-decoration: none; /* Remove underline from links */
+  color: inherit; /* Inherit text color */
 }
 
 .advertisement-card {

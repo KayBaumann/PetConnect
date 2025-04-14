@@ -15,6 +15,23 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Fetch a single pet by ID
+router.get('/:id', async (req, res) => {
+  console.log(`GET /api/pets/${req.params.id} request received`);
+  try {
+    const pet = await Pet.findById(req.params.id); // Fetch pet by ID
+    if (!pet) {
+      console.log('Pet not found'); // Log if pet is not found
+      return res.status(404).json({ message: 'Pet not found' });
+    }
+    console.log('Pet fetched:', pet); // Log the fetched pet
+    res.json(pet); // Return the pet as JSON
+  } catch (err) {
+    console.error('Error fetching pet:', err); // Log the error
+    res.status(500).json({ message: 'Error fetching pet', error: err.message });
+  }
+});
+
 // add new pet
 router.post('/', async (req, res) => {
   const newPet = new Pet(req.body);
