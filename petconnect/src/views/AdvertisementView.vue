@@ -2,37 +2,13 @@
   <div class="advertisement-view">
     <div v-if="advertisement" class="advertisement-container">
       <div class="advertisement-details">
-        <h1 class="advertisement-title">{{ advertisement.title }}</h1>
-        <p class="advertisement-description">{{ advertisement.description }}</p>
-        <div class="advertisement-bio">
-          <h2>Biography</h2>
-          <ul>
-            <li>
-              <strong>Age:</strong> {{ advertisement.bio.age }}
-            </li>
-            <li>
-              <strong>Breed:</strong> {{ advertisement.bio.breed }}
-            </li>
-            <li>
-              <strong>Personality:</strong> {{ advertisement.bio.personality }}
-            </li>
-            <li>
-              <strong>Health:</strong> {{ advertisement.bio.health }}
-            </li>
-            <li>
-              <strong>Ideal Home:</strong> {{ advertisement.bio.idealHome }}
-            </li>
-          </ul>
-        </div>
-        <div class="advertisement-contact">
-          <h2>Contact the Owner</h2>
-          <p><strong>Name:</strong> {{ advertisement.contact.name }}</p>
-          <p><strong>Email:</strong> <a :href="`mailto:${advertisement.contact.email}`">{{ advertisement.contact.email }}</a></p>
-          <p><strong>Phone:</strong> <a :href="`tel:${advertisement.contact.phone}`">{{ advertisement.contact.phone }}</a></p>
-        </div>
+        <h1 class="advertisement-title">{{ advertisement.name }}</h1>
+        <p class="advertisement-description">Species: {{ advertisement.species }}</p>
+        <p class="advertisement-description">Age: {{ advertisement.age }} years</p>
+        <p class="advertisement-description">Adopted: {{ advertisement.adopted ? 'Yes' : 'No' }}</p>
       </div>
       <div class="advertisement-image-container">
-        <img :src="advertisement.image" :alt="advertisement.title" class="advertisement-image" />
+        <img :src="advertisement.image" :alt="advertisement.name" class="advertisement-image" />
       </div>
     </div>
     <div v-else class="loading">
@@ -42,82 +18,31 @@
 </template>
 
 <script>
+import api from '../api';
+
 export default {
   name: 'AdvertisementView',
-  props: ['id'], // Receive the advertisement ID as a prop
   data() {
     return {
       advertisement: null, // Store the advertisement details
     };
   },
-  created() {
-    this.fetchAdvertisement();
-  },
-  methods: {
-    fetchAdvertisement() {
-      // Simulate fetching advertisement data based on the ID
-      const advertisements = [
-        {
-          id: '1',
-          title: 'Adopt Bella',
-          description: 'Bella is a friendly Labrador looking for a loving home.',
-          bio: {
-            age: '3 years old',
-            breed: 'Labrador Retriever',
-            personality: 'Friendly, playful, and great with kids.',
-            health: 'Fully vaccinated and trained in basic commands.',
-            idealHome: 'A family who can give her love and attention.',
-          },
-          contact: {
-            name: 'John Doe',
-            email: 'johndoe@example.com',
-            phone: '+1234567890',
-          },
-          image: '/src/assets/dog1.png',
-        },
-        {
-          id: '2',
-          title: 'Adopt Max',
-          description: 'Max is a playful Golden Retriever who loves adventures.',
-          bio: {
-            age: '2 years old',
-            breed: 'Golden Retriever',
-            personality: 'Energetic, adventurous, and loves meeting new people.',
-            health: 'Neutered, vaccinated, and healthy.',
-            idealHome: 'An active family who enjoys outdoor activities.',
-          },
-          contact: {
-            name: 'Jane Smith',
-            email: 'janesmith@example.com',
-            phone: '+9876543210',
-          },
-          image: '/src/assets/dog2.jpg',
-        },
-        {
-          id: '3',
-          title: 'Adopt Luna',
-          description: 'Luna is a sweet cat who enjoys cuddles and naps.',
-          bio: {
-            age: '4 years old',
-            breed: 'Domestic Shorthair',
-            personality: 'Calm, affectionate, and loves sunny spots.',
-            health: 'Spayed, litter-trained, and up-to-date on vaccinations.',
-            idealHome: 'A quiet home where she can relax and be loved.',
-          },
-          contact: {
-            name: 'Emily Johnson',
-            email: 'emilyjohnson@example.com',
-            phone: '+1122334455',
-          },
-          image: '/src/assets/cat1.jpg',
-        },
-      ];
-
-      // Find the advertisement by ID
-      this.advertisement = advertisements.find(
-        (ad) => ad.id === this.id
-      );
-    },
+  async created() {
+    const id = this.$route.params.id; // Get the ID from the route parameters
+    try {
+      console.log(`Fetching advertisement with ID: ${id}`);
+      const res = await api.get(`/pets/${id}`); // Fetch advertisement by ID
+      if (!res.data) {
+        console.error('No data returned from backend'); // Log if no data is returned
+        alert('Advertisement not found.');
+        return;
+      }
+      this.advertisement = res.data; // Assign the fetched data
+      console.log('Advertisement loaded:', this.advertisement);
+    } catch (err) {
+      console.error('Error fetching advertisement:', err.response || err); // Log the error
+      alert(err.response?.data?.message || 'Failed to load advertisement. Please try again later.');
+    }
   },
 };
 </script>
@@ -161,58 +86,6 @@ export default {
   color: #6b7280;
   line-height: 1.6;
   margin-bottom: 20px;
-}
-
-.advertisement-bio {
-  text-align: left;
-  margin-top: 20px;
-}
-
-.advertisement-bio h2 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-  color: #1f2937;
-}
-
-.advertisement-bio ul {
-  list-style-type: disc;
-  padding-left: 20px;
-}
-
-.advertisement-bio li {
-  font-size: 1.1rem;
-  color: #4b5563;
-  line-height: 1.8;
-  margin-bottom: 10px;
-}
-
-.advertisement-contact {
-  text-align: left;
-  margin-top: 20px;
-}
-
-.advertisement-contact h2 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-  color: #1f2937;
-}
-
-.advertisement-contact p {
-  font-size: 1.1rem;
-  color: #4b5563;
-  line-height: 1.8;
-  margin-bottom: 10px;
-}
-
-.advertisement-contact a {
-  color: #2563eb;
-  text-decoration: none;
-}
-
-.advertisement-contact a:hover {
-  text-decoration: underline;
 }
 
 .advertisement-image-container {

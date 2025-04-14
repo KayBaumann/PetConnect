@@ -18,24 +18,26 @@
     <div class="advertisement-section">
       <h2>{{ $t('advertisements') }}</h2>
       <div class="advertisements">
-        <!-- Add a fallback message if ads array is empty -->
         <p v-if="ads.length === 0">No pets available to display.</p>
-        <div
-          class="advertisement-card"
+        <router-link
           v-for="ad in ads"
           :key="ad._id"
+          :to="{ name: 'advertisement', params: { id: ad._id } }"
+          class="advertisement-card-link"
         >
-          <img
-            v-if="ad.image"
-            :src="ad.image"
-            :alt="ad.name"
-            class="ad-image"
-          />
-          <h3 class="ad-title">{{ ad.name }}</h3>
-          <p class="ad-description">Species: {{ ad.species }}</p>
-          <p class="ad-description">Age: {{ ad.age }} years</p>
-          <p class="ad-description">Adopted: {{ ad.adopted ? 'Yes' : 'No' }}</p>
-        </div>
+          <div class="advertisement-card">
+            <img
+              v-if="ad.image"
+              :src="ad.image"
+              :alt="ad.name"
+              class="ad-image"
+            />
+            <h3 class="ad-title">{{ ad.name }}</h3>
+            <p class="ad-description">Species: {{ ad.species }}</p>
+            <p class="ad-description">Age: {{ ad.age }} years</p>
+            <p class="ad-description">Adopted: {{ ad.adopted ? 'Yes' : 'No' }}</p>
+          </div>
+        </router-link>
       </div>
     </div>
   </div>
@@ -52,20 +54,14 @@ export default {
     };
   },
   async created() {
-    console.log('Fetching pets from backend...'); // Log before making the API call
+    console.log('Fetching pets from backend...');
     try {
       const res = await api.get('/pets'); // Fetch pets from the backend
-      this.ads = res.data.map((ad) => ({
-        name: ad.name,
-        species: ad.species,
-        age: ad.age,
-        adopted: ad.adopted,
-        image: ad.image || '/src/assets/default-pet.jpg', // Use default image if none provided
-      })); // Transform the data to exclude unnecessary fields like _id
-      console.log('Pets loaded in frontend:', this.ads); // Log the loaded pets
+      this.ads = res.data; // Assign the fetched data to the ads array
+      console.log('Pets loaded in frontend:', this.ads);
     } catch (err) {
-      console.error('Error fetching pets in frontend:', err); // Log any errors
-      alert('Failed to load pets. Please try again later.'); // Show an error message
+      console.error('Error fetching pets in frontend:', err);
+      alert('Failed to load pets. Please try again later.');
     }
   },
 };
@@ -164,6 +160,11 @@ export default {
   justify-content: center;
 }
 
+.advertisement-card-link {
+  text-decoration: none; /* Remove underline from links */
+  color: inherit; /* Inherit text color */
+}
+
 .advertisement-card {
   background: white;
   border-radius: 8px;
@@ -181,7 +182,7 @@ export default {
 
 .ad-image {
   width: 100%;
-  height: 200px;
+  height: 200px0;
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 15px;
