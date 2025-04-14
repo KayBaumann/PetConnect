@@ -2,62 +2,76 @@ const express = require('express');
 const Pet = require('../models/Pet');
 const router = express.Router();
 
-// All pets  
+// Get all pets
 router.get('/', async (req, res) => {
-  console.log('GET /api/pets request received'); // Log the request
+  console.log('GET /api/pets request received');
   try {
-    const pets = await Pet.find(); // Fetch all pets from MongoDB
-    console.log('Pets fetched from database:', pets); // Log the fetched pets
-    res.json(pets); // Return pets as JSON
+    const pets = await Pet.find();
+    console.log('Pets fetched from database:', pets);
+    res.json(pets);
   } catch (err) {
-    console.error('Error fetching pets:', err); // Log the error
+    console.error('Error fetching pets:', err);
     res.status(500).json({ message: 'Error fetching pets', error: err.message });
   }
 });
 
-// Fetch a single pet by ID
+// Get a single pet by ID
 router.get('/:id', async (req, res) => {
   console.log(`GET /api/pets/${req.params.id} request received`);
   try {
-    const pet = await Pet.findById(req.params.id); // Fetch pet by ID
+    const pet = await Pet.findById(req.params.id);
     if (!pet) {
-      console.log('Pet not found'); // Log if pet is not found
       return res.status(404).json({ message: 'Pet not found' });
     }
-    console.log('Pet fetched:', pet); // Log the fetched pet
-    res.json(pet); // Return the pet as JSON
+    res.json(pet);
   } catch (err) {
-    console.error('Error fetching pet:', err); // Log the error
     res.status(500).json({ message: 'Error fetching pet', error: err.message });
   }
 });
 
-// add new pet
+// Create a new pet
 router.post('/', async (req, res) => {
-  const newPet = new Pet(req.body);
-  await newPet.save();
-  res.status(201).json(newPet);
-});
-
-// edit pet
-router.put('/:id', async (req, res) => {
   try {
-    const updatedPet = await Pet.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    if (!updatedPet) return res.status(404).json({ message: 'Pet not found' });
-    res.json(updatedPet);
+    const { name, type, breed, age, adopted, image, description } = req.body;
+
+    if (!name || !type || !breed) {
+      return res.status(400).json({ message: 'Name, type, and breed are required' });
+    }
+
+    const newPet = new Pet({ name, type, breed, age, adopted, image, description });
+    await newPet.save();
+    res.status(201).json(newPet);
   } catch (err) {
-    res.status(500).json({ message: 'Update failed', error: err });
+    res.status(500).json({ message: 'Failed to create pet', error: err.message });
   }
 });
 
-// delete pet
+// Update a pet
+router.put('/:id', async (req, res) => {
+  try {
+    const { name, type, breed, age, adopted, image, description } = req.body;
+
+    const updatedPet = await Pet.findByIdAndUpdate(
+      req.params.id,
+      { name, type, breed, age, adopted, image, description },
+      { new: true, runValidators: true }
+    );
+
+    if (!updatedPet) return res.status(404).json({ message: 'Pet not found' });
+    res.json(updatedPet);
+  } catch (err) {
+    res.status(500).json({ message: 'Failed to update pet', error: err.message });
+  }
+});
+
+// Delete a pet
 router.delete('/:id', async (req, res) => {
   try {
     const deletedPet = await Pet.findByIdAndDelete(req.params.id);
     if (!deletedPet) return res.status(404).json({ message: 'Pet not found' });
-    res.json({ message: 'Pet deleted', deletedPet });
+    res.json({ message: 'Pet deleted successfully', deletedPet });
   } catch (err) {
-    res.status(500).json({ message: 'Delete failed', error: err });
+    res.status(500).json({ message: 'Failed to delete pet', error: err.message });
   }
 });
 
