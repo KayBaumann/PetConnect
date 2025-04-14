@@ -2,10 +2,12 @@ const mongoose = require('mongoose');
 
 const petSchema = new mongoose.Schema({
   name: String,
-  species: String,
+  type: String,
+  breed: String,
   age: Number,
   adopted: { type: Boolean, default: false },
-  image: String, // Add the image field
+  image: String,
+  description: String
 });
 
 module.exports = mongoose.model('Pet', petSchema);
