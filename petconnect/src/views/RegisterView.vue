@@ -13,22 +13,22 @@
           />
         </div>
         <div class="form-group">
-          <label for="firstname">{{ $t('firstname') }}</label>
+          <label for="firstName">{{ $t('firstName') }}</label>
           <input
             type="text"
-            id="firstname"
-            v-model="firstname"
-            :placeholder="$t('firstnamePlaceholder')"
+            id="firstName"
+            v-model="firstName"
+            :placeholder="$t('firstNamePlaceholder')"
             required
           />
         </div>
         <div class="form-group">
-          <label for="lastname">{{ $t('lastname') }}</label>
+          <label for="lastName">{{ $t('lastName') }}</label>
           <input
             type="text"
-            id="lastname"
-            v-model="lastname"
-            :placeholder="$t('lastnamePlaceholder')"
+            id="lastName"
+            v-model="lastName"
+            :placeholder="$t('lastNamePlaceholder')"
             required
           />
         </div>
@@ -75,8 +75,8 @@
     data() {
       return {
         username: '',
-        firstname: '',
-        lastname: '',
+        firstName: '',
+        lastName: '',
         email: '',
         password: '',
         confirmPassword: ''
@@ -84,7 +84,7 @@
     },
     methods: {
       async handleRegister() {
-        if (!this.username || !this.firstname || !this.lastname || !this.email || !this.password || !this.confirmPassword) {
+        if (!this.username || !this.firstName || !this.lastName || !this.email || !this.password || !this.confirmPassword) {
           alert('Please fill in all fields.');
           return;
         }
@@ -97,8 +97,8 @@
         try {
           const res = await api.post('/auth/register', {
             username: this.username,
-            firstname: this.firstname,
-            lastname: this.lastname,
+            firstName: this.firstName,
+            lastName: this.lastName,
             email: this.email,
             password: this.password
           });
