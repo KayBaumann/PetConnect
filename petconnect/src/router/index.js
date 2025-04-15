@@ -7,6 +7,7 @@ import AdvertisementView from '../views/AdvertisementView.vue';
 import LoginView from '../views/LoginView.vue';
 import RegisterView from '../views/RegisterView.vue';
 import ProfileView from '../views/ProfileView.vue';
+import CreateAdvertisementView from '../views/CreateAdvertisementView.vue';
 
 const routes = [
   { path: '/', name: 'home', component: HomeView },
@@ -16,7 +17,8 @@ const routes = [
   { path: '/advertisement/:id', name: 'advertisement', component: AdvertisementView, props: true },
   { path: '/login', name: 'login', component: LoginView },
   { path: '/register', name: 'register', component: RegisterView },
-  { path: '/profile', name: 'profile', component: ProfileView, meta: { requiresAuth: true } }
+  { path: '/profile', name: 'profile', component: ProfileView, meta: { requiresAuth: true } },
+  { path: '/create-advertisement', name: 'createAdvertisement', component: CreateAdvertisementView, meta: { requiresAuth: true } }
 ];
 
 const router = createRouter({

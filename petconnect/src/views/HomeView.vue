@@ -7,9 +7,14 @@
         <h1>{{ $t('home') }}</h1>
         <p>{{ $t('homeDescription') }}</p>
         <div class="cta-buttons">
-          <button class="cta-button">{{ $t('ctaLookingForPet') }}</button>
-          <button class="cta-button">{{ $t('ctaOfferingPet') }}</button>
-          <button class="cta-button">{{ $t('ctaWantToHelp') }}</button>
+          <template v-if="!isAuthenticated">
+            <button class="cta-button">{{ $t('ctaLookingForPet') }}</button>
+            <button class="cta-button">{{ $t('ctaOfferingPet') }}</button>
+            <button class="cta-button">{{ $t('ctaWantToHelp') }}</button>
+          </template>
+          <template v-else>
+            <router-link to="/create-advertisement" class="cta-button">Create Advertisement</router-link>
+          </template>
         </div>
       </div>
     </div>
@@ -33,7 +38,7 @@
               class="ad-image"
             />
             <h3 class="ad-title">{{ ad.name }}</h3>
-            <p class="ad-description">Species: {{ ad.species }}</p>
+            <p class="ad-description">Species: {{ ad.type }}</p>
             <p class="ad-description">Age: {{ ad.age }} years</p>
             <p class="ad-description">Adopted: {{ ad.adopted ? 'Yes' : 'No' }}</p>
           </div>
@@ -52,6 +57,11 @@ export default {
     return {
       ads: [], // Store fetched pets here
     };
+  },
+  computed: {
+    isAuthenticated() {
+      return localStorage.getItem('isAuthenticated') === 'true';
+    },
   },
   async created() {
     console.log('Fetching pets from backend...');
@@ -182,7 +192,7 @@ export default {
 
 .ad-image {
   width: 100%;
-  height: 200px0;
+  height: 200px;
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 15px;
