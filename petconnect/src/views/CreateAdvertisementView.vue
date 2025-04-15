@@ -39,8 +39,8 @@
           <textarea id="description" v-model="newAd.description" required></textarea>
         </div>
         <div class="form-group">
-          <label for="image">Upload Picture</label>
-          <input type="file" id="image" @change="handleFileUpload" />
+          <label for="image">Image URL</label>
+          <input type="text" id="image" v-model="newAd.image" placeholder="Enter image URL" />
         </div>
         <button type="submit" class="cta-button">Create Advertisement</button>
       </form>
@@ -64,33 +64,25 @@ export default {
         location: '',
         vaccinated: false,
         description: '',
-        image: null, // Store the uploaded image
+        image: '', // Store the image URL
       },
     };
   },
   methods: {
-    handleFileUpload(event) {
-      const file = event.target.files[0];
-      this.newAd.image = file; // Store the selected file
-    },
     async createAdvertisement() {
-      try {
-        const formData = new FormData();
-        for (const key in this.newAd) {
-          formData.append(key, this.newAd[key]);
-        }
+      if (!this.newAd.name || !this.newAd.type || !this.newAd.breed) {
+        alert('Please fill in all required fields.');
+        return;
+      }
 
-        const res = await api.post('/pets', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        });
+      try {
+        const res = await api.post('/pets', this.newAd);
         console.log('New advertisement created:', res.data);
         alert('Advertisement created successfully!');
         this.$router.push('/'); // Redirect to home after creation
       } catch (err) {
-        console.error('Error creating advertisement:', err);
-        alert('Failed to create advertisement. Please try again.');
+        console.error('Error creating advertisement:', err.response?.data || err);
+        alert(err.response?.data?.message || 'Failed to create advertisement. Please try again.');
       }
     },
   },

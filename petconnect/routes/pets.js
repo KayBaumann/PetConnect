@@ -31,18 +31,34 @@ router.get('/:id', async (req, res) => {
 
 // Create a new pet
 router.post('/', async (req, res) => {
-  try {
-    const { name, type, breed, age, adopted, image, description } = req.body;
+  console.log('Create advertisement route hit');
+  const { name, type, breed, age, gender, location, vaccinated, description, image } = req.body;
+  console.log('Create advertisement attempt:', name);
 
+  try {
     if (!name || !type || !breed) {
       return res.status(400).json({ message: 'Name, type, and breed are required' });
     }
 
-    const newPet = new Pet({ name, type, breed, age, adopted, image, description });
-    await newPet.save();
-    res.status(201).json(newPet);
+    const newPet = new Pet({
+      name,
+      type,
+      breed,
+      age,
+      gender,
+      location,
+      vaccinated,
+      description,
+      image,
+    });
+
+    const savedPet = await newPet.save();
+    console.log('Saved advertisement:', savedPet);
+
+    res.status(201).json({ message: 'Advertisement created successfully', petId: savedPet._id });
   } catch (err) {
-    res.status(500).json({ message: 'Failed to create pet', error: err.message });
+    console.error('Error during advertisement creation:', err);
+    res.status(500).json({ message: 'Server error', error: err });
   }
 });
 
