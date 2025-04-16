@@ -130,7 +130,7 @@ input,
 textarea,
 select {
   width: 100%;
-  padding: 10px;
+  padding: 7.5px;
   border: 1px solid #d1d5db;
   border-radius: 4px;
   font-size: 1rem;

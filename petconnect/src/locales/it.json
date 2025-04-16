@@ -18,5 +18,13 @@
     "loginButton": "Accedi",
     "registerButton": "Registrati",
     "createAdvertisement": "Crea annuncio",
-    "profile": "Profilo"
+    "profile": "Profilo",
+    "type": "Tipo",
+    "breed": "Razza",
+    "location": "Posizione",
+    "age": "Età",
+    "years": "anni",
+    "applyFilters": "Applica filtri",
+    "noResults": "Nessun risultato trovato.",
+    "fetchError": "Impossibile recuperare gli animali. Riprova."
 }

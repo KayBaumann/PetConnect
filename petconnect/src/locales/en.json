@@ -18,5 +18,13 @@
     "loginButton": "Login",
     "registerButton": "Register",
     "createAdvertisement": "Create Advertisement",
-    "profile": "Profile"
+    "profile": "Profile",
+    "type": "Type",
+    "breed": "Breed",
+    "location": "Location",
+    "age": "Age",
+    "years": "years",
+    "applyFilters": "Apply Filters",
+    "noResults": "No results found.",
+    "fetchError": "Failed to fetch pets. Please try again."
 }

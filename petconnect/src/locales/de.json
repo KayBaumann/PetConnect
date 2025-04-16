@@ -33,5 +33,13 @@
     "lastnamePlaceholder": "Gib deinen Nachnamen ein",
     "confirmPwPlaceholder": "Gib dein Passwort erneut ein",
     "createAdvertisement": "Anzeige erstellen",
-    "profile": "Profil"
+    "profile": "Profil",
+    "type": "Typ",
+    "breed": "Rasse",
+    "location": "Ort",
+    "age": "Alter",
+    "years": "Jahre",
+    "applyFilters": "Filter anwenden",
+    "noResults": "Keine Ergebnisse gefunden.",
+    "fetchError": "Fehler beim Abrufen der Haustiere. Bitte versuchen Sie es erneut."
 }

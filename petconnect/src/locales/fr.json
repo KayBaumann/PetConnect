@@ -18,5 +18,13 @@
   "loginButton": "Se connecter",
   "registerButton": "S'inscrire",
   "createAdvertisement": "Créer une annonce",
-  "profile": "Profil"
+  "profile": "Profil",
+  "type": "Type",
+  "breed": "Race",
+  "location": "Lieu",
+  "age": "Âge",
+  "years": "ans",
+  "applyFilters": "Appliquer les filtres",
+  "noResults": "Aucun résultat trouvé.",
+  "fetchError": "Échec de la récupération des animaux. Veuillez réessayer."
 }
