@@ -31,6 +31,7 @@
     "usernamePlaceholder": "Gib deinen Benutzernamen ein",
     "firstnamePlaceholder": "Gib deinen Vornamen ein",
     "lastnamePlaceholder": "Gib deinen Nachnamen ein",
-    "confirmPwPlaceholder": "Gib dein Passwort erneut ein"
-
+    "confirmPwPlaceholder": "Gib dein Passwort erneut ein",
+    "createAdvertisement": "Anzeige erstellen",
+    "profile": "Profil"
 }

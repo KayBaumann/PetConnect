@@ -16,5 +16,7 @@
     "donateAmount": "Enter donation amount:",
     "donateNow": "Donate Now",
     "loginButton": "Login",
-    "registerButton": "Register"
+    "registerButton": "Register",
+    "createAdvertisement": "Create Advertisement",
+    "profile": "Profile"
 }

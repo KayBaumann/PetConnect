@@ -7,33 +7,34 @@
           <li><router-link to="/search">{{ $t('search') }}</router-link></li>
           <li><router-link to="/about">{{ $t('about') }}</router-link></li>
           <li><router-link to="/donate">{{ $t('donate') }}</router-link></li>
-          <li v-if="isAuthenticated"><router-link to="/profile">{{ $t('profile') }}</router-link></li>
 
-          <!-- Sprache Dropdown -->
+          <li v-if="isAuthenticated" class="dropdown" @mouseenter="showProfileDropdown" @mouseleave="hideProfileDropdown">
+            <div class="dropdown-trigger">
+              <button>
+                <img src="/src/assets/profile-icon.png" alt="Profile" class="icon-size" />
+              </button>
+              <ul class="dropdown-menu" v-show="isProfileDropdownVisible">
+                <li><router-link to="/profile">{{ $t('profile') }}</router-link></li>
+                <li><router-link to="/create-advertisement">{{ $t('createAdvertisement') }}</router-link></li>
+                <li><button @click="logout">{{ $t('Logout') }}</button></li>
+              </ul>
+            </div>
+          </li>
+
           <li class="dropdown" @mouseenter="showDropdown" @mouseleave="hideDropdown">
             <div class="dropdown-trigger">
               <button>
-                <img :src="currentLanguageIcon" :alt="currentLanguageAlt" />
+                <img :src="currentLanguageIcon" :alt="currentLanguageAlt" class="icon-size" />
               </button>
               <ul class="dropdown-menu" v-show="isDropdownVisible">
-                <li @click="changeLanguage('en')">
-                  <img :src="languageIcons.en.src" alt="English" />
-                </li>
-                <li @click="changeLanguage('de')">
-                  <img :src="languageIcons.de.src" alt="Deutsch" />
-                </li>
-                <li @click="changeLanguage('fr')">
-                  <img :src="languageIcons.fr.src" alt="Français" />
-                </li>
-                <li @click="changeLanguage('it')">
-                  <img :src="languageIcons.it.src" alt="Italiano" />
+                <li v-for="(icon, lang) in languageIcons" :key="lang" @click="changeLanguage(lang)">
+                  <img :src="icon.src" :alt="icon.alt" />
                 </li>
               </ul>
             </div>
           </li>
 
           <li v-if="!isAuthenticated"><router-link to="/login">{{ $t('Login') }}</router-link></li>
-          <li v-else><button @click="logout">{{ $t('Logout') }}</button></li>
         </ul>
       </nav>
     </header>
@@ -56,7 +57,8 @@ export default {
       currentLocale: 'en',
       isNavbarHidden: false,
       lastScrollPosition: 0,
-      isDropdownVisible: false
+      isDropdownVisible: false,
+      isProfileDropdownVisible: false
     };
   },
   computed: {
@@ -86,6 +88,12 @@ export default {
     },
     hideDropdown() {
       this.isDropdownVisible = false;
+    },
+    showProfileDropdown() {
+      this.isProfileDropdownVisible = true;
+    },
+    hideProfileDropdown() {
+      this.isProfileDropdownVisible = false;
     },
     logout() {
       localStorage.setItem('isAuthenticated', 'false');
@@ -218,5 +226,26 @@ button img {
 .dropdown-menu li:hover {
   background-color: #374151; /* Slightly lighter gray */
   transform: scale(1.05); /* Subtle zoom effect */
+}
+
+.dropdown-menu li button {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+/* Profile Dropdown Styles */
+.profile-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.icon-size {
+  width: 1.5rem; /* Increase size for better visibility */
+  height: 1.5rem;
+  border-radius: 50%; /* Circular icons */
 }
 </style>

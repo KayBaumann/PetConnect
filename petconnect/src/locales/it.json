@@ -16,5 +16,7 @@
     "donateAmount": "Inserisci l'importo della donazione:",
     "donateNow": "Dona ora",
     "loginButton": "Accedi",
-    "registerButton": "Registrati"
+    "registerButton": "Registrati",
+    "createAdvertisement": "Crea annuncio",
+    "profile": "Profilo"
 }
