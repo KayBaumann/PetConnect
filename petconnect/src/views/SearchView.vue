@@ -5,46 +5,58 @@
     <form @submit.prevent="applyFilters" class="filter-form">
       <div class="form-group">
         <label for="type">{{ $t('type') }}</label>
-        <input
-          type="text"
-          id="type"
-          v-model="filters.type"
-          list="type-options"
-          placeholder="e.g., Dog, Cat"
-        />
+        <div class="input-wrapper">
+          <input
+            type="text"
+            id="type"
+            v-model="filters.type"
+            list="type-options"
+            placeholder="e.g., Dog, Cat"
+          />
+          <button v-if="filters.type" type="button" class="clear-button" @click="filters.type = ''">x</button>
+        </div>
         <datalist id="type-options">
           <option v-for="type in uniqueTypes" :key="type" :value="type" />
         </datalist>
       </div>
       <div class="form-group">
         <label for="breed">{{ $t('breed') }}</label>
-        <input
-          type="text"
-          id="breed"
-          v-model="filters.breed"
-          list="breed-options"
-          placeholder="e.g., Labrador"
-        />
+        <div class="input-wrapper">
+          <input
+            type="text"
+            id="breed"
+            v-model="filters.breed"
+            list="breed-options"
+            placeholder="e.g., Labrador"
+          />
+          <button v-if="filters.breed" type="button" class="clear-button" @click="filters.breed = ''">x</button>
+        </div>
         <datalist id="breed-options">
           <option v-for="breed in uniqueBreeds" :key="breed" :value="breed" />
         </datalist>
       </div>
       <div class="form-group">
         <label for="location">{{ $t('location') }}</label>
-        <input
-          type="text"
-          id="location"
-          v-model="filters.location"
-          list="location-options"
-          placeholder="e.g., New York"
-        />
+        <div class="input-wrapper">
+          <input
+            type="text"
+            id="location"
+            v-model="filters.location"
+            list="location-options"
+            placeholder="e.g., New York"
+          />
+          <button v-if="filters.location" type="button" class="clear-button" @click="filters.location = ''">x</button>
+        </div>
         <datalist id="location-options">
           <option v-for="location in uniqueLocations" :key="location" :value="location" />
         </datalist>
       </div>
       <div class="form-group">
         <label for="age">{{ $t('age') }}</label>
-        <input type="number" id="age" v-model="filters.age" placeholder="e.g., 2" />
+        <div class="input-wrapper">
+          <input type="number" id="age" v-model="filters.age" placeholder="e.g., 2" />
+          <button v-if="filters.age" type="button" class="clear-button" @click="filters.age = null">x</button>
+        </div>
       </div>
       <button type="submit" class="filter-button">{{ $t('applyFilters') }}</button>
     </form>
@@ -146,7 +158,12 @@ label {
   color: #374151;
 }
 
+.input-wrapper {
+  position: relative;
+}
+
 input {
+  width: 100%;
   padding: 10px;
   border: 1px solid #d1d5db;
   border-radius: 4px;
@@ -156,6 +173,22 @@ input {
 input:focus {
   outline: 2px solid #2563eb;
   border-color: #2563eb;
+}
+
+.clear-button {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #6b7280;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.clear-button:hover {
+  color: #2563eb;
 }
 
 .filter-button {
