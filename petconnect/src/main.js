@@ -23,6 +23,11 @@ const i18n = createI18n({
   },
 });
 
+const savedDarkMode = localStorage.getItem('isDarkMode') === 'true';
+if (savedDarkMode) {
+  document.body.classList.add('dark-mode');
+}
+
 createApp(App)
   .use(router) // Router hier hinzufügen
   .use(i18n)

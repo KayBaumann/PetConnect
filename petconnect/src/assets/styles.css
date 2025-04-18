@@ -35,6 +35,58 @@ body {
   background-color: #ffffff;
 }
 
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.dark-mode a {
+  color: #82aaff;
+}
+
+body.dark-mode a:hover {
+  color: #528bff;
+}
+
+body.dark-mode button {
+  background-color: #1a73e8;
+}
+
+body.dark-mode button:hover {
+  background-color: #0056b3;
+}
+
+/* Ensure all sections respect dark mode */
+body.dark-mode .advertisement-section,
+body.dark-mode .home-view,
+body.dark-mode .advertisement-view,
+body.dark-mode .profile-view,
+body.dark-mode .donate-view,
+body.dark-mode .create-advertisement-container {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.dark-mode .advertisement-card,
+body.dark-mode .card {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  border: 1px solid #333333;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+  color: #aaaaaa;
+}
+
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
   font-weight: 600;

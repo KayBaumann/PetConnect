@@ -61,7 +61,7 @@
       <button type="submit" class="filter-button">{{ $t('applyFilters') }}</button>
     </form>
 
-    <div class="results">
+    <div class="results">  
       <p v-if="filteredPets.length === 0">{{ $t('noResults') }}</p>
       <div v-for="pet in filteredPets" :key="pet._id" class="pet-card">
         <img :src="pet.image" :alt="pet.name" class="pet-image" />
