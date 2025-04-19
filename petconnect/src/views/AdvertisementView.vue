@@ -61,19 +61,21 @@ export default {
 };
 </script>
 
-<style scoped>.advertisement-view {
+<style scoped>
+.advertisement-view {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+  background: var(--background-color, linear-gradient(135deg, #1a202c 0%, #2d3748 100%)); /* Dark mode background */
   padding: 50px 20px;
   min-height: 100vh;
+  color: var(--text-color, #f7fafc); /* Default text color for dark mode */
 }
 
 .advertisement-card {
   display: flex;
   flex-direction: row;
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--card-background, rgba(45, 55, 72, 0.95)); /* Darker card background */
   backdrop-filter: blur(10px);
   border-radius: 20px;
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
@@ -81,6 +83,7 @@ export default {
   max-width: 1100px;
   width: 100%;
   animation: fadeIn 1s ease-in-out;
+  color: var(--card-text-color, #edf2f7); /* Text color for card */
 }
 
 .advertisement-image-section {
@@ -101,11 +104,11 @@ export default {
 .adoption-banner {
   position: absolute;
   bottom: 20px;
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--banner-background, rgba(255, 255, 255, 0.2)); /* Adjusted for dark mode */
   padding: 10px 20px;
   border-radius: 999px;
   font-weight: bold;
-  color: #2d3748;
+  color: var(--banner-text-color, #f7fafc); /* Text color for banner */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -121,7 +124,7 @@ export default {
 .advertisement-title {
   font-size: 3rem;
   font-weight: 900;
-  color: #2b6cb0;
+  color: var(--title-color, #63b3ed); /* Adjusted title color for dark mode */
   margin-bottom: 10px;
 }
 
@@ -129,7 +132,7 @@ export default {
   font-size: 1.2rem;
   font-weight: 500;
   margin-bottom: 30px;
-  color: #4a5568;
+  color: var(--tagline-color, #a0aec0); /* Adjusted tagline color */
 }
 
 .info-grid {
@@ -138,17 +141,18 @@ export default {
   gap: 15px 30px;
   font-size: 1.1rem;
   margin-bottom: 25px;
+  color: var(--info-text-color, #e2e8f0); /* Adjusted info text color */
 }
 
 .description {
   font-size: 1.1rem;
-  color: #2d3748;
+  color: var(--description-color, #e2e8f0); /* Adjusted description text color */
   margin-bottom: 30px;
   line-height: 1.6;
 }
 
 .adopt-button {
-  background: linear-gradient(to right, #38b2ac, #4299e1);
+  background: var(--button-background, linear-gradient(to right, #2c7a7b, #2b6cb0)); /* Darker button gradient */
   color: white;
   font-size: 1.3rem;
   font-weight: 600;
@@ -160,7 +164,7 @@ export default {
 }
 
 .adopt-button:hover {
-  background: linear-gradient(to right, #319795, #3182ce);
+  background: var(--button-hover-background, linear-gradient(to right, #285e61, #2c5282)); /* Adjusted hover gradient */
 }
 
 .adopt-button:disabled {
@@ -170,7 +174,7 @@ export default {
 
 .loading {
   font-size: 1.8rem;
-  color: #718096;
+  color: var(--loading-text-color, #a0aec0); /* Adjusted loading text color */
   text-align: center;
 }
 

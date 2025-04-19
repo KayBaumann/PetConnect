@@ -69,8 +69,8 @@ export default {
   flex-direction: column;
   align-items: center;
   padding: 40px 20px;
-  background-color: #f3f4f6; /* Light gray */
-  color: #1f2937; /* Dark gray text */
+  background-color: var(--background-color, #1a202c); /* Dark mode background */
+  color: var(--text-color, #f7fafc); /* Default text color for dark mode */
 }
 
 .about-header {
@@ -82,11 +82,12 @@ export default {
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 15px;
+  color: var(--header-color, #63b3ed); /* Adjusted header color for dark mode */
 }
 
 .about-header p {
   font-size: 1.2rem;
-  color: #6b7280; /* Gray text */
+  color: var(--header-text-color, #a0aec0); /* Adjusted text color */
 }
 
 .students-section {
@@ -100,9 +101,10 @@ export default {
   gap: 20px;
   margin-bottom: 40px;
   padding: 20px;
-  background: white;
+  background: var(--card-background, rgba(45, 55, 72, 0.95)); /* Darker card background */
+  color: var(--card-text-color, #edf2f7); /* Text color for card */
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Adjusted shadow for dark mode */
 }
 
 .student-section.reverse {
@@ -118,11 +120,12 @@ export default {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 10px;
+  color: var(--student-name-color, #63b3ed); /* Adjusted student name color */
 }
 
 .student-text p {
   font-size: 1.1rem;
-  color: #6b7280; /* Gray text */
+  color: var(--student-text-color, #e2e8f0); /* Adjusted text color */
   margin-bottom: 10px;
   line-height: 1.6;
 }
@@ -140,5 +143,6 @@ export default {
   height: auto;
   border-radius: 8px;
   object-fit: cover;
+  border: 2px solid var(--image-border-color, #4a5568); /* Added border for better contrast */
 }
 </style>

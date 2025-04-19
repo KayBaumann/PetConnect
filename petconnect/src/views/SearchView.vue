@@ -133,6 +133,8 @@ export default {
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
+  background: var(--background-color, linear-gradient(135deg, #1a202c 0%, #2d3748 100%)); /* Dark mode background */
+  color: var(--text-color, #f7fafc); /* Default text color for dark mode */
 }
 
 .filter-form {
@@ -140,10 +142,11 @@ export default {
   flex-wrap: wrap;
   gap: 20px;
   margin-bottom: 30px;
-  background: #f9fafb;
+  background: var(--form-background, rgba(45, 55, 72, 0.95)); /* Darker form background */
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: var(--form-text-color, #edf2f7); /* Text color for form */
 }
 
 .form-group {
@@ -155,7 +158,7 @@ export default {
 label {
   font-weight: bold;
   margin-bottom: 5px;
-  color: #374151;
+  color: var(--label-color, #a0aec0); /* Adjusted label color */
 }
 
 .input-wrapper {
@@ -165,14 +168,16 @@ label {
 input {
   width: 100%;
   padding: 10px;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--input-border-color, #4a5568); /* Adjusted border color */
   border-radius: 4px;
   font-size: 1rem;
+  background: var(--input-background, #2d3748); /* Darker input background */
+  color: var(--input-text-color, #f7fafc); /* Input text color */
 }
 
 input:focus {
-  outline: 2px solid #2563eb;
-  border-color: #2563eb;
+  outline: 2px solid var(--input-focus-color, #63b3ed); /* Adjusted focus color */
+  border-color: var(--input-focus-color, #63b3ed); /* Adjusted focus color */
 }
 
 .clear-button {
@@ -182,7 +187,7 @@ input:focus {
   transform: translateY(-50%);
   background: none;
   border: none;
-  color: #6b7280;
+  color: var(--clear-button-color, #a0aec0); /* Adjusted clear button color */
   font-size: 1rem;
   cursor: pointer;
 }
@@ -193,7 +198,7 @@ input:focus {
 
 .filter-button {
   padding: 12px 20px;
-  background-color: #2563eb;
+  background-color: var(--button-background, #2c5282); /* Darker button background */
   color: white;
   border: none;
   border-radius: 4px;
@@ -204,7 +209,7 @@ input:focus {
 }
 
 .filter-button:hover {
-  background-color: #1d4ed8;
+  background-color: var(--button-hover-background, #2b6cb0); /* Adjusted hover background */
   transform: scale(1.05);
 }
 
@@ -216,18 +221,19 @@ input:focus {
 }
 
 .pet-card {
-  background: white;
+  background: var(--card-background, rgba(45, 55, 72, 0.95)); /* Darker card background */
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Adjusted shadow for dark mode */
   padding: 20px;
   max-width: 250px;
   text-align: center;
   transition: transform 0.2s, box-shadow 0.2s;
+  color: var(--card-text-color, #edf2f7); /* Text color for card */
 }
 
 .pet-card:hover {
   transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* Adjusted hover shadow */
 }
 
 .pet-image {
@@ -236,16 +242,17 @@ input:focus {
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 15px;
+  border: 2px solid var(--image-border-color, #4a5568); /* Added border for better contrast */
 }
 
 h3 {
   font-size: 1.5rem;
   margin-bottom: 10px;
-  color: #1f2937;
+  color: var(--heading-color, #63b3ed); /* Adjusted heading color */
 }
 
 p {
   font-size: 1rem;
-  color: #4b5563;
+  color: var(--paragraph-color, #e2e8f0); /* Adjusted paragraph text color */
 }
 </style>

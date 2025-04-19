@@ -37,11 +37,13 @@
               :alt="ad.name"
               class="ad-image"
             />
-            <h3 class="ad-title">{{ ad.name }}</h3>
-            <p class="ad-description">Species: {{ ad.type }}</p>
-            <p class="ad-description">Age: {{ ad.age }} years</p>
-            <p class="ad-description">Adopted: {{ ad.adopted ? 'Yes' : 'No' }}</p>
-          </div>
+            <div class="ad-content">
+              <h3 class="ad-title">{{ ad.name }}</h3>
+              <p class="ad-description">Species: {{ ad.type }}</p>
+              <p class="ad-description">Age: {{ ad.age }} years</p>
+              <p class="ad-description">Adopted: {{ ad.adopted ? 'Yes' : 'No' }}</p>
+            </div>
+          </div>                        
         </router-link>
       </div>
     </div>
@@ -181,7 +183,10 @@ export default {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
   max-width: 300px;
-  text-align: center;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
@@ -196,6 +201,15 @@ export default {
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 15px;
+}
+
+.ad-content {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.view-details-button {
+  display: none;
 }
 
 .ad-title {
