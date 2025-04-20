@@ -47,14 +47,14 @@ export default {
       console.log(`Fetching advertisement with ID: ${id}`);
       const res = await api.get(`/pets/${id}`); // Fetch advertisement by ID
       if (!res.data) {
-        console.error('No data returned from backend'); // Log if no data is returned
+        console.error('No data returned from backend');
         alert('Advertisement not found.');
         return;
       }
       this.advertisement = res.data; // Assign the fetched data
       console.log('Advertisement loaded:', this.advertisement);
     } catch (err) {
-      console.error('Error fetching advertisement:', err.response || err); // Log the error
+      console.error('Error fetching advertisement:', err.response || err);
       alert(err.response?.data?.message || 'Failed to load advertisement. Please try again later.');
     }
   },

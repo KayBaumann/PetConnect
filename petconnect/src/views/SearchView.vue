@@ -63,14 +63,19 @@
 
     <div class="results">  
       <p v-if="filteredPets.length === 0">{{ $t('noResults') }}</p>
-      <div v-for="pet in filteredPets" :key="pet._id" class="pet-card">
+      <router-link
+        v-for="pet in filteredPets"
+        :key="pet._id"
+        :to="{ name: 'advertisement', params: { id: pet._id } }"
+        class="pet-card"
+      >
         <img :src="pet.image" :alt="pet.name" class="pet-image" />
         <h3>{{ pet.name }}</h3>
         <p>{{ $t('type') }}: {{ pet.type }}</p>
         <p>{{ $t('breed') }}: {{ pet.breed }}</p>
         <p>{{ $t('age') }}: {{ pet.age }} {{ $t('years') }}</p>
         <p>{{ $t('location') }}: {{ pet.location }}</p>
-      </div>
+      </router-link>
     </div>
   </div>
 </template>
