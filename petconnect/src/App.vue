@@ -11,7 +11,7 @@
           <li v-if="isAuthenticated" class="dropdown" @mouseenter="showProfileDropdown" @mouseleave="hideProfileDropdown">
             <div class="dropdown-trigger">
               <button>
-                <img src="/src/assets/profile-icon.png" alt="Profile" class="icon-size" />
+                <img src="/src/assets/profile-icon-white.png" alt="Profile" class="icon-size" />
               </button>
               <ul class="dropdown-menu" v-show="isProfileDropdownVisible">
                 <li><router-link to="/profile">{{ $t('profile') }}</router-link></li>
@@ -163,6 +163,7 @@ button {
   padding: 8px;
   border-radius: 50%;
   transition: background-color 0.3s, transform 0.2s;
+  color: white;
 }
 
 button:hover {
@@ -200,6 +201,7 @@ button img {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
+  color: white;
 }
 
 .dropdown:hover .dropdown-menu,

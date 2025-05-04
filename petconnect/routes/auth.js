@@ -52,7 +52,7 @@ router.post('/register', async (req, res) => {
       firstName,
       lastName,
       email,
-      password: hashedPassword
+      password,
     });
 
     const savedUser = await newUser.save();

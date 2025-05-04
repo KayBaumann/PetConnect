@@ -20,9 +20,15 @@
           <p><strong>🏠 Adopted:</strong> {{ advertisement.adopted ? 'Yes 🏡' : 'No 🙏' }}</p>
         </div>
         <p class="description">📝 {{ advertisement.description }}</p>
+        <router-link
+          :key="advertisement._id"
+          :to="{ name: 'adopt', params: { id: advertisement._id } }"
+          class="advertisement-card-link"
+        >
         <button class="adopt-button" :disabled="advertisement.adopted">
           {{ advertisement.adopted ? "Already Adopted ❤️" : "Adopt Me Now 🐶" }}
         </button>
+        </router-link>
       </div>
     </div>
     <div v-else class="loading">

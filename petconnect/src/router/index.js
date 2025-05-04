@@ -8,6 +8,7 @@ import LoginView from '../views/LoginView.vue';
 import RegisterView from '../views/RegisterView.vue';
 import ProfileView from '../views/ProfileView.vue';
 import CreateAdvertisementView from '../views/CreateAdvertisementView.vue';
+import AdoptView from '../views/AdoptView.vue';
 
 const routes = [
   { path: '/', name: 'home', component: HomeView },
@@ -15,6 +16,7 @@ const routes = [
   { path: '/search', name: 'search', component: SearchView },
   { path: '/donate', name: 'donate', component: DonateView },
   { path: '/advertisement/:id', name: 'advertisement', component: AdvertisementView, props: true },
+  { path: '/adopt/:id', name: 'adopt', component: AdoptView, props: true },
   { path: '/login', name: 'login', component: LoginView },
   { path: '/register', name: 'register', component: RegisterView },
   { path: '/profile', name: 'profile', component: ProfileView, meta: { requiresAuth: true } },

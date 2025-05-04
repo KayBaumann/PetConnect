@@ -1,6 +1,7 @@
 <template>
   <div :class="['profile-view', { 'dark-mode': isDarkMode }]">
     <h1>Profile</h1>
+    <h3>{{ $t('username') }} </h3>
     <button @click="toggleDarkMode">
       {{ isDarkMode ? 'Switch to Bright Mode' : 'Switch to Dark Mode' }}
     </button>

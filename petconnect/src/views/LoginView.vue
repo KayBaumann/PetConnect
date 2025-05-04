@@ -51,11 +51,9 @@ export default {
           identifier: this.identifier,
           password: this.password
         });
-
-        // Erfolgreiches Login - setze isAuthenticated im localStorage
         localStorage.setItem('isAuthenticated', 'true');
-        console.log(res.data);
         alert('Login successful');
+
         
         this.$router.push('/').then(() => {
           window.location.reload(); 
