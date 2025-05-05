@@ -10,7 +10,7 @@
           v-model="identifier"
           :placeholder="$t('emailOrUsernamePlaceholder')"
           required
-        />
+        />        
       </div>
       <div class="form-group">
         <label for="password">{{ $t('password') }}</label>
@@ -52,6 +52,7 @@ export default {
           password: this.password
         });
         localStorage.setItem('isAuthenticated', 'true');
+        localStorage.setItem('userId', res.data.userId);
         alert('Login successful');
 
         

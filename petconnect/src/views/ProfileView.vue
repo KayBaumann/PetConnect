@@ -1,7 +1,15 @@
 <template>
   <div :class="['profile-view', { 'dark-mode': isDarkMode }]">
-    <h1>Profile</h1>
-    <h3>{{ $t('username') }} </h3>
+    <h1>{{ $t('profile') }}</h1>
+    <div v-if="user">
+      <h3>{{ $t('username') }}: {{ user.username }}</h3>
+      <p>{{ $t('firstname') }}: {{ user.firstName }}</p>
+      <p>{{ $t('lastname') }}: {{ user.lastName }}</p>
+      <p>{{ $t('email') }}: {{ user.email }}</p>
+    </div>
+    <div v-else>
+      <p>{{ $t('fetchError') }}</p>
+    </div>
     <button @click="toggleDarkMode">
       {{ isDarkMode ? 'Switch to Bright Mode' : 'Switch to Dark Mode' }}
     </button>
@@ -9,19 +17,38 @@
 </template>
 
 <script>
+import api from '../api';
+
 export default {
   name: 'ProfileView',
   data() {
     return {
       isDarkMode: localStorage.getItem('isDarkMode') === 'true',
+      user: null, // Hier werden die Benutzerdaten gespeichert
     };
   },
   methods: {
+    async fetchUserData() {
+      try {
+        const userId = localStorage.getItem('userId'); // Angenommen, die Benutzer-ID wird im LocalStorage gespeichert
+        if (!userId) {
+          throw new Error('User ID not found');
+        }
+        const res = await api.get(`/auth/user/${userId}`); // Backend-Route für Benutzerdaten
+        this.user = res.data;
+      } catch (err) {
+        console.error('Error fetching user data:', err);
+        alert(this.$t('fetchError'));
+      }
+    },
     toggleDarkMode() {
       this.isDarkMode = !this.isDarkMode;
       localStorage.setItem('isDarkMode', this.isDarkMode);
       document.body.classList.toggle('dark-mode', this.isDarkMode);
     },
+  },
+  async created() {
+    await this.fetchUserData(); // Benutzerdaten beim Laden der Seite abrufen
   },
 };
 </script>
