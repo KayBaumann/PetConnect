@@ -9,7 +9,7 @@ import RegisterView from '../views/RegisterView.vue';
 import ProfileView from '../views/ProfileView.vue';
 import CreateAdvertisementView from '../views/CreateAdvertisementView.vue';
 import AdoptView from '../views/AdoptView.vue';
-import SuccessView from '@/views/SuccessView.vue';
+import SuccessView from '../views/SuccessView.vue';
 
 const routes = [
   { path: '/', name: 'home', component: HomeView },
