@@ -1,3 +1,24 @@
+<script setup>
+import { ref } from 'vue';
+import axios from 'axios';
+import { loadStripe } from '@stripe/stripe-js';
+
+const amount = ref(10);
+
+const donate = async () => {
+  try {
+    const res = await axios.post('http://localhost:3000/api/create-checkout-session', {
+      amount: amount.value,
+    });
+
+    const stripe = await loadStripe('pk_test_51RNuRZHCn7PF7a88rJOGiKFBPRtoXH1nFlwSzd3QPyICdHqrt4ejWvXhrNrkQIzNbAmANcMquHyl5DGPfkED0hjp00cSq3jTC4');
+    await stripe.redirectToCheckout({ sessionId: res.data.id });
+  } catch (error) {
+    console.error('Fehler beim Erstellen der Zahlung:', error);
+  }
+};
+</script>
+
 <template>
   <div class="donate-view">
     <div class="donate-header">
@@ -6,17 +27,11 @@
     </div>
     <div class="donate-form">
       <label for="amount">{{ $t('donateAmount') }}</label>
-      <input type="number" id="amount" placeholder="10" />
-      <button class="donate-button">{{ $t('donateNow') }}</button>
+      <input type="number" id="amount" v-model="amount" min="1" />
+      <button class="donate-button" @click="donate">{{ $t('donateNow') }}</button>
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  name: 'DonateView'
-};
-</script>
 
 <style scoped>
 .donate-view {
@@ -24,8 +39,8 @@ export default {
   flex-direction: column;
   align-items: center;
   padding: 40px 20px;
-  background-color: #f3f4f6; /* Light gray */
-  color: #1f2937; /* Dark gray text */
+  background-color: #f3f4f6;
+  color: #1f2937;
 }
 
 .donate-header {
@@ -41,7 +56,7 @@ export default {
 
 .donate-header p {
   font-size: 1.2rem;
-  color: #6b7280; /* Gray text */
+  color: #6b7280;
 }
 
 .donate-form {
@@ -65,7 +80,7 @@ export default {
 }
 
 .donate-button {
-  background-color: #2563eb; /* Modern blue */
+  background-color: #2563eb;
   color: white;
   border: none;
   padding: 12px 24px;
@@ -76,7 +91,7 @@ export default {
 }
 
 .donate-button:hover {
-  background-color: #1d4ed8; /* Darker blue */
+  background-color: #1d4ed8;
   transform: scale(1.05);
 }
 </style>

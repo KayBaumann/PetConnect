@@ -29,6 +29,6 @@ if (savedDarkMode) {
 }
 
 createApp(App)
-  .use(router) // Router hier hinzufügen
+  .use(router)
   .use(i18n)
   .mount('#app');
