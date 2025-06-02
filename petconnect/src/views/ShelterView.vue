@@ -1,9 +1,23 @@
 <template>
   <div class="advertisement-view">
+    <router-link to="/create-shelter" class="create-button">
+      ➕ Add Shelter
+    </router-link>
+
     <div v-if="shelters.length" class="advertisement-list">
       <div v-for="shelter in shelters" :key="shelter._id" class="advertisement-card">
         <div class="advertisement-image-section">
-          <img :src="shelter.image" :alt="shelter.name" class="advertisement-image" />
+          <div class="image-wrapper">
+            <img
+              :src="shelter.image || fallbackImage"
+              :alt="shelter.name"
+              class="advertisement-image"
+              @error="handleImageError"
+            />
+            <div v-if="!shelter.image" class="image-overlay">
+              Kein Bild vorhanden
+            </div>
+          </div>
           <div class="adoption-banner">
             🏠 Animal Shelter
           </div>
@@ -19,6 +33,7 @@
         </div>
       </div>
     </div>
+
     <div v-else class="loading">
       <p>⏳ Loading shelters...</p>
     </div>
@@ -27,21 +42,31 @@
 
 <script>
 import api from '../api';
+import fallbackImage from '../assets/shelter_placeholder.png';
 
 export default {
   name: 'ShelterView',
   data() {
     return {
       shelters: [],
+      fallbackImage
     };
   },
   async created() {
     try {
       const res = await api.get('/shelters');
-      this.shelters = res.data;
+      this.shelters = res.data.map(shelter => ({
+        ...shelter,
+        image: shelter.image?.trim() || null
+      }));
     } catch (err) {
       console.error('Error fetching shelters:', err);
       alert('Failed to load shelters. Please try again later.');
+    }
+  },
+  methods: {
+    handleImageError(event) {
+      event.target.src = this.fallbackImage;
     }
   }
 };
@@ -50,13 +75,29 @@ export default {
 <style scoped>
 .advertisement-view {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background: var(--background-color, linear-gradient(135deg, #1a202c 0%, #2d3748 100%));
   padding: 50px 20px;
   min-height: 100vh;
   color: var(--text-color, #f7fafc);
-  flex-direction: column;
+}
+
+.create-button {
+  align-self: flex-end;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  background-color: #34d399;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.create-button:hover {
+  background-color: #059669;
 }
 
 .advertisement-list {
@@ -86,6 +127,27 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.image-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.2rem;
+  font-style: italic;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-align: center;
+  pointer-events: none;
 }
 
 .advertisement-image {
