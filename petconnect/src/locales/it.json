@@ -26,5 +26,21 @@
     "years": "anni",
     "applyFilters": "Applica filtri",
     "noResults": "Nessun risultato trovato.",
-    "fetchError": "Impossibile recuperare gli animali. Riprova."
+    "fetchError": "Impossibile recuperare gli animali. Riprova.",
+    "switchToBright": "Passa alla modalità chiara",
+    "switchToDark": "Passa alla modalità scura",
+    "savedPets": "Animali salvati",
+    "noSavedPets": "Nessun animale salvato.",
+    "remove": "Rimuovi",
+    "saveToFavorites": "Salva tra i preferiti",
+    "petSaved": "Animale salvato tra i preferiti!",
+    "petAlreadySaved": "Questo animale è già tra i tuoi preferiti.",
+    "alreadyAdopted": "Già adottato ❤️",
+    "adoptMeNow": "Adottami ora 🐶",
+    "contactDescription": "Ci farebbe piacere sentirti! Compila il modulo qui sotto e ti risponderemo al più presto.",
+    "yourName": "Il tuo nome",
+    "yourEmail": "La tua email",
+    "yourMessage": "Il tuo messaggio",
+    "sendMessage": "Invia messaggio",
+    "contactSuccess": "Grazie per averci contattato! Ti risponderemo presto."
 }

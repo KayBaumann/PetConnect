@@ -7,6 +7,7 @@
           <li><router-link to="/search">{{ $t('search') }}</router-link></li>
           <li><router-link to="/about">{{ $t('about') }}</router-link></li>
           <li><router-link to="/donate">{{ $t('donate') }}</router-link></li>
+          <li><router-link to="/contact">{{ $t('contact') }}</router-link></li>
 
           <li v-if="isAuthenticated" class="dropdown" @mouseenter="showProfileDropdown" @mouseleave="hideProfileDropdown">
             <div class="dropdown-trigger">

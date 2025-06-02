@@ -41,5 +41,21 @@
     "years": "Jahre",
     "applyFilters": "Filter anwenden",
     "noResults": "Keine Ergebnisse gefunden.",
-    "fetchError": "Fehler beim Abrufen der Haustiere. Bitte versuchen Sie es erneut."
+    "fetchError": "Fehler beim Abrufen der Haustiere. Bitte versuchen Sie es erneut.",
+    "switchToBright": "Wechsel zu hellem Modus",
+    "switchToDark": "Wechsel zu dunklem Modus",
+    "savedPets": "Gespeicherte Tiere",
+    "noSavedPets": "Noch keine Tiere gespeichert.",
+    "remove": "Entfernen",
+    "saveToFavorites": "Zu Favoriten speichern",
+    "petSaved": "Tier zu Favoriten gespeichert!",
+    "petAlreadySaved": "Dieses Tier ist bereits in deinen Favoriten.",
+    "alreadyAdopted": "Bereits adoptiert ❤️",
+    "adoptMeNow": "Jetzt adoptieren 🐶",
+    "contactDescription": "Wir freuen uns auf deine Nachricht! Bitte fülle das Formular aus und wir melden uns bald.",
+    "yourName": "Dein Name",
+    "yourEmail": "Deine E-Mail",
+    "yourMessage": "Deine Nachricht",
+    "sendMessage": "Nachricht senden",
+    "contactSuccess": "Danke für deine Nachricht! Wir melden uns bald."
 }

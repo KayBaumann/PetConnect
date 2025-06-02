@@ -26,5 +26,21 @@
     "years": "years",
     "applyFilters": "Apply Filters",
     "noResults": "No results found.",
-    "fetchError": "Failed to fetch pets. Please try again."
+    "fetchError": "Failed to fetch pets. Please try again.",
+    "switchToBright": "Switch to Bright Mode",
+    "switchToDark": "Switch to Dark Mode",
+    "savedPets": "Saved Pets",
+    "noSavedPets": "No saved pets yet.",
+    "remove": "Remove",
+    "saveToFavorites": "Save to Favorites",
+    "petSaved": "Pet saved to favorites!",
+    "petAlreadySaved": "This pet is already in your favorites.",
+    "alreadyAdopted": "Already Adopted ❤️",
+    "adoptMeNow": "Adopt Me Now 🐶",
+    "contactDescription": "We'd love to hear from you! Please fill out the form below and we'll get back to you soon.",
+    "yourName": "Your Name",
+    "yourEmail": "Your Email",
+    "yourMessage": "Your Message",
+    "sendMessage": "Send Message",
+    "contactSuccess": "Thank you for contacting us! We'll get back to you soon."
 }

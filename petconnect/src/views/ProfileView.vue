@@ -11,8 +11,22 @@
       <p>{{ $t('fetchError') }}</p>
     </div>
     <button @click="toggleDarkMode">
-      {{ isDarkMode ? 'Switch to Bright Mode' : 'Switch to Dark Mode' }}
+      {{ isDarkMode ? $t('switchToBright') : $t('switchToDark') }}
     </button>
+    <div class="saved-pets">
+      <h2>{{ $t('savedPets') }}</h2>
+      <div v-if="savedPets.length === 0">
+        <p>{{ $t('noSavedPets') }}</p>
+      </div>
+      <div v-else class="pets-list">
+        <div v-for="pet in savedPets" :key="pet._id" class="pet-card">
+          <img :src="pet.image" :alt="pet.name" class="pet-image" />
+          <h3>{{ pet.name }}</h3>
+          <p>{{ pet.type }} - {{ pet.breed }}</p>
+          <button @click="removeFromSaved(pet._id)">{{ $t('remove') }}</button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -24,17 +38,16 @@ export default {
   data() {
     return {
       isDarkMode: localStorage.getItem('isDarkMode') === 'true',
-      user: null, // Hier werden die Benutzerdaten gespeichert
+      user: null,
+      savedPets: [],
     };
   },
   methods: {
     async fetchUserData() {
       try {
-        const userId = localStorage.getItem('userId'); // Angenommen, die Benutzer-ID wird im LocalStorage gespeichert
-        if (!userId) {
-          throw new Error('User ID not found');
-        }
-        const res = await api.get(`/auth/user/${userId}`); // Backend-Route für Benutzerdaten
+        const userId = localStorage.getItem('userId');
+        if (!userId) throw new Error('User ID not found');
+        const res = await api.get(`/auth/user/${userId}`);
         this.user = res.data;
       } catch (err) {
         console.error('Error fetching user data:', err);
@@ -46,9 +59,18 @@ export default {
       localStorage.setItem('isDarkMode', this.isDarkMode);
       document.body.classList.toggle('dark-mode', this.isDarkMode);
     },
+    loadSavedPets() {
+      const saved = JSON.parse(localStorage.getItem('savedPets')) || [];
+      this.savedPets = saved;
+    },
+    removeFromSaved(petId) {
+      this.savedPets = this.savedPets.filter((pet) => pet._id !== petId);
+      localStorage.setItem('savedPets', JSON.stringify(this.savedPets));
+    },
   },
   async created() {
-    await this.fetchUserData(); // Benutzerdaten beim Laden der Seite abrufen
+    await this.fetchUserData();
+    this.loadSavedPets();
   },
 };
 </script>
@@ -84,5 +106,45 @@ button {
 button:hover {
   background-color: #1d4ed8;
   transform: scale(1.05);
+}
+
+.saved-pets {
+  margin-top: 20px;
+}
+
+.pets-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.pet-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  text-align: center;
+  width: 200px;
+}
+
+.pet-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #1d4ed8;
 }
 </style>

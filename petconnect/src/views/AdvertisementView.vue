@@ -20,13 +20,14 @@
           <p><strong>🏠 Adopted:</strong> {{ advertisement.adopted ? 'Yes 🏡' : 'No 🙏' }}</p>
         </div>
         <p class="description">📝 {{ advertisement.description }}</p>
+        <button class="save-button" @click="saveToFavorites">{{ $t('saveToFavorites') }}</button>
         <router-link
           :key="advertisement._id"
           :to="{ name: 'adopt', params: { id: advertisement._id } }"
           class="advertisement-card-link"
         >
         <button class="adopt-button" :disabled="advertisement.adopted">
-          {{ advertisement.adopted ? "Already Adopted ❤️" : "Adopt Me Now 🐶" }}
+          {{ advertisement.adopted ? $t('alreadyAdopted') : $t('adoptMeNow') }}
         </button>
         </router-link>
       </div>
@@ -63,6 +64,18 @@ export default {
       console.error('Error fetching advertisement:', err.response || err);
       alert(err.response?.data?.message || 'Failed to load advertisement. Please try again later.');
     }
+  },
+  methods: {
+    saveToFavorites() {
+      const savedPets = JSON.parse(localStorage.getItem('savedPets')) || [];
+      if (!savedPets.some((pet) => pet._id === this.advertisement._id)) {
+        savedPets.push(this.advertisement);
+        localStorage.setItem('savedPets', JSON.stringify(savedPets));
+        alert(this.$t('petSaved'));
+      } else {
+        alert(this.$t('petAlreadySaved'));
+      }
+    },
   },
 };
 </script>
@@ -176,6 +189,20 @@ export default {
 .adopt-button:disabled {
   background: #a0aec0;
   cursor: not-allowed;
+}
+
+.save-button {
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  background-color: #34d399;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.save-button:hover {
+  background-color: #059669;
 }
 
 .loading {

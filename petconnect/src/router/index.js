@@ -10,6 +10,7 @@ import ProfileView from '../views/ProfileView.vue';
 import CreateAdvertisementView from '../views/CreateAdvertisementView.vue';
 import AdoptView from '../views/AdoptView.vue';
 import SuccessView from '../views/SuccessView.vue';
+import ContactView from '../views/ContactView.vue';
 
 const routes = [
   { path: '/', name: 'home', component: HomeView },
@@ -22,7 +23,8 @@ const routes = [
   { path: '/register', name: 'register', component: RegisterView },
   { path: '/profile', name: 'profile', component: ProfileView, meta: { requiresAuth: true } },
   { path: '/create-advertisement', name: 'createAdvertisement', component: CreateAdvertisementView, meta: { requiresAuth: true } },
-  { path: '/success', name: 'Success', component: SuccessView }
+  { path: '/success', name: 'Success', component: SuccessView },
+  { path: '/contact', name: 'contact', component: ContactView }
 ];
 
 const router = createRouter({
