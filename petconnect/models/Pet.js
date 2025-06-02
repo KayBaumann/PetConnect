@@ -8,9 +8,9 @@ const petSchema = new mongoose.Schema({
   adopted: { type: Boolean, default: false },
   image: String,
   description: String,
-  gender: { type: String, enum: ['Male', 'Female'], required: true }, // Added gender field
-  location: String, // Added location field
-  vaccinated: { type: Boolean, default: false } // Added vaccinated field
+  gender: { type: String, enum: ['Male', 'Female'], required: true },
+  location: String,
+  vaccinated: { type: Boolean, default: false }
 });
 
 module.exports = mongoose.model('Pet', petSchema);

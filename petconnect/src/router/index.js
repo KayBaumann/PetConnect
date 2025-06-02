@@ -11,6 +11,7 @@ import CreateAdvertisementView from '../views/CreateAdvertisementView.vue';
 import AdoptView from '../views/AdoptView.vue';
 import SuccessView from '../views/SuccessView.vue';
 import ContactView from '../views/ContactView.vue';
+import ShelterView from '../views/ShelterView.vue';
 
 const routes = [
   { path: '/', name: 'home', component: HomeView },
@@ -18,6 +19,7 @@ const routes = [
   { path: '/search', name: 'search', component: SearchView },
   { path: '/donate', name: 'donate', component: DonateView },
   { path: '/advertisement/:id', name: 'advertisement', component: AdvertisementView, props: true },
+  { path: '/shelters', name: 'shelters', component: ShelterView },
   { path: '/adopt/:id', name: 'adopt', component: AdoptView, props: true },
   { path: '/login', name: 'login', component: LoginView },
   { path: '/register', name: 'register', component: RegisterView },
