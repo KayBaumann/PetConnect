@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
     res.json(pets);
   } catch (err) {
     console.error('Error fetching pets:', err);
-    res.status(500).json({ message: 'Error fetching pets', error: err.message });
+    res.status(500).json({ message: res.__('errors.server'), error: err.message });
   }
 });
 
@@ -21,11 +21,11 @@ router.get('/:id', async (req, res) => {
   try {
     const pet = await Pet.findById(req.params.id);
     if (!pet) {
-      return res.status(404).json({ message: 'Pet not found' });
+      return res.status(404).json({ message: res.__('pet.not_found') });
     }
     res.json(pet);
   } catch (err) {
-    res.status(500).json({ message: 'Error fetching pet', error: err.message });
+    res.status(500).json({ message: res.__('errors.server'), error: err.message });
   }
 });
 
@@ -37,7 +37,7 @@ router.post('/', async (req, res) => {
 
   try {
     if (!name || !type || !breed) {
-      return res.status(400).json({ message: 'Name, type, and breed are required' });
+      return res.status(400).json({ message: res.__('pet.missing_fields') });
     }
 
     const newPet = new Pet({
@@ -55,10 +55,10 @@ router.post('/', async (req, res) => {
     const savedPet = await newPet.save();
     console.log('Saved advertisement:', savedPet);
 
-    res.status(201).json({ message: 'Advertisement created successfully', petId: savedPet._id });
+    res.status(201).json({ message: res.__('pet.created'), petId: savedPet._id });
   } catch (err) {
     console.error('Error during advertisement creation:', err);
-    res.status(500).json({ message: 'Server error', error: err });
+    res.status(500).json({ message: res.__('errors.server'), error: err });
   }
 });
 
@@ -73,10 +73,10 @@ router.put('/:id', async (req, res) => {
       { new: true, runValidators: true }
     );
 
-    if (!updatedPet) return res.status(404).json({ message: 'Pet not found' });
-    res.json(updatedPet);
+    if (!updatedPet) return res.status(404).json({ message: res.__('pet.not_found') });
+    res.json({ message: res.__('pet.updated'), pet: updatedPet });
   } catch (err) {
-    res.status(500).json({ message: 'Failed to update pet', error: err.message });
+    res.status(500).json({ message: res.__('errors.server'), error: err.message });
   }
 });
 
@@ -84,10 +84,10 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   try {
     const deletedPet = await Pet.findByIdAndDelete(req.params.id);
-    if (!deletedPet) return res.status(404).json({ message: 'Pet not found' });
-    res.json({ message: 'Pet deleted successfully', deletedPet });
+    if (!deletedPet) return res.status(404).json({ message: res.__('pet.not_found') });
+    res.json({ message: res.__('pet.deleted'), deletedPet });
   } catch (err) {
-    res.status(500).json({ message: 'Failed to delete pet', error: err.message });
+    res.status(500).json({ message: res.__('errors.server'), error: err.message });
   }
 });
 

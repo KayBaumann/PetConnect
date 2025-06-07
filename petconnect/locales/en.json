@@ -1,0 +1,30 @@
+{
+  "auth": {
+    "invalid": "Invalid email or password",
+    "success": "Login successful",
+    "missing_fields": "Email and password are required"
+  },
+  "user": {
+    "already_exists": "Email already in use",
+    "created": "Registration successful",
+    "not_found": "User not found"
+  },
+  "pet": {
+    "created": "Pet added successfully",
+    "updated": "Pet updated successfully",
+    "deleted": "Pet deleted successfully",
+    "not_found": "Pet not found",
+    "missing_fields": "Name, type, and breed are required"
+  },
+  "donation": {
+  "session_created": "Donation session created successfully"
+  },
+  "shelter": {
+  "created": "Shelter successfully created",
+  "missing_fields": "Please fill in all required fields"
+  },
+  "errors": {
+    "server": "An internal server error occurred",
+    "payment_failed": "Payment processing failed. Please try again later."
+  }
+}

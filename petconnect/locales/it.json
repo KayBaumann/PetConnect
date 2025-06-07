@@ -1,0 +1,30 @@
+{
+  "auth": {
+    "invalid": "Email o password non validi",
+    "success": "Accesso riuscito",
+    "missing_fields": "Email e password sono obbligatori"
+  },
+  "user": {
+    "already_exists": "Email già in uso",
+    "created": "Registrazione completata con successo",
+    "not_found": "Utente non trovato"
+  },
+  "pet": {
+    "created": "Animale aggiunto con successo",
+    "updated": "Animale aggiornato con successo",
+    "deleted": "Animale eliminato con successo",
+    "not_found": "Animale non trovato",
+    "missing_fields": "Nome, tipo e razza sono obbligatori"
+  },
+  "donation": {
+    "session_created": "Sessione di donazione creata con successo"
+  },
+  "shelter": {
+    "created": "Rifugio creato con successo",
+    "missing_fields": "Compila tutti i campi obbligatori"
+  },
+  "errors": {
+    "server": "Si è verificato un errore interno del server",
+    "payment_failed": "Pagamento non riuscito. Riprova più tardi."
+  }
+}

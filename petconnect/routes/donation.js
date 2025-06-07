@@ -16,7 +16,7 @@ router.post('/create-checkout-session', async (req, res) => {
         price_data: {
           currency: 'chf',
           product_data: {
-            name: 'Spende für PetConnect',
+            name: 'Spende für PetConnect', // dieser Text ist frontendseitig sichtbar
           },
           unit_amount: amount * 100,
         },
@@ -26,9 +26,16 @@ router.post('/create-checkout-session', async (req, res) => {
       cancel_url: 'http://localhost:5173/cancel',
     });
 
-    res.json({ id: session.id });
+    res.status(200).json({
+      id: session.id,
+      message: res.__('donation.session_created')
+    });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error('Stripe error:', error);
+    res.status(500).json({
+      message: res.__('errors.payment_failed'),
+      error: error.message
+    });
   }
 });
 

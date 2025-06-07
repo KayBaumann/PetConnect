@@ -1,0 +1,30 @@
+{
+  "auth": {
+    "invalid": "Ungültige E-Mail oder Passwort",
+    "success": "Anmeldung erfolgreich",
+    "missing_fields": "E-Mail und Passwort sind erforderlich"
+  },
+  "user": {
+    "already_exists": "E-Mail wird bereits verwendet",
+    "created": "Registrierung erfolgreich",
+    "not_found": "Benutzer nicht gefunden"
+  },
+  "pet": {
+    "created": "Tier erfolgreich hinzugefügt",
+    "updated": "Tier erfolgreich aktualisiert",
+    "deleted": "Tier erfolgreich gelöscht",
+    "not_found": "Tier nicht gefunden",
+    "missing_fields": "Name, Typ und Rasse sind erforderlich"
+  },
+  "donation": {
+    "session_created": "Spendensitzung erfolgreich erstellt"
+  },
+  "shelter": {
+    "created": "Tierheim erfolgreich erstellt",
+    "missing_fields": "Bitte alle Pflichtfelder ausfüllen"
+  },
+  "errors": {
+    "server": "Ein interner Serverfehler ist aufgetreten",
+    "payment_failed": "Zahlung fehlgeschlagen. Bitte versuche es später erneut."
+  }
+}
