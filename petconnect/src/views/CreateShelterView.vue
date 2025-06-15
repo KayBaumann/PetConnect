@@ -1,14 +1,14 @@
 <template>
   <div class="form-container">
-    <h1>Create New Shelter</h1>
+    <h1>{{ $t('createShelterTitle') }}</h1>
     <form @submit.prevent="submitForm">
-      <input v-model="form.name" placeholder="Name" required />
-      <input v-model="form.address" placeholder="Address" required />
-      <input v-model="form.owner" placeholder="Owner" required />
-      <input type="number" v-model="form.animalCount" placeholder="Number of Animals" required />
-      <input v-model="form.email" type="email" placeholder="Email" required />
-      <input v-model="form.image" placeholder="Image URL (optional)" />
-      <button type="submit">Submit</button>
+      <input v-model="form.name" :placeholder="$t('form.name')" required />
+      <input v-model="form.address" :placeholder="$t('form.address')" required />
+      <input v-model="form.owner" :placeholder="$t('form.owner')" required />
+      <input type="number" v-model="form.animalCount" :placeholder="$t('form.animalCount')" required />
+      <input v-model="form.email" type="email" :placeholder="$t('form.email')" required />
+      <input v-model="form.image" :placeholder="$t('form.imageUrlOptional')" />
+      <button type="submit">{{ $t('form.submit') }}</button>
     </form>
   </div>
 </template>
@@ -34,10 +34,10 @@ export default {
     async submitForm() {
       try {
         await api.post('/shelters', this.form);
-        alert('Shelter created successfully!');
+        alert(this.$t('form.shelterCreated'));
         this.$router.push('/shelters');
       } catch (err) {
-        alert('Failed to create shelter.');
+        alert(this.$t('form.shelterFailed'));
         console.error(err);
       }
     }

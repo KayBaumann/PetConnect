@@ -9,14 +9,34 @@
   "ctaLookingForPet": "Je cherche un animal",
   "ctaOfferingPet": "Je propose un animal",
   "ctaWantToHelp": "Je veux aider",
-  "advertisements": "Publicités",
+
+  "advertisements": "Annonces",
   "donate": "Faire un don",
   "donateTitle": "Soutenez notre mission",
   "donateDescription": "Votre don nous aide à connecter plus de personnes avec leurs futurs compagnons à fourrure.",
   "donateAmount": "Entrez le montant du don :",
   "donateNow": "Faire un don maintenant",
+
   "loginButton": "Se connecter",
   "registerButton": "S'inscrire",
+  "loginTitle": "Connexion",
+  "registerTitle": "Inscription",
+  "register": "S'inscrire",
+  "email": "E-mail",
+  "password": "Mot de passe",
+  "confirmPassword": "Confirmer le mot de passe",
+  "pwPlaceholder": "Entrez votre mot de passe",
+  "emailPlaceholder": "Entrez votre e-mail",
+  "username": "Nom d'utilisateur",
+  "firstname": "Prénom",
+  "lastname": "Nom de famille",
+  "usernamePlaceholder": "Entrez votre nom d'utilisateur",
+  "firstnamePlaceholder": "Entrez votre prénom",
+  "lastnamePlaceholder": "Entrez votre nom de famille",
+  "confirmPwPlaceholder": "Entrez à nouveau votre mot de passe",
+  "emailOrUsername": "E-mail ou nom d'utilisateur",
+  "emailOrUsernamePlaceholder": "ex. jean.dupont@mail.com",
+
   "createAdvertisement": "Créer une annonce",
   "profile": "Profil",
   "type": "Type",
@@ -26,7 +46,7 @@
   "years": "ans",
   "applyFilters": "Appliquer les filtres",
   "noResults": "Aucun résultat trouvé.",
-  "fetchError": "Échec de la récupération des animaux. Veuillez réessayer.",
+  "fetchError": "Erreur lors de la récupération des données. Veuillez réessayer.",
   "switchToBright": "Passer en mode clair",
   "switchToDark": "Passer en mode sombre",
   "savedPets": "Animaux enregistrés",
@@ -37,10 +57,32 @@
   "petAlreadySaved": "Cet animal est déjà dans vos favoris.",
   "alreadyAdopted": "Déjà adopté ❤️",
   "adoptMeNow": "Adoptez-moi 🐶",
+  "noPets": "Aucun animal disponible.",
+  "adopted": "Adopté",
+  "yes": "Oui",
+  "no": "Non",
+
   "contactDescription": "Nous serions ravis de vous entendre ! Remplissez le formulaire ci-dessous et nous vous répondrons rapidement.",
   "yourName": "Votre nom",
   "yourEmail": "Votre e-mail",
   "yourMessage": "Votre message",
   "sendMessage": "Envoyer le message",
-  "contactSuccess": "Merci de nous avoir contactés ! Nous vous répondrons bientôt."
+  "contactSuccess": "Merci de nous avoir contactés ! Nous vous répondrons bientôt.",
+
+  "shelter": {
+    "add": "➕ Ajouter un refuge",
+    "managedBy": "Géré par",
+    "address": "Adresse",
+    "email": "E-mail",
+    "animalCount": "Nombre d'animaux",
+    "loading": "⏳ Chargement des refuges...",
+    "noImage": "Aucune image disponible",
+    "banner": "🏠 Refuge pour animaux"
+  },
+
+  "donation": {
+    "thankYou": "Merci beaucoup pour votre soutien !",
+    "appreciation": "Les animaux vous en sont très reconnaissants",
+    "backHome": "Retour à l'accueil"
+  }
 }
