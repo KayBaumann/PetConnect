@@ -1,7 +1,18 @@
 {
   "home": "Willkommen bei PetConnect",
   "about": "Über uns",
-  "search": "Haustiere suchen",
+  "search": {
+    "title": "Haustiere suchen",
+    "type": "Tierart",
+    "breed": "Rasse",
+    "location": "Standort",
+    "age": "Alter",
+    "placeholderType": "z. B. Hund, Katze...",
+    "placeholderBreed": "z. B. Dackel",
+    "placeholderLocation": "z. B. Luzern",
+    "placeholderAge": "z. B. 2 Jahre",
+    "applyFilters": "Filter anwenden"
+  },
   "contact": "Kontakt",
   "aboutTitle": "Über uns",
   "aboutDescription": "Dies ist die Über-uns-Seite.",
@@ -11,12 +22,10 @@
   "ctaWantToHelp": "Ich möchte helfen",
   "advertisements": "Anzeigen",
   "donate": "Spenden",
-
   "donateTitle": "Unterstützen Sie unsere Mission",
   "donateDescription": "Ihre Spende hilft uns, mehr Menschen mit ihren zukünftigen pelzigen Freunden zu verbinden.",
   "donateAmount": "Spendenbetrag eingeben:",
   "donateNow": "Jetzt spenden",
-
   "loginButton": "Einloggen",
   "registerButton": "Registrieren",
   "pwPlaceholder": "Gib dein Passwort ein",
@@ -36,7 +45,6 @@
   "confirmPwPlaceholder": "Gib dein Passwort erneut ein",
   "emailOrUsername": "E-Mail oder Benutzername",
   "emailOrUsernamePlaceholder": "z. B. max.mustermann@mail.com",
-
   "createAdvertisement": "Anzeige erstellen",
   "profile": "Profil",
   "type": "Typ",
@@ -61,16 +69,15 @@
   "adopted": "Adoptiert",
   "yes": "Ja",
   "no": "Nein",
-
   "contactDescription": "Wir freuen uns auf deine Nachricht! Bitte fülle das Formular aus und wir melden uns bald.",
   "yourName": "Dein Name",
   "yourEmail": "Deine E-Mail",
   "yourMessage": "Deine Nachricht",
   "sendMessage": "Nachricht senden",
   "contactSuccess": "Danke für deine Nachricht! Wir melden uns bald.",
-
+  "createAdTitle": "Tieranzeige erstellen",
   "shelter": {
-    "add": "➕ Tierheim hinzufügen",
+    "addButton": "Tierheim hinzufügen",
     "managedBy": "Verwaltet von",
     "address": "Adresse",
     "email": "E-Mail",
@@ -79,10 +86,54 @@
     "noImage": "Kein Bild vorhanden",
     "banner": "🏠 Tierheim"
   },
-
   "donation": {
     "thankYou": "Danke vielmals für deine Unterstützung!",
     "appreciation": "Die Tiere freuen sich sehr darüber",
     "backHome": "Zurück zur Startseite"
-  }
+  },
+  "form": {
+    "name": "Name",
+    "type": "Tierart",
+    "breed": "Rasse",
+    "age": "Alter",
+    "gender": "Geschlecht",
+    "male": "Männlich",
+    "location": "Ort",
+    "vaccinated": "Geimpft",
+    "description": "Beschreibung",
+    "imageUrl": "Bild-URL",
+    "imagePlaceholder": "Link zum Bild einfügen",
+
+    "address": "Adresse",
+    "owner": "Besitzer",
+    "animalCount": "Anzahl Tiere",
+    "email": "E-Mail",
+    "imageUrlOptional": "Bild-URL (optional)",
+    "submit": "Absenden"
+  },
+  "homeTitle": "Willkommen bei PetConnect",
+  "homeIntro": "Finde dein neues Haustier oder biete eines zur Adoption an.",
+  "searchButton": "Suchen",
+  "adoptionBanner": "Zur Adoption",
+  "adoptNow": "Jetzt adoptieren",
+  "adoptedLabel": "Adoptiert",
+  "createShelter": "Tierheim erstellen",
+  "createShelterTitle": "Neues Tierheim hinzufügen",
+  "createShelterInstructions": "Bitte fülle die folgenden Informationen aus, um ein neues Tierheim anzulegen.",
+  "createPet": "Tieranzeige erstellen",
+  "createPetTitle": "Neues Tier hinzufügen",
+  "createPetInstructions": "Bitte gib alle Informationen über das Tier an.",
+  "back": "Zurück",
+  "submit": "Absenden",
+  "cancel": "Abbrechen",
+  "confirm": "Bestätigen",
+  "loading": "Laden...",
+  "edit": "Bearbeiten",
+  "delete": "Löschen",
+  "noData": "Keine Daten vorhanden.",
+  "logout": "Abmelden",
+  "Login": "Einloggen",
+  "Register": "Registrieren",
+  "createAdButton": "Anzeige erstellen",
+  "shelter.addButton": "Tierheim hinzufügen"
 }

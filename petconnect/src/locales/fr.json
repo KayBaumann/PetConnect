@@ -1,7 +1,18 @@
 {
   "home": "Bienvenue sur PetConnect",
   "about": "À propos de nous",
-  "search": "Rechercher des animaux",
+  "search": {
+    "title": "Rechercher des animaux",
+    "type": "Type",
+    "breed": "Race",
+    "location": "Lieu",
+    "age": "Âge",
+    "placeholderType": "ex. chien, chat...",
+    "placeholderBreed": "ex. teckel",
+    "placeholderLocation": "ex. Lausanne",
+    "placeholderAge": "ex. 2 ans",
+    "applyFilters": "Appliquer les filtres"
+  },
   "contact": "Contact",
   "aboutTitle": "À propos de nous",
   "aboutDescription": "Ceci est la page à propos.",
@@ -9,14 +20,12 @@
   "ctaLookingForPet": "Je cherche un animal",
   "ctaOfferingPet": "Je propose un animal",
   "ctaWantToHelp": "Je veux aider",
-
   "advertisements": "Annonces",
   "donate": "Faire un don",
   "donateTitle": "Soutenez notre mission",
   "donateDescription": "Votre don nous aide à connecter plus de personnes avec leurs futurs compagnons à fourrure.",
   "donateAmount": "Entrez le montant du don :",
   "donateNow": "Faire un don maintenant",
-
   "loginButton": "Se connecter",
   "registerButton": "S'inscrire",
   "loginTitle": "Connexion",
@@ -36,7 +45,6 @@
   "confirmPwPlaceholder": "Entrez à nouveau votre mot de passe",
   "emailOrUsername": "E-mail ou nom d'utilisateur",
   "emailOrUsernamePlaceholder": "ex. jean.dupont@mail.com",
-
   "createAdvertisement": "Créer une annonce",
   "profile": "Profil",
   "type": "Type",
@@ -61,14 +69,12 @@
   "adopted": "Adopté",
   "yes": "Oui",
   "no": "Non",
-
   "contactDescription": "Nous serions ravis de vous entendre ! Remplissez le formulaire ci-dessous et nous vous répondrons rapidement.",
   "yourName": "Votre nom",
   "yourEmail": "Votre e-mail",
   "yourMessage": "Votre message",
   "sendMessage": "Envoyer le message",
   "contactSuccess": "Merci de nous avoir contactés ! Nous vous répondrons bientôt.",
-
   "shelter": {
     "add": "➕ Ajouter un refuge",
     "managedBy": "Géré par",
@@ -79,10 +85,54 @@
     "noImage": "Aucune image disponible",
     "banner": "🏠 Refuge pour animaux"
   },
-
   "donation": {
     "thankYou": "Merci beaucoup pour votre soutien !",
     "appreciation": "Les animaux vous en sont très reconnaissants",
     "backHome": "Retour à l'accueil"
-  }
+  },
+  "homeTitle": "Bienvenue sur PetConnect",
+  "homeIntro": "Trouvez un nouvel animal ou proposez-en un à l'adoption.",
+  "searchButton": "Rechercher",
+  "adoptionBanner": "À adopter",
+  "adoptNow": "Adopter maintenant",
+  "adoptedLabel": "Adopté",
+  "createShelter": "Créer un refuge",
+  "createShelterTitle": "Ajouter un nouveau refuge",
+  "createShelterInstructions": "Veuillez remplir les informations suivantes pour enregistrer un nouveau refuge.",
+  "createPet": "Créer une annonce d'animal",
+  "createPetTitle": "Ajouter un nouvel animal",
+  "createPetInstructions": "Veuillez fournir toutes les informations concernant l'animal.",
+  "back": "Retour",
+  "submit": "Soumettre",
+  "cancel": "Annuler",
+  "confirm": "Confirmer",
+  "loading": "Chargement...",
+  "edit": "Modifier",
+  "delete": "Supprimer",
+  "noData": "Aucune donnée disponible.",
+  "logout": "Se déconnecter",
+  "Login": "Connexion",
+  "Register": "Inscription",
+  "createAdTitle": "Créer une annonce pour animal",
+"createAdButton": "Créer l'annonce",
+"shelter.addButton": "Ajouter un refuge",
+"form": {
+  "name": "Nom",
+  "type": "Type",
+  "breed": "Race",
+  "age": "Âge",
+  "gender": "Sexe",
+  "male": "Mâle",
+  "location": "Lieu",
+  "vaccinated": "Vacciné",
+  "description": "Description",
+  "imageUrl": "URL de l'image",
+  "imagePlaceholder": "Insérer un lien d'image",
+  "address": "Adresse",
+  "owner": "Propriétaire",
+  "animalCount": "Nombre d'animaux",
+  "email": "E-mail",
+  "imageUrlOptional": "URL de l'image (optionnel)",
+  "submit": "Soumettre"
+}
 }

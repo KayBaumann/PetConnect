@@ -1,7 +1,18 @@
 {
   "home": "Welcome to PetConnect",
   "about": "About Us",
-  "search": "Search Pets",
+  "search": {
+    "title": "Search for pets",
+    "type": "Type",
+    "breed": "Breed",
+    "location": "Location",
+    "age": "Age",
+    "placeholderType": "e.g. dog, cat...",
+    "placeholderBreed": "e.g. dachshund",
+    "placeholderLocation": "e.g. Zurich",
+    "placeholderAge": "e.g. 2 years",
+    "applyFilters": "Apply filters"
+  },
   "contact": "Contact",
   "aboutTitle": "About Us",
   "aboutDescription": "This is the about page.",
@@ -9,14 +20,12 @@
   "ctaLookingForPet": "I am looking for a pet",
   "ctaOfferingPet": "I am offering a pet",
   "ctaWantToHelp": "I want to help",
-
   "advertisements": "Advertisements",
   "donate": "Donate",
   "donateTitle": "Support Our Mission",
   "donateDescription": "Your donation helps us connect more people with their future furry friends.",
   "donateAmount": "Enter donation amount:",
   "donateNow": "Donate Now",
-
   "loginButton": "Login",
   "registerButton": "Register",
   "loginTitle": "Login",
@@ -36,7 +45,6 @@
   "confirmPwPlaceholder": "Re-enter your password",
   "emailOrUsername": "Email or Username",
   "emailOrUsernamePlaceholder": "e.g., max.mustermann@mail.com",
-
   "createAdvertisement": "Create Advertisement",
   "profile": "Profile",
   "type": "Type",
@@ -61,14 +69,12 @@
   "adopted": "Adopted",
   "yes": "Yes",
   "no": "No",
-
   "contactDescription": "We'd love to hear from you! Please fill out the form below and we'll get back to you soon.",
   "yourName": "Your Name",
   "yourEmail": "Your Email",
   "yourMessage": "Your Message",
   "sendMessage": "Send Message",
   "contactSuccess": "Thank you for contacting us! We'll get back to you soon.",
-
   "shelter": {
     "add": "➕ Add Shelter",
     "managedBy": "Managed by",
@@ -79,10 +85,54 @@
     "noImage": "No image available",
     "banner": "🏠 Animal Shelter"
   },
-
   "donation": {
     "thankYou": "Thank you so much for your support!",
     "appreciation": "The animals really appreciate it",
     "backHome": "Back to Home"
-  }
+  },
+  "homeTitle": "Welcome to PetConnect",
+  "homeIntro": "Find your new pet or offer one for adoption.",
+  "searchButton": "Search",
+  "adoptionBanner": "Available for Adoption",
+  "adoptNow": "Adopt Now",
+  "adoptedLabel": "Adopted",
+  "createShelter": "Create Shelter",
+  "createShelterTitle": "Add New Shelter",
+  "createShelterInstructions": "Please fill in the following information to register a new shelter.",
+  "createPet": "Create Pet Listing",
+  "createPetTitle": "Add New Pet",
+  "createPetInstructions": "Please provide all relevant information about the pet.",
+  "back": "Back",
+  "submit": "Submit",
+  "cancel": "Cancel",
+  "confirm": "Confirm",
+  "loading": "Loading...",
+  "edit": "Edit",
+  "delete": "Delete",
+  "noData": "No data available.",
+  "logout": "Logout",
+  "Login": "Login",
+  "Register": "Register",
+  "createAdTitle": "Create Pet Advertisement",
+"createAdButton": "Create Advertisement",
+"shelter.addButton": "Add Shelter",
+"form": {
+  "name": "Name",
+  "type": "Type",
+  "breed": "Breed",
+  "age": "Age",
+  "gender": "Gender",
+  "male": "Male",
+  "location": "Location",
+  "vaccinated": "Vaccinated",
+  "description": "Description",
+  "imageUrl": "Image URL",
+  "imagePlaceholder": "Insert image link",
+  "address": "Address",
+  "owner": "Owner",
+  "animalCount": "Number of animals",
+  "email": "Email",
+  "imageUrlOptional": "Image URL (optional)",
+  "submit": "Submit"
+}
 }
