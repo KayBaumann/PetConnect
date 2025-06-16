@@ -1,8 +1,12 @@
 <template>
   <div class="advertisement-view">
-    <div v-if="advertisement" class="advertisement-card">
+    <div v-if="advertisement" class="advertisement-detail-card">
       <div class="advertisement-image-section">
-        <img :src="advertisement.image" :alt="advertisement.name" class="advertisement-image" />
+        <img
+          :src="advertisement.image"
+          :alt="advertisement.name"
+          class="advertisement-image"
+        />
         <div class="adoption-banner">
           🐾 {{ $t('advertisement.banner') }}
         </div>
@@ -15,6 +19,7 @@
             breed: advertisement.breed
           }) }}
         </p>
+
         <div class="info-grid">
           <p><strong>📋 {{ $t('advertisement.type') }}:</strong> {{ advertisement.type }}</p>
           <p><strong>🐕 {{ $t('advertisement.breed') }}:</strong> {{ advertisement.breed }}</p>
@@ -28,21 +33,26 @@
             {{ advertisement.adopted ? $t('yes') : $t('no') }}
           </p>
         </div>
+
         <p class="description">📝 {{ advertisement.description }}</p>
-        <button class="save-button" @click="saveToFavorites">
-          {{ $t('saveToFavorites') }}
-        </button>
-        <router-link
-          :key="advertisement._id"
-          :to="{ name: 'adopt', params: { id: advertisement._id } }"
-          class="advertisement-card-link"
-        >
-          <button class="adopt-button" :disabled="advertisement.adopted">
-            {{ advertisement.adopted ? $t('alreadyAdopted') : $t('adoptMeNow') }}
+
+        <div class="button-row">
+          <button class="save-button" @click="saveToFavorites">
+            {{ $t('saveToFavorites') }}
           </button>
-        </router-link>
+          <router-link
+            :key="advertisement._id"
+            :to="{ name: 'adopt', params: { id: advertisement._id } }"
+            class="advertisement-card-link"
+          >
+            <button class="adopt-button" :disabled="advertisement.adopted">
+              {{ advertisement.adopted ? $t('alreadyAdopted') : $t('adoptMeNow') }}
+            </button>
+          </router-link>
+        </div>
       </div>
     </div>
+
     <div v-else class="loading">
       <p>⏳ {{ $t('advertisement.loading') }}</p>
     </div>
@@ -86,5 +96,3 @@ export default {
   }
 };
 </script>
-
-
