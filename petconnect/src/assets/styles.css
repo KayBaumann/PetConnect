@@ -1290,3 +1290,18 @@ p {
     font-size: 1.1rem;
   }
 }
+
+.pet-card button {
+  margin-top: 10px;
+  padding: 6px 12px;
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.pet-card button:hover {
+  background-color: #dc2626;
+}
