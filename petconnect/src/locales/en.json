@@ -151,6 +151,20 @@
     "animalCount": "Number of animals",
     "email": "Email",
     "imageUrlOptional": "Image URL (optional)",
-    "submit": "Submit"
+    "submit": "Submit",
+    "adSuccess": "The advertisement was successfully created!",
+    "shelterCreated": "The shelter was successfully created!"
+  },
+  "advertisement": {
+    "tagline": "{age} year old {breed}",
+    "type": "Type",
+    "breed": "Breed",
+    "age": "Age",
+    "years": "years",
+    "gender": "Gender",
+    "location": "Location",
+    "vaccinated": "Vaccinated",
+    "adopted": "Adopted",
+    "banner": "For Adoption"
   }
 }

@@ -132,7 +132,9 @@
     "animalCount": "Numero di animali",
     "email": "Email",
     "imageUrlOptional": "URL immagine (opzionale)",
-    "submit": "Invia"
+    "submit": "Invia",
+    "adSuccess": "L’annuncio è stato creato con successo!",
+    "shelterCreated": "Il rifugio è stato creato con successo!"
   },
   "about": {
     "title": "Chi siamo",
@@ -152,5 +154,17 @@
       "description": "Coordina il team e garantisce flussi di lavoro fluidi.",
       "bio": "Appassionato di documentazione strutturata e cioccolato."
     }
+  },
+  "advertisement": {
+    "tagline": "{breed} di {age} anni",
+    "type": "Tipo",
+    "breed": "Razza",
+    "age": "Età",
+    "years": "anni",
+    "gender": "Sesso",
+    "location": "Luogo",
+    "vaccinated": "Vaccinato",
+    "adopted": "Adottato",
+    "banner": "In adozione"
   }
 }

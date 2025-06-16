@@ -1,6 +1,6 @@
 {
   "home": "Willkommen bei PetConnect",
-  "search": {
+  "search":{
     "title": "Haustiere suchen",
     "type": "Tierart",
     "breed": "Rasse",
@@ -102,13 +102,13 @@
     "description": "Beschreibung",
     "imageUrl": "Bild-URL",
     "imagePlaceholder": "Link zum Bild einfügen",
-
     "address": "Adresse",
     "owner": "Besitzer",
     "animalCount": "Anzahl Tiere",
-    "email": "E-Mail",
     "imageUrlOptional": "Bild-URL (optional)",
-    "submit": "Absenden"
+    "submit": "Absenden",
+    "adSuccess": "Die Anzeige wurde erfolgreich erstellt!",
+    "shelterCreated": "Das Tierheim wurde erfolgreich erstellt!"
   },
   "about": {
   "title": "Über uns",
@@ -128,6 +128,18 @@
     "description": "Koordiniert das Team und sorgt für einen reibungslosen Ablauf.",
     "bio": "Hat eine Vorliebe für strukturierte Dokumentation und Schokolade."
   }
+  },
+  "advertisement": {
+    "tagline": "{age} Jahre alter {breed}",
+    "type": "Tierart",
+    "breed": "Rasse",
+    "age": "Alter",
+    "years": "Jahre",
+    "gender": "Geschlecht",
+    "location": "Ort",
+    "vaccinated": "Geimpft",
+    "adopted": "Adoptiert",
+    "banner": "Zur Adoption"
   },
   "homeTitle": "Willkommen bei PetConnect",
   "homeIntro": "Finde dein neues Haustier oder biete eines zur Adoption an.",
