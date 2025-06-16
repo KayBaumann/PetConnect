@@ -46,7 +46,11 @@
           <h3>{{ pet.name }}</h3>
           <p>{{ pet.type }} - {{ pet.breed }}</p>
           <p>{{ pet.location }}</p>
+          <button @click="deleteMyPet(pet._id)">
+            {{ $t('delete') }}
+          </button>
         </div>
+
       </div>
     </div>
   </div>
@@ -66,6 +70,19 @@ export default {
     };
   },
   methods: {
+    async deleteMyPet(petId) {
+      if (!confirm(this.$t('confirmDelete'))) return;
+
+      try {
+        await api.delete(`/pets/${petId}`);
+        this.myPets = this.myPets.filter(pet => pet._id !== petId);
+        alert(this.$t('form.adDeleted'));
+      } catch (err) {
+        console.error('Error deleting pet:', err);
+        alert(this.$t('form.adDeleteFailed'));
+      }
+    },
+
     async fetchUserData() {
       try {
         const userId = localStorage.getItem('userId');
@@ -122,6 +139,22 @@ export default {
   background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
   color: #f7fafc;
 }
+
+.pet-card button {
+  margin-top: 10px;
+  padding: 6px 12px;
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.pet-card button:hover {
+  background-color: #dc2626;
+}
+
 
 button {
   margin-top: 20px;
