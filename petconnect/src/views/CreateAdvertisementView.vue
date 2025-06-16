@@ -65,26 +65,37 @@ export default {
         vaccinated: false,
         description: '',
         image: '',
+        fk_user_id: ''
       },
     };
   },
   methods: {
     async createAdvertisement() {
-      if (!this.newAd.name || !this.newAd.type || !this.newAd.breed) {
-        alert(this.$t('form.missingFields'));
-        return;
-      }
+  if (!this.newAd.name || !this.newAd.type || !this.newAd.breed) {
+    alert(this.$t('form.missingFields'));
+    return;
+  }
 
-      try {
-        const res = await api.post('/pets', this.newAd);
-        console.log('New advertisement created:', res.data);
-        alert(this.$t('form.adSuccess'));
-        this.$router.push('/');
-      } catch (err) {
-        console.error('Error creating advertisement:', err.response?.data || err);
-        alert(err.response?.data?.message || this.$t('form.adFail'));
-      }
-    },
+  try {
+    const userId = localStorage.getItem('userId');
+    if (!userId) {
+      alert(this.$t('form.notLoggedIn'));
+      return;
+    }
+
+    this.newAd.fk_userId = userId; // 👈 wichtig!
+
+    const res = await api.post('/pets', this.newAd);
+    console.log('New advertisement created:', res.data);
+    alert(this.$t('form.adSuccess'));
+    this.$router.push('/');
+  } catch (err) {
+    console.error('Error creating advertisement:', err.response?.data || err);
+    alert(err.response?.data?.message || this.$t('form.adFail'));
+  }
+},
+
+    
   },
 };
 </script>
