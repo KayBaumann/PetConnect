@@ -1,54 +1,56 @@
 <template>
   <div id="app">
-    <header :class="{ hidden: isNavbarHidden }">
-      <nav>
-        <ul>
-          <li><router-link to="/">{{ $t('home') }}</router-link></li>
-          <li><router-link to="/search">{{ $t('search') }}</router-link></li>
-          <li><router-link to="/shelters">{{ $t('shelters') }}</router-link></li>
-          <li><router-link to="/about">{{ $t('about') }}</router-link></li>
-          <li><router-link to="/donate">{{ $t('donate') }}</router-link></li>
-          <li><router-link to="/contact">{{ $t('contact') }}</router-link></li>
+    <header :class="[{ hidden: isNavbarHidden }, 'navbar', 'navbar-expand-lg', 'navbar-dark', 'bg-dark', 'sticky-top']">
+      <div class="container-fluid">
+        <router-link to="/" class="navbar-brand">PetConnect</router-link>
 
-          <!-- Profile Dropdown -->
-          <li v-if="isAuthenticated" class="dropdown">
-            <div class="dropdown-trigger">
-              <button>
+        <!-- Burger Toggle -->
+        <button class="navbar-toggler" type="button" @click="isMenuOpen = !isMenuOpen">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" :class="{ show: isMenuOpen }">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item"><router-link class="nav-link" to="/">{{ $t('home') }}</router-link></li>
+            <li class="nav-item"><router-link class="nav-link" to="/search">{{ $t('search') }}</router-link></li>
+            <li class="nav-item"><router-link class="nav-link" to="/shelters">{{ $t('shelters') }}</router-link></li>
+            <li class="nav-item"><router-link class="nav-link" to="/about">{{ $t('about') }}</router-link></li>
+            <li class="nav-item"><router-link class="nav-link" to="/donate">{{ $t('donate') }}</router-link></li>
+            <li class="nav-item"><router-link class="nav-link" to="/contact">{{ $t('contact') }}</router-link></li>
+
+            <!-- Profile Dropdown -->
+            <li v-if="isAuthenticated" class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                 <img src="/src/assets/profile-icon-white.png" alt="Profile" class="icon-size" />
-              </button>
+              </a>
               <ul class="dropdown-menu">
-                <li><router-link to="/profile">{{ $t('profile') }}</router-link></li>
-
-                <li><router-link to="/create-advertisement">{{ $t('createAdvertisement') }}</router-link></li>
-                <li><button @click="logout">{{ $t('Logout') }}</button></li>
+                <li><router-link class="dropdown-item" to="/profile">{{ $t('profile') }}</router-link></li>
+                <li><router-link class="dropdown-item" to="/create-advertisement">{{ $t('createAdvertisement') }}</router-link></li>
+                <li><button class="dropdown-item" @click="logout">{{ $t('Logout') }}</button></li>
               </ul>
-            </div>
-          </li>
+            </li>
 
-          <!-- Language Dropdown -->
-          <li class="dropdown">
-            <div class="dropdown-trigger">
-              <button>
+            <!-- Language Dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                 <img :src="currentLanguageIcon" :alt="currentLanguageAlt" class="icon-size" />
-              </button>
+              </a>
               <ul class="dropdown-menu">
-                <li
-                  v-for="(icon, lang) in languageIcons"
-                  :key="lang"
-                  @click="changeLanguage(lang)"
-                >
-                  <img :src="icon.src" :alt="icon.alt" />
-                  <span>{{ icon.alt }}</span>
+                <li v-for="(icon, lang) in languageIcons" :key="lang">
+                  <a class="dropdown-item" @click.prevent="changeLanguage(lang)">
+                    <img :src="icon.src" :alt="icon.alt" class="me-2" style="width: 20px;"/>
+                    {{ icon.alt }}
+                  </a>
                 </li>
               </ul>
-            </div>
-          </li>
+            </li>
 
-          <li v-if="!isAuthenticated">
-            <router-link to="/login">{{ $t('Login') }}</router-link>
-          </li>
-        </ul>
-      </nav>
+            <li v-if="!isAuthenticated" class="nav-item">
+              <router-link class="nav-link" to="/login">{{ $t('Login') }}</router-link>
+            </li>
+          </ul>
+        </div>
+      </div>
     </header>
 
     <router-view />
@@ -68,7 +70,8 @@ export default {
       },
       currentLocale: localStorage.getItem('lang') || 'de',
       isNavbarHidden: false,
-      lastScrollPosition: 0
+      lastScrollPosition: 0,
+      isMenuOpen: false
     };
   },
   computed: {
@@ -113,147 +116,7 @@ export default {
 };
 </script>
 
-
 <style scoped>
-header {
-  background-color: #1f2937;
-  padding: 15px 30px;
-  box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  transition: transform 0.3s ease-in-out;
-}
-
-header.hidden {
-  transform: translateY(-100%);
-}
-
-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  align-items: center;
-}
-
-nav ul li {
-  position: relative;
-}
-
-nav ul li a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 10px 15px;
-  border-radius: 8px;
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-nav ul li a:hover {
-  background-color: #374151;
-  transform: scale(1.05);
-}
-
-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  border-radius: 50%;
-  transition: background-color 0.3s, transform 0.2s;
-  color: white;
-}
-
-button:hover {
-  background-color: #374151;
-  transform: scale(1.1);
-}
-
-button img {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-}
-
-.dropdown-trigger {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown:hover .dropdown-menu {
-  display: flex;
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: 110%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(145deg, #1f2937, #2a3649);
-  backdrop-filter: blur(10px);
-  border-radius: 12px;
-  list-style: none;
-  padding: 10px 0;
-  margin: 0;
-  box-shadow: 0 10px 20px rgb(0 0 0 / 25%);
-  z-index: 100;
-  color: white;
-  display: none;
-  flex-direction: column;
-  width: 150px;
-  text-align: center;
-  transition: opacity 0.3s ease;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.dropdown-menu li {
-  padding: 12px;
-  cursor: pointer;
-  transition: all 0.25s ease-in-out;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-}
-
-.dropdown-menu li img {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  transition: transform 0.3s ease;
-}
-
-.dropdown-menu li span {
-  font-size: 0.95rem;
-  font-weight: 500;
-}
-
-.dropdown-menu li:hover {
-  background-color: rgb(255 255 255 / 8%);
-  transform: scale(1.05);
-  border-radius: 10px;
-}
-
-.dropdown-menu li:hover img {
-  transform: rotate(10deg) scale(1.1);
-}
-
-.dropdown-menu li button {
-  background: none;
-  border: none;
-  color: inherit;
-  font: 600 0.95rem 'Segoe UI', sans-serif;
-  cursor: pointer;
-  padding: 0;
-}
-
 .icon-size {
   width: 1.5rem;
   height: 1.5rem;

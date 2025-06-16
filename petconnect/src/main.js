@@ -4,6 +4,9 @@ import { createI18n } from 'vue-i18n';
 import router from './router';
 import './assets/styles.css';
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap'
+
 
 import en from './locales/en.json';
 import de from './locales/de.json';
