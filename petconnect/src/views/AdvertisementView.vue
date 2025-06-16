@@ -4,36 +4,47 @@
       <div class="advertisement-image-section">
         <img :src="advertisement.image" :alt="advertisement.name" class="advertisement-image" />
         <div class="adoption-banner">
-          🐾 Looking for a Loving Home!
+          🐾 {{ $t('advertisement.banner') }}
         </div>
       </div>
       <div class="advertisement-details">
         <h1 class="advertisement-title">{{ advertisement.name }}</h1>
-        <p class="tagline">A sweet {{ advertisement.age }}-year-old {{ advertisement.breed }} ready to steal your heart 💖</p>
+        <p class="tagline">
+          {{ $t('advertisement.tagline', {
+            age: advertisement.age,
+            breed: advertisement.breed
+          }) }}
+        </p>
         <div class="info-grid">
-          <p><strong>📋 Type:</strong> {{ advertisement.type }}</p>
-          <p><strong>🐕 Breed:</strong> {{ advertisement.breed }}</p>
-          <p><strong>🎂 Age:</strong> {{ advertisement.age }} years</p>
-          <p><strong>⚧️ Gender:</strong> {{ advertisement.gender }}</p>
-          <p><strong>📍 Location:</strong> {{ advertisement.location }}</p>
-          <p><strong>💉 Vaccinated:</strong> {{ advertisement.vaccinated ? 'Yes ✅' : 'No ❌' }}</p>
-          <p><strong>🏠 Adopted:</strong> {{ advertisement.adopted ? 'Yes 🏡' : 'No 🙏' }}</p>
+          <p><strong>📋 {{ $t('advertisement.type') }}:</strong> {{ advertisement.type }}</p>
+          <p><strong>🐕 {{ $t('advertisement.breed') }}:</strong> {{ advertisement.breed }}</p>
+          <p><strong>🎂 {{ $t('advertisement.age') }}:</strong> {{ advertisement.age }} {{ $t('advertisement.years') }}</p>
+          <p><strong>⚧️ {{ $t('advertisement.gender') }}:</strong> {{ advertisement.gender }}</p>
+          <p><strong>📍 {{ $t('advertisement.location') }}:</strong> {{ advertisement.location }}</p>
+          <p><strong>💉 {{ $t('advertisement.vaccinated') }}:</strong>
+            {{ advertisement.vaccinated ? $t('yes') : $t('no') }}
+          </p>
+          <p><strong>🏠 {{ $t('advertisement.adopted') }}:</strong>
+            {{ advertisement.adopted ? $t('yes') : $t('no') }}
+          </p>
         </div>
         <p class="description">📝 {{ advertisement.description }}</p>
-        <button class="save-button" @click="saveToFavorites">{{ $t('saveToFavorites') }}</button>
+        <button class="save-button" @click="saveToFavorites">
+          {{ $t('saveToFavorites') }}
+        </button>
         <router-link
           :key="advertisement._id"
           :to="{ name: 'adopt', params: { id: advertisement._id } }"
           class="advertisement-card-link"
         >
-        <button class="adopt-button" :disabled="advertisement.adopted">
-          {{ advertisement.adopted ? $t('alreadyAdopted') : $t('adoptMeNow') }}
-        </button>
+          <button class="adopt-button" :disabled="advertisement.adopted">
+            {{ advertisement.adopted ? $t('alreadyAdopted') : $t('adoptMeNow') }}
+          </button>
         </router-link>
       </div>
     </div>
     <div v-else class="loading">
-      <p>⏳ Loading advertisement...</p>
+      <p>⏳ {{ $t('advertisement.loading') }}</p>
     </div>
   </div>
 </template>
@@ -45,38 +56,34 @@ export default {
   name: 'AdvertisementView',
   data() {
     return {
-      advertisement: null, // Store the advertisement details
+      advertisement: null
     };
   },
   async created() {
-    const id = this.$route.params.id; // Get the ID from the route parameters
+    const id = this.$route.params.id;
     try {
-      console.log(`Fetching advertisement with ID: ${id}`);
-      const res = await api.get(`/pets/${id}`); // Fetch advertisement by ID
+      const res = await api.get(`/pets/${id}`);
       if (!res.data) {
-        console.error('No data returned from backend');
-        alert('Advertisement not found.');
+        alert(this.$t('advertisement.not_found'));
         return;
       }
-      this.advertisement = res.data; // Assign the fetched data
-      console.log('Advertisement loaded:', this.advertisement);
+      this.advertisement = res.data;
     } catch (err) {
-      console.error('Error fetching advertisement:', err.response || err);
-      alert(err.response?.data?.message || 'Failed to load advertisement. Please try again later.');
+      alert(err.response?.data?.message || this.$t('advertisement.load_error'));
     }
   },
   methods: {
     saveToFavorites() {
       const savedPets = JSON.parse(localStorage.getItem('savedPets')) || [];
-      if (!savedPets.some((pet) => pet._id === this.advertisement._id)) {
+      if (!savedPets.some(pet => pet._id === this.advertisement._id)) {
         savedPets.push(this.advertisement);
         localStorage.setItem('savedPets', JSON.stringify(savedPets));
         alert(this.$t('petSaved'));
       } else {
         alert(this.$t('petAlreadySaved'));
       }
-    },
-  },
+    }
+  }
 };
 </script>
 

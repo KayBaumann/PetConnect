@@ -24,7 +24,6 @@
 </template>
 
 <script>
-// Add EmailJS import
 import emailjs from 'emailjs-com';
 
 export default {
@@ -41,10 +40,9 @@ export default {
   },
   methods: {
     submitForm() {
-      // EmailJS integration
-      const serviceID = 'service_c536nta'; // replace with your EmailJS service ID
-      const templateID = 'template_wzc5g4i'; // replace with your EmailJS template ID
-      const userID = 'qw7hYnngPdDp8zxUH'; // replace with your EmailJS user ID
+      const serviceID = 'service_c536nta';
+      const templateID = 'template_wzc5g4i';
+      const userID = 'qw7hYnngPdDp8zxUH';
 
       const templateParams = {
         from_name: this.form.name,
@@ -59,9 +57,8 @@ export default {
           this.form = { name: '', email: '', message: '' };
           setTimeout(() => (this.success = false), 4000);
         })
-        .catch((error) => {
-          alert('Failed to send message. Please try again later.');
-          // Optionally handle error
+        .catch(() => {
+          alert(this.$t('contactError'));
         });
     }
   }

@@ -1,5 +1,5 @@
 <template>
-    <h1 class="advertisement-title">{{ advertisement.name }}</h1>
+  <h1 class="advertisement-title">{{ advertisement?.name }}</h1>
 </template>
 
 <script>
@@ -9,25 +9,23 @@ export default {
   name: 'AdvertisementView',
   data() {
     return {
-      advertisement: null, // Store the advertisement details
+      advertisement: null
     };
   },
   async created() {
-    const id = this.$route.params.id; // Get the ID from the route parameters
+    const id = this.$route.params.id;
     try {
-      console.log(`Fetching advertisement with ID: ${id}`);
-      const res = await api.get(`/pets/${id}`); // Fetch advertisement by ID
+      const res = await api.get(`/pets/${id}`);
       if (!res.data) {
         console.error('No data returned from backend');
-        alert('Advertisement not found.');
+        alert(this.$t('advertisement.not_found'));
         return;
       }
-      this.advertisement = res.data; // Assign the fetched data
-      console.log('Advertisement loaded:', this.advertisement);
+      this.advertisement = res.data;
     } catch (err) {
       console.error('Error fetching advertisement:', err.response || err);
-      alert(err.response?.data?.message || 'Failed to load advertisement. Please try again later.');
+      alert(err.response?.data?.message || this.$t('advertisement.load_error'));
     }
-  },
+  }
 };
 </script>
