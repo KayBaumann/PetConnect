@@ -1,6 +1,7 @@
 <template>
   <div :class="['profile-view', { 'dark-mode': isDarkMode }]">
     <h1>{{ $t('profile') }}</h1>
+
     <div v-if="user">
       <h3>{{ $t('username') }}: {{ user.username }}</h3>
       <p>{{ $t('firstname') }}: {{ user.firstName }}</p>
@@ -10,9 +11,11 @@
     <div v-else>
       <p>{{ $t('fetchError') }}</p>
     </div>
+
     <button @click="toggleDarkMode">
       {{ isDarkMode ? $t('switchToBright') : $t('switchToDark') }}
     </button>
+
     <div class="saved-pets">
       <h2>{{ $t('savedPets') }}</h2>
       <div v-if="savedPets.length === 0">
@@ -23,7 +26,9 @@
           <img :src="pet.image" :alt="pet.name" class="pet-image" />
           <h3>{{ pet.name }}</h3>
           <p>{{ pet.type }} - {{ pet.breed }}</p>
-          <button @click="removeFromSaved(pet._id)">{{ $t('remove') }}</button>
+          <button @click="removeFromSaved(pet._id)">
+            {{ $t('remove') }}
+          </button>
         </div>
       </div>
     </div>

@@ -1,41 +1,48 @@
 <template>
-  <div class="advertisement-view">
+  <div class="shelter-view">
     <router-link to="/create-shelter" class="create-button">
-      ➕ Add Shelter
+      ➕ {{ $t('shelter.addButton') }}
     </router-link>
 
-    <div v-if="shelters.length" class="advertisement-list">
-      <div v-for="shelter in shelters" :key="shelter._id" class="advertisement-card">
-        <div class="advertisement-image-section">
+    <div v-if="shelters.length" class="shelter-list">
+      <div
+        v-for="shelter in shelters"
+        :key="shelter._id"
+        class="shelter-card"
+      >
+        <div class="shelter-image-section">
           <div class="image-wrapper">
             <img
               :src="shelter.image || fallbackImage"
               :alt="shelter.name"
-              class="advertisement-image"
+              class="shelter-image"
               @error="handleImageError"
             />
             <div v-if="!shelter.image" class="image-overlay">
-              Kein Bild vorhanden
+              {{ $t('shelter.noImage') }}
             </div>
           </div>
-          <div class="adoption-banner">
-            🏠 Animal Shelter
+          <div class="shelter-banner">
+            🏠 {{ $t('shelter.banner') }}
           </div>
         </div>
-        <div class="advertisement-details">
-          <h1 class="advertisement-title">{{ shelter.name }}</h1>
-          <p class="tagline">Managed by {{ shelter.owner }}</p>
+
+        <div class="shelter-details">
+          <h1 class="shelter-title">{{ shelter.name }}</h1>
+          <p class="tagline">
+            {{ $t('shelter.managedBy') }} {{ shelter.owner }}
+          </p>
           <div class="info-grid">
-            <p><strong>📍 Address:</strong> {{ shelter.address }}</p>
-            <p><strong>📧 Email:</strong> {{ shelter.email }}</p>
-            <p><strong>🐾 Number of Animals:</strong> {{ shelter.animalCount }}</p>
+            <p><strong>📍 {{ $t('shelter.address') }}:</strong> {{ shelter.address }}</p>
+            <p><strong>📧 {{ $t('shelter.email') }}:</strong> {{ shelter.email }}</p>
+            <p><strong>🐾 {{ $t('shelter.animalCount') }}:</strong> {{ shelter.animalCount }}</p>
           </div>
         </div>
       </div>
     </div>
 
     <div v-else class="loading">
-      <p>⏳ Loading shelters...</p>
+      <p>⏳ {{ $t('shelter.loading') }}</p>
     </div>
   </div>
 </template>
@@ -49,7 +56,7 @@ export default {
   data() {
     return {
       shelters: [],
-      fallbackImage
+      fallbackImage,
     };
   },
   async created() {
@@ -57,23 +64,23 @@ export default {
       const res = await api.get('/shelters');
       this.shelters = res.data.map(shelter => ({
         ...shelter,
-        image: shelter.image?.trim() || null
+        image: shelter.image?.trim() || null,
       }));
     } catch (err) {
       console.error('Error fetching shelters:', err);
-      alert('Failed to load shelters. Please try again later.');
+      alert(this.$t('shelter.fetchError'));
     }
   },
   methods: {
     handleImageError(event) {
       event.target.src = this.fallbackImage;
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style scoped>
-.advertisement-view {
+.shelter-view {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -100,7 +107,7 @@ export default {
   background-color: #059669;
 }
 
-.advertisement-list {
+.shelter-list {
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -108,7 +115,7 @@ export default {
   max-width: 1100px;
 }
 
-.advertisement-card {
+.shelter-card {
   display: flex;
   flex-direction: row;
   background: var(--card-background, rgba(45, 55, 72, 0.95));
@@ -120,7 +127,7 @@ export default {
   color: var(--card-text-color, #edf2f7);
 }
 
-.advertisement-image-section {
+.shelter-image-section {
   position: relative;
   flex: 1.2;
   background: #f0f4f8;
@@ -150,13 +157,13 @@ export default {
   pointer-events: none;
 }
 
-.advertisement-image {
+.shelter-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.adoption-banner {
+.shelter-banner {
   position: absolute;
   bottom: 20px;
   background: rgba(255, 255, 255, 0.2);
@@ -167,7 +174,7 @@ export default {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-.advertisement-details {
+.shelter-details {
   flex: 1.8;
   padding: 40px 30px;
   display: flex;
@@ -175,7 +182,7 @@ export default {
   justify-content: center;
 }
 
-.advertisement-title {
+.shelter-title {
   font-size: 2.5rem;
   font-weight: 900;
   color: var(--title-color, #63b3ed);

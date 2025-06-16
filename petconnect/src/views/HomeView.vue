@@ -1,4 +1,3 @@
-<!-- src/views/HomeView.vue -->
 <template>
   <div class="home-view">
     <!-- Hero Section -->
@@ -13,7 +12,9 @@
             <button class="cta-button">{{ $t('ctaWantToHelp') }}</button>
           </template>
           <template v-else>
-            <router-link to="/create-advertisement" class="cta-button">Create Advertisement</router-link>
+            <router-link to="/create-advertisement" class="cta-button">
+              {{ $t('createAdvertisement') }}
+            </router-link>
           </template>
         </div>
       </div>
@@ -23,7 +24,7 @@
     <div class="advertisement-section">
       <h2>{{ $t('advertisements') }}</h2>
       <div class="advertisements">
-        <p v-if="ads.length === 0">No pets available to display.</p>
+        <p v-if="ads.length === 0">{{ $t('noPets') }}</p>
         <router-link
           v-for="ad in ads"
           :key="ad._id"
@@ -39,9 +40,9 @@
             />
             <div class="ad-content">
               <h3 class="ad-title">{{ ad.name }}</h3>
-              <p class="ad-description">Species: {{ ad.type }}</p>
-              <p class="ad-description">Age: {{ ad.age }} years</p>
-              <p class="ad-description">Adopted: {{ ad.adopted ? 'Yes' : 'No' }}</p>
+              <p class="ad-description">{{ $t('species') }}: {{ ad.type }}</p>
+              <p class="ad-description">{{ $t('age') }}: {{ ad.age }} {{ $t('years') }}</p>
+              <p class="ad-description">{{ $t('adopted') }}: {{ ad.adopted ? $t('yes') : $t('no') }}</p>
             </div>
           </div>                        
         </router-link>
@@ -57,7 +58,7 @@ export default {
   name: 'HomeView',
   data() {
     return {
-      ads: [], // Store fetched pets here
+      ads: [],
     };
   },
   computed: {
@@ -66,14 +67,12 @@ export default {
     },
   },
   async created() {
-    console.log('Fetching pets from backend...');
     try {
-      const res = await api.get('/pets'); // Fetch pets from the backend
-      this.ads = res.data; // Assign the fetched data to the ads array
-      console.log('Pets loaded in frontend:', this.ads);
+      const res = await api.get('/pets');
+      this.ads = res.data;
     } catch (err) {
       console.error('Error fetching pets in frontend:', err);
-      alert('Failed to load pets. Please try again later.');
+      alert(this.$t('errorLoadingPets'));
     }
   },
 };

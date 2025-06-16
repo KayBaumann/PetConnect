@@ -42,10 +42,9 @@ export default {
   methods: {
     async handleLogin() {
       if (!this.identifier || !this.password) {
-        alert('Please fill in all fields.');
+        alert(this.$t('fillAllFields'));
         return;
       }
-      console.log('Sending login:', this.identifier, this.password);
       try {
         const res = await api.post('/auth/login', {
           identifier: this.identifier,
@@ -53,15 +52,11 @@ export default {
         });
         localStorage.setItem('isAuthenticated', 'true');
         localStorage.setItem('userId', res.data.userId);
-        alert('Login successful');
-
-        
-        this.$router.push('/').then(() => {
-          window.location.reload(); 
-        }); 
+        alert(this.$t('loginSuccess'));
+        this.$router.push('/').then(() => window.location.reload());
       } catch (err) {
         console.error(err);
-        alert(err.response?.data?.message || 'Login failed');
+        alert(err.response?.data?.message || this.$t('loginFailed'));
       }
     }
   }

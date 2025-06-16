@@ -10,12 +10,17 @@
           <li><router-link to="/donate">{{ $t('donate') }}</router-link></li>
           <li><router-link to="/contact">{{ $t('contact') }}</router-link></li>
 
-          <li v-if="isAuthenticated" class="dropdown" @mouseenter="showProfileDropdown" @mouseleave="hideProfileDropdown">
+          <li
+            v-if="isAuthenticated"
+            class="dropdown"
+            @mouseenter="showProfileDropdown"
+            @mouseleave="hideProfileDropdown"
+          >
             <div class="dropdown-trigger">
               <button>
                 <img src="/src/assets/profile-icon-white.png" alt="Profile" class="icon-size" />
               </button>
-              <ul class="dropdown-menu" v-show="isProfileDropdownVisible">
+              <ul class="dropdown-menu" v-if="isProfileDropdownVisible">
                 <li><router-link to="/profile">{{ $t('profile') }}</router-link></li>
                 <li><router-link to="/create-advertisement">{{ $t('createAdvertisement') }}</router-link></li>
                 <li><button @click="logout">{{ $t('Logout') }}</button></li>
@@ -23,20 +28,30 @@
             </div>
           </li>
 
-          <li class="dropdown" @mouseenter="showDropdown" @mouseleave="hideDropdown">
+          <li
+            class="dropdown"
+            @mouseenter="showDropdown"
+            @mouseleave="hideDropdown"
+          >
             <div class="dropdown-trigger">
               <button>
                 <img :src="currentLanguageIcon" :alt="currentLanguageAlt" class="icon-size" />
               </button>
-              <ul class="dropdown-menu" v-show="isDropdownVisible">
-                <li v-for="(icon, lang) in languageIcons" :key="lang" @click="changeLanguage(lang)">
+              <ul class="dropdown-menu" v-if="isDropdownVisible">
+                <li
+                  v-for="(icon, lang) in languageIcons"
+                  :key="lang"
+                  @click="changeLanguage(lang)"
+                >
                   <img :src="icon.src" :alt="icon.alt" />
                 </li>
               </ul>
             </div>
           </li>
 
-          <li v-if="!isAuthenticated"><router-link to="/login">{{ $t('Login') }}</router-link></li>
+          <li v-if="!isAuthenticated">
+            <router-link to="/login">{{ $t('Login') }}</router-link>
+          </li>
         </ul>
       </nav>
     </header>
@@ -44,6 +59,7 @@
     <router-view />
   </div>
 </template>
+
 
 <script>
 export default {
@@ -56,7 +72,7 @@ export default {
         fr: { src: '/src/assets/france.png', alt: 'Français' },
         it: { src: '/src/assets/italy.png', alt: 'Italiano' }
       },
-      currentLocale: 'en',
+      currentLocale: localStorage.getItem('lang') || 'de',
       isNavbarHidden: false,
       lastScrollPosition: 0,
       isDropdownVisible: false,
@@ -78,6 +94,7 @@ export default {
     changeLanguage(language) {
       this.currentLocale = language;
       this.$i18n.locale = language;
+      localStorage.setItem('lang', language);
       this.isDropdownVisible = false;
     },
     handleScroll() {
@@ -104,7 +121,11 @@ export default {
     }
   },
   mounted() {
-    this.currentLocale = this.$i18n.locale;
+    const savedLang = localStorage.getItem('lang');
+    if (savedLang) {
+      this.currentLocale = savedLang;
+      this.$i18n.locale.value = savedLang;
+    }
     window.addEventListener('scroll', this.handleScroll);
   },
   beforeUnmount() {
@@ -114,9 +135,8 @@ export default {
 </script>
 
 <style scoped>
-/* Modern Navbar Styles */
 header {
-  background-color: #1f2937; /* Dark gray background */
+  background-color: #1f2937;
   padding: 15px 30px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: sticky;
@@ -144,7 +164,7 @@ nav ul li {
 }
 
 nav ul li a {
-  color: #ffffff; /* White text */
+  color: #ffffff;
   text-decoration: none;
   font-weight: 600;
   font-size: 1rem;
@@ -154,8 +174,8 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  background-color: #374151; /* Slightly lighter gray */
-  transform: scale(1.05); /* Subtle zoom effect */
+  background-color: #374151;
+  transform: scale(1.05);
 }
 
 button {
@@ -169,56 +189,46 @@ button {
 }
 
 button:hover {
-  background-color: #374151; /* Slightly lighter gray */
-  transform: scale(1.1); /* Subtle zoom effect */
+  background-color: #374151;
+  transform: scale(1.1);
 }
 
 button img {
-  width: 32px; /* Larger icon size */
+  width: 32px;
   height: 32px;
-  border-radius: 50%; /* Circular icons */
+  border-radius: 50%;
 }
 
-/* Dropdown Trigger Area */
 .dropdown-trigger {
   position: relative;
   display: inline-block;
-  padding-bottom: 10px; /* Increase hover area */
+  padding-bottom: 10px;
 }
 
-/* Modern Dropdown Menu */
 .dropdown-menu {
-  display: block;
   position: absolute;
-  top: 100%; /* Adjusted to align with the trigger */
+  top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #1f2937; /* Dark gray background */
+  background-color: #1f2937;
   border-radius: 8px;
   list-style: none;
   padding: 10px 0;
   margin: 0;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 10;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 100;
   color: white;
-}
-
-.dropdown:hover .dropdown-menu,
-.dropdown-menu:hover {
-  opacity: 1;
-  visibility: visible;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  text-align: center;
 }
 
 .dropdown-menu li {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 20px;
+  padding: 12px 0;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
+  white-space: nowrap;
 }
 
 .dropdown-menu li img {
@@ -228,8 +238,8 @@ button img {
 }
 
 .dropdown-menu li:hover {
-  background-color: #374151; /* Slightly lighter gray */
-  transform: scale(1.05); /* Subtle zoom effect */
+  background-color: #374151;
+  transform: scale(1.05);
 }
 
 .dropdown-menu li button {
@@ -240,7 +250,6 @@ button img {
   cursor: pointer;
 }
 
-/* Profile Dropdown Styles */
 .profile-icon {
   width: 32px;
   height: 32px;
@@ -248,8 +257,8 @@ button img {
 }
 
 .icon-size {
-  width: 1.5rem; /* Increase size for better visibility */
+  width: 1.5rem;
   height: 1.5rem;
-  border-radius: 50%; /* Circular icons */
+  border-radius: 50%;
 }
 </style>

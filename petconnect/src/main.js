@@ -1,26 +1,27 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import { createI18n } from 'vue-i18n';
-import router from './router'; // Router hier importieren
-// main.js
+import router from './router';
 import './assets/styles.css';
+import axios from 'axios';
 
-// Sprachdateien importieren
 import en from './locales/en.json';
 import de from './locales/de.json';
 import fr from './locales/fr.json';
 import it from './locales/it.json';
 
-// i18n konfigurieren
 const i18n = createI18n({
-  legacy: false, // Wichtig, um die Composition API zu verwenden
-  locale: 'de', // Standard-Sprache
-  messages: {
-    en,
-    de,
-    fr,
-    it,
-  },
+  legacy: true,
+  globalInjection: true,
+  locale: localStorage.getItem('lang') || 'de',
+  messages: { en, de, fr, it }
+});
+
+
+axios.interceptors.request.use(config => {
+  const lang = localStorage.getItem('lang') || 'de';
+  config.headers['Accept-Language'] = lang;
+  return config;
 });
 
 const savedDarkMode = localStorage.getItem('isDarkMode') === 'true';

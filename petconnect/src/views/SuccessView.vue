@@ -1,8 +1,10 @@
 <template>
   <div class="success-message">
-    <h1>Danke vielmals für deine Unterstützung!</h1>
-    <p>Die Tiere freuen sich sehr darüber</p>
-    <router-link to="/" class="back-home-button">Home</router-link>
+    <h1>{{ $t('donation.thankYou') }}</h1>
+    <p>{{ $t('donation.appreciation') }}</p>
+    <router-link to="/" class="back-home-button">
+      {{ $t('donation.backHome') }}
+    </router-link>
   </div>
 </template>
 
