@@ -9,7 +9,7 @@ const petsRoute = require('./routes/pets');
 const authRoutes = require('./routes/auth');
 const donationRoutes = require('./routes/donation');
 const shelterRoutes = require('./routes/shelter');
-const messageRoutes = require('./routes/messages'); // <-- Wichtig!
+const messageRoutes = require('./routes/messages');
 
 const app = express();
 
@@ -32,7 +32,10 @@ app.use((req, res, next) => {
 });
 
 app.use(cors({
-    origin: ['http://localhost:5173', 'https://api.petconnect.bbzwinf.ch'],
+    origin: [
+      'http://localhost:5173', 
+      'https://api.petconnect.bbzwinf.ch', 
+      'https://petconnect.bbzwinf.ch'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
@@ -42,13 +45,15 @@ app.use('/api/pets', petsRoute);
 app.use('/api/auth', authRoutes);
 app.use('/api', donationRoutes);
 app.use('/api/shelters', shelterRoutes);
-app.use('/api/messages', messageRoutes); // <-- Route einbinden
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`✅ Server is running on http://localhost:${PORT}`);
-});
+app.use('/api/messages', messageRoutes);
 
 app.get('/health', (req, res) => {
   res.send('API läuft 🟢');
+});
+
+// Start Server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`✅ Server läuft auf Port ${PORT}`);
+  console.log(`🌐 Healthcheck unter: https://api.petconnect.bbzwinf.ch/health`);
 });
