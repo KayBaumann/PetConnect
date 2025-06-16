@@ -1,7 +1,5 @@
 <template>
   <div :class="['search-view', { 'dark-mode': isDarkMode }]">
-    <h1>{{ $t('search') }}</h1>
-  <div class="search-view">
     <h1>{{ $t('search.title') }}</h1>
 
     <form @submit.prevent="applyFilters" class="filter-form">

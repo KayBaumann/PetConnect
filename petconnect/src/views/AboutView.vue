@@ -14,9 +14,9 @@
       >
         <div class="student-text">
           <h2 class="student-name">{{ student.name }}</h2>
-          <p class="student-role">{{ $t(student.role) }}</p>
-          <p class="student-description">{{ $t(student.description) }}</p>
-          <p class="student-bio">{{ $t(student.bio) }}</p>
+          <p class="student-role">{{ student.role }}</p>
+          <p class="student-description">{{ student.description }}</p>
+          <p class="student-bio">{{ student.bio }}</p>
         </div>
         <div class="student-image-container">
           <img :src="student.image" :alt="student.name" class="student-image" />
@@ -29,9 +29,6 @@
 <script>
 export default {
   name: 'AboutView',
-  computed: {
-    students() {
-      return [
   data() {
     return {
       isDarkMode: localStorage.getItem('isDarkMode') === 'true',
@@ -60,11 +57,12 @@ export default {
           bio: this.$t('about.charlie.bio'),
           image: '/src/assets/Designer_Guy.png'
         }
-      ];
-    }
+      ]
+    };
   }
 };
 </script>
+
 
 <style scoped>
 .about-view {

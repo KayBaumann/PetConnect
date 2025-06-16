@@ -65,7 +65,7 @@ export default {
         vaccinated: false,
         description: '',
         image: '',
-        fk_userId: '' // ✅ consistent with backend expectation
+        fk_userId: ''
       },
       isDarkMode: localStorage.getItem('isDarkMode') === 'true'
     };
@@ -105,11 +105,7 @@ export default {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-<<<<<<< HEAD
-  background-color: #e5e7eb;
-=======
   background: linear-gradient(135deg, #f3f4f6 0%, #e0e7ef 100%);
->>>>>>> 500e87337a1c5ce86ed4e67ce27a617e948750d3
   padding: 20px;
   transition: background-color 0.3s, color 0.3s;
 }
@@ -117,33 +113,21 @@ export default {
 .create-advertisement {
   width: 100%;
   max-width: 450px;
-<<<<<<< HEAD
-  background: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-=======
   background: #fff;
   border-radius: 14px;
   box-shadow: 0 8px 32px rgba(37,99,235,0.10), 0 1.5px 4px rgba(0,0,0,0.06);
   padding: 28px 20px;
   color: #1f2937;
   transition: background 0.3s, color 0.3s;
->>>>>>> 500e87337a1c5ce86ed4e67ce27a617e948750d3
 }
 
 .create-advertisement h2 {
   text-align: center;
   margin-bottom: 20px;
-<<<<<<< HEAD
-  font-size: 1.8rem;
-  color: #111827;
-=======
   font-size: 2rem;
   color: #2563eb;
   font-weight: 800;
   letter-spacing: 0.01em;
->>>>>>> 500e87337a1c5ce86ed4e67ce27a617e948750d3
 }
 
 .form-group {
@@ -152,16 +136,10 @@ export default {
 
 label {
   display: block;
-<<<<<<< HEAD
-  margin-bottom: 5px;
-  font-weight: bold;
-  color: #1f2937;
-=======
   margin-bottom: 6px;
   font-weight: 600;
   color: #1f2937;
   letter-spacing: 0.01em;
->>>>>>> 500e87337a1c5ce86ed4e67ce27a617e948750d3
 }
 
 input,
@@ -174,10 +152,7 @@ select {
   font-size: 1rem;
   background-color: #f9fafb;
   color: #111827;
-<<<<<<< HEAD
-=======
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
->>>>>>> 500e87337a1c5ce86ed4e67ce27a617e948750d3
 }
 
 input:focus,
@@ -195,15 +170,9 @@ textarea {
 button,
 .cta-button {
   width: 100%;
-<<<<<<< HEAD
-  padding: 12px;
-  background-color: #2563eb;
-  color: #ffffff;
-=======
   padding: 13px;
   background: linear-gradient(90deg, #2563eb 0%, #34d399 100%);
   color: #fff;
->>>>>>> 500e87337a1c5ce86ed4e67ce27a617e948750d3
   border: none;
   border-radius: 8px;
   font-size: 1.1rem;
@@ -214,15 +183,6 @@ button,
   box-shadow: 0 2px 8px rgba(37,99,235,0.08);
 }
 
-<<<<<<< HEAD
-button:hover {
-  background-color: #1d4ed8;
-  transform: scale(1.02);
-}
-
-button:focus {
-  outline: 2px solid #1d4ed8;
-=======
 button:hover,
 .cta-button:hover {
   background: linear-gradient(90deg, #34d399 0%, #2563eb 100%);
@@ -279,16 +239,11 @@ button:focus,
 .create-advertisement-container.dark-mode button:hover,
 .create-advertisement-container.dark-mode .cta-button:hover {
   background: linear-gradient(90deg, #34d399 0%, #63b3ed 100%);
->>>>>>> 500e87337a1c5ce86ed4e67ce27a617e948750d3
 }
 
 @media (max-width: 600px) {
   .create-advertisement {
-<<<<<<< HEAD
-    max-width: 90%;
-=======
     max-width: 95%;
->>>>>>> 500e87337a1c5ce86ed4e67ce27a617e948750d3
     padding: 15px;
   }
 

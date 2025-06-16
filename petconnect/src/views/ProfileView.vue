@@ -62,7 +62,7 @@ export default {
       isDarkMode: localStorage.getItem('isDarkMode') === 'true',
       user: null,
       savedPets: [],
-      myPets: [] // 👈 Eigene Inserate
+      myPets: []
     };
   },
   methods: {
@@ -113,19 +113,14 @@ export default {
 .profile-view {
   padding: 20px;
   text-align: center;
-  transition: background-color 0.3s, color 0.3s;
   background: #f3f4f6;
   color: #1a202c;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .profile-view.dark-mode {
   background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
   color: #f7fafc;
-}
-
-.profile-view:not(.dark-mode) {
-  background-color: #f3f4f6;
-  color: #1a202c;
 }
 
 button {
@@ -172,25 +167,8 @@ button:hover {
   object-fit: cover;
   border-radius: 8px;
 }
-<<<<<<< HEAD
-</style>
-=======
 
-button {
-  margin-top: 10px;
-  padding: 5px 10px;
-  background-color: #2563eb;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #1d4ed8;
-}
-
-/* Dark mode for pet cards */
+/* Dark mode styles for pet cards */
 .profile-view.dark-mode .pet-card {
   background: rgba(45, 55, 72, 0.97);
   color: #f7fafc;
@@ -209,4 +187,3 @@ button:hover {
   border: 2px solid #4a5568;
 }
 </style>
->>>>>>> 500e87337a1c5ce86ed4e67ce27a617e948750d3
