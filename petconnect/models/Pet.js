@@ -11,7 +11,7 @@ const petSchema = new mongoose.Schema({
   gender: { type: String, enum: ['Male', 'Female'], required: true },
   location: String,
   vaccinated: { type: Boolean, default: false },
-  createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
+  fk_userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
 });
 
 module.exports = mongoose.model('Pet', petSchema);

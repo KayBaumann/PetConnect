@@ -65,37 +65,35 @@ export default {
         vaccinated: false,
         description: '',
         image: '',
-        fk_user_id: ''
+        fk_userId: '' // ✅ consistent with backend expectation
       },
     };
   },
   methods: {
     async createAdvertisement() {
-  if (!this.newAd.name || !this.newAd.type || !this.newAd.breed) {
-    alert(this.$t('form.missingFields'));
-    return;
-  }
+      if (!this.newAd.name || !this.newAd.type || !this.newAd.breed) {
+        alert(this.$t('form.missingFields'));
+        return;
+      }
 
-  try {
-    const userId = localStorage.getItem('userId');
-    if (!userId) {
-      alert(this.$t('form.notLoggedIn'));
-      return;
+      try {
+        const userId = localStorage.getItem('userId');
+        if (!userId) {
+          alert(this.$t('form.notLoggedIn'));
+          return;
+        }
+
+        this.newAd.fk_userId = userId;
+
+        const res = await api.post('/pets', this.newAd);
+        console.log('New advertisement created:', res.data);
+        alert(this.$t('form.adSuccess'));
+        this.$router.push('/');
+      } catch (err) {
+        console.error('Error creating advertisement:', err.response?.data || err);
+        alert(err.response?.data?.message || this.$t('form.adFail'));
+      }
     }
-
-    this.newAd.fk_userId = userId; // 👈 wichtig!
-
-    const res = await api.post('/pets', this.newAd);
-    console.log('New advertisement created:', res.data);
-    alert(this.$t('form.adSuccess'));
-    this.$router.push('/');
-  } catch (err) {
-    console.error('Error creating advertisement:', err.response?.data || err);
-    alert(err.response?.data?.message || this.$t('form.adFail'));
-  }
-},
-
-    
   },
 };
 </script>
@@ -106,13 +104,13 @@ export default {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #e5e7eb; /* Slightly darker gray for better contrast */
+  background-color: #e5e7eb;
   padding: 20px;
 }
 
 .create-advertisement {
   width: 100%;
-  max-width: 450px; /* Adjusted width for better fit */
+  max-width: 450px;
   background: #ffffff;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -123,7 +121,7 @@ export default {
   text-align: center;
   margin-bottom: 20px;
   font-size: 1.8rem;
-  color: #111827; /* Darker text color for better readability */
+  color: #111827;
 }
 
 .form-group {
@@ -134,7 +132,7 @@ label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
-  color: #1f2937; /* Darker gray for labels */
+  color: #1f2937;
 }
 
 input,
@@ -145,14 +143,14 @@ select {
   border: 1px solid #d1d5db;
   border-radius: 4px;
   font-size: 1rem;
-  background-color: #f9fafb; /* Light background */
-  color: #111827; /* Darker text color for inputs */
+  background-color: #f9fafb;
+  color: #111827;
 }
 
 input:focus,
 textarea:focus,
 select:focus {
-  outline: 2px solid #2563eb; /* Blue focus outline for accessibility */
+  outline: 2px solid #2563eb;
   border-color: #2563eb;
 }
 
@@ -163,7 +161,7 @@ textarea {
 button {
   width: 100%;
   padding: 12px;
-  background-color: #2563eb; /* Vibrant blue for buttons */
+  background-color: #2563eb;
   color: #ffffff;
   border: none;
   border-radius: 4px;
@@ -174,18 +172,17 @@ button {
 }
 
 button:hover {
-  background-color: #1d4ed8; /* Slightly darker blue on hover */
+  background-color: #1d4ed8;
   transform: scale(1.02);
 }
 
 button:focus {
-  outline: 2px solid #1d4ed8; /* Focus outline for buttons */
+  outline: 2px solid #1d4ed8;
 }
 
-/* Responsive Design */
 @media (max-width: 600px) {
   .create-advertisement {
-    max-width: 90%; /* Adjust width for smaller screens */
+    max-width: 90%;
     padding: 15px;
   }
 
