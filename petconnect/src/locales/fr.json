@@ -132,8 +132,12 @@
     "animalCount": "Nombre d'animaux",
     "email": "E-mail",
     "imageUrlOptional": "URL de l'image (optionnel)",
-    "submit": "Soumettre"
+    "submit": "Soumettre",
+    "adSuccess": "L’annonce a été créée avec succès !",
+    "shelterCreated": "Le refuge a été créé avec succès !",
+    "adDeleted": "L’annonce a été supprimée avec succès !"
   },
+  "confirmDelete": "Êtes-vous sûr de vouloir supprimer cette annonce ?",
   "about": {
     "title": "À propos de nous",
     "description": "Rencontrez notre équipe",
@@ -152,5 +156,17 @@
       "description": "Coordonne l'équipe et assure le bon déroulement du travail.",
       "bio": "Passionné par la documentation structurée et le chocolat."
     }
+  },
+  "advertisement": {
+    "tagline": "{breed} de {age} ans",
+    "type": "Type",
+    "breed": "Race",
+    "age": "Âge",
+    "years": "ans",
+    "gender": "Sexe",
+    "location": "Lieu",
+    "vaccinated": "Vacciné",
+    "adopted": "Adopté",
+    "banner": "À l’adoption"
   }
 }

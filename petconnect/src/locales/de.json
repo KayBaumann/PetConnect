@@ -1,6 +1,6 @@
 {
   "home": "Willkommen bei PetConnect",
-  "search": {
+  "search":{
     "title": "Haustiere suchen",
     "type": "Tierart",
     "breed": "Rasse",
@@ -105,9 +105,9 @@
     "address": "Adresse",
     "owner": "Besitzer",
     "animalCount": "Anzahl Tiere",
-    "email": "E-Mail",
     "imageUrlOptional": "Bild-URL (optional)",
     "submit": "Absenden",
+<<<<<<< HEAD
     "messageSent": "Nachricht erfolgreich gesendet!",
     "messageSendError": "Senden fehlgeschlagen. Versuche es erneut.",
     "notLoggedIn": "Bitte melde dich zuerst an.",
@@ -120,7 +120,13 @@
     "missingFields": "Bitte fülle alle Pflichtfelder aus.",
     "shelterCreated": "Tierheim erfolgreich erstellt.",
     "shelterFailed": "Tierheim konnte nicht erstellt werden."
+=======
+    "adSuccess": "Die Anzeige wurde erfolgreich erstellt!",
+    "shelterCreated": "Das Tierheim wurde erfolgreich erstellt!",
+    "adDeleted": "Die Anzeige wurde erfolgreich gelöscht!"
+>>>>>>> b1657a15748101a5936713c8c79044d795f767fe
   },
+  "confirmDelete": "Bist du sicher, dass du diese Anzeige löschen möchtest?",
   "about": {
     "title": "Über uns",
     "description": "Lerne unser Team kennen",
@@ -139,6 +145,18 @@
       "description": "Koordiniert das Team und sorgt für einen reibungslosen Ablauf.",
       "bio": "Hat eine Vorliebe für strukturierte Dokumentation und Schokolade."
     }
+  },
+  "advertisement": {
+    "tagline": "{age} Jahre alter {breed}",
+    "type": "Tierart",
+    "breed": "Rasse",
+    "age": "Alter",
+    "years": "Jahre",
+    "gender": "Geschlecht",
+    "location": "Ort",
+    "vaccinated": "Geimpft",
+    "adopted": "Adoptiert",
+    "banner": "Zur Adoption"
   },
   "homeTitle": "Willkommen bei PetConnect",
   "homeIntro": "Finde dein neues Haustier oder biete eines zur Adoption an.",

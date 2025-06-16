@@ -1,50 +1,63 @@
 <template>
-  <div class="create-advertisement-container">
-    <div class="create-advertisement">
-      <h2>{{ $t('createAdTitle') }}</h2>
-      <form @submit.prevent="createAdvertisement">
-        <div class="form-group">
-          <label for="name">{{ $t('form.name') }}</label>
-          <input type="text" id="name" v-model="newAd.name" required />
-        </div>
-        <div class="form-group">
-          <label for="type">{{ $t('form.type') }}</label>
-          <input type="text" id="type" v-model="newAd.type" required />
-        </div>
-        <div class="form-group">
-          <label for="breed">{{ $t('form.breed') }}</label>
-          <input type="text" id="breed" v-model="newAd.breed" required />
-        </div>
-        <div class="form-group">
-          <label for="age">{{ $t('form.age') }}</label>
-          <input type="number" id="age" v-model="newAd.age" required />
-        </div>
-        <div class="form-group">
-          <label for="gender">{{ $t('form.gender') }}</label>
-          <select id="gender" v-model="newAd.gender" required>
-            <option value="Male">{{ $t('form.male') }}</option>
-            <option value="Female">{{ $t('form.female') }}</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="location">{{ $t('form.location') }}</label>
-          <input type="text" id="location" v-model="newAd.location" required />
-        </div>
-        <div class="form-group">
-          <label for="vaccinated">{{ $t('form.vaccinated') }}</label>
-          <input type="checkbox" id="vaccinated" v-model="newAd.vaccinated" />
-        </div>
-        <div class="form-group">
-          <label for="description">{{ $t('form.description') }}</label>
-          <textarea id="description" v-model="newAd.description" required></textarea>
-        </div>
-        <div class="form-group">
-          <label for="image">{{ $t('form.imageUrl') }}</label>
-          <input type="text" id="image" v-model="newAd.image" :placeholder="$t('form.imagePlaceholder')" />
-        </div>
-        <button type="submit" class="cta-button">{{ $t('createAdButton') }}</button>
-      </form>
-    </div>
+  <div class="form-container">
+    <h1>{{ $t('createAdTitle') }}</h1>
+    <form @submit.prevent="createAdvertisement">
+      <input
+        type="text"
+        v-model="newAd.name"
+        :placeholder="$t('form.name')"
+        required
+      />
+      <input
+        type="text"
+        v-model="newAd.type"
+        :placeholder="$t('form.type')"
+        required
+      />
+      <input
+        type="text"
+        v-model="newAd.breed"
+        :placeholder="$t('form.breed')"
+        required
+      />
+      <input
+        type="number"
+        v-model="newAd.age"
+        :placeholder="$t('form.age')"
+        required
+      />
+      <select v-model="newAd.gender" required>
+        <option value="Male">{{ $t('form.male') }}</option>
+        <option value="Female">{{ $t('form.female') }}</option>
+      </select>
+      <input
+        type="text"
+        v-model="newAd.location"
+        :placeholder="$t('form.location')"
+        required
+      />
+      <div style="display: flex; align-items: center; margin-bottom: 18px;">
+        <input
+          type="checkbox"
+          id="vaccinated"
+          v-model="newAd.vaccinated"
+          style="width:auto;margin-right:8px;"
+        />
+        <label for="vaccinated" style="margin-bottom:0;">{{ $t('form.vaccinated') }}</label>
+      </div>
+      <textarea
+        v-model="newAd.description"
+        :placeholder="$t('form.description')"
+        rows="5"
+        required
+      ></textarea>
+      <input
+        type="text"
+        v-model="newAd.image"
+        :placeholder="$t('form.imageUrlPlaceholder')"
+      />
+      <button type="submit">{{ $t('createAdButton') }}</button>
+    </form>
   </div>
 </template>
 

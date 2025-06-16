@@ -1,23 +1,29 @@
 <template>
-  <div class="contact-view">
-    <div class="contact-header">
-      <h1>{{ $t('contact') }}</h1>
-      <p>{{ $t('contactDescription') }}</p>
-    </div>
-    <form class="contact-form" @submit.prevent="submitForm">
-      <div class="form-group">
-        <label for="name">{{ $t('yourName') }}</label>
-        <input type="text" id="name" v-model="form.name" required />
+  <div class="form-container">
+    <h1>{{ $t('contact') }}</h1>
+    <form @submit.prevent="submitForm">
+      <input
+        type="text"
+        v-model="form.name"
+        :placeholder="$t('yourName')"
+        required
+      />
+      <input
+        type="email"
+        v-model="form.email"
+        :placeholder="$t('yourEmail')"
+        required
+      />
+      <div style="position: relative;">
+        <textarea
+          v-model="form.message"
+          :placeholder="$t('yourMessage')"
+          rows="5"
+          required
+          style="resize: none; min-height: 120px; min-width: 500px;"
+        ></textarea>
       </div>
-      <div class="form-group">
-        <label for="email">{{ $t('yourEmail') }}</label>
-        <input type="email" id="email" v-model="form.email" required />
-      </div>
-      <div class="form-group">
-        <label for="message">{{ $t('yourMessage') }}</label>
-        <textarea id="message" v-model="form.message" rows="5" required></textarea>
-      </div>
-      <button type="submit" class="contact-button">{{ $t('sendMessage') }}</button>
+      <button type="submit">{{ $t('sendMessage') }}</button>
       <p v-if="success" class="success-message">{{ $t('contactSuccess') }}</p>
     </form>
   </div>
@@ -65,3 +71,11 @@ export default {
 };
 </script>
 
+<style scoped>
+.success-message {
+  color: #22c55e;
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: bold;
+}
+</style>
