@@ -111,6 +111,25 @@
     "imageUrlOptional": "Bild-URL (optional)",
     "submit": "Absenden"
   },
+  "about": {
+  "title": "Über uns",
+  "description": "Lerne unser Team kennen",
+  "alice": {
+    "role": "Frontend Entwicklerin",
+    "description": "Verantwortlich für Benutzeroberflächen und UX.",
+    "bio": "Liebt Hunde, Kaffee und sauberen Code."
+  },
+  "bob": {
+    "role": "Backend Entwickler",
+    "description": "Spezialist für APIs und Datenbanken.",
+    "bio": "Mag MongoDB, Express und Spaziergänge mit seinem Hund."
+  },
+  "charlie": {
+    "role": "Projektleiter",
+    "description": "Koordiniert das Team und sorgt für einen reibungslosen Ablauf.",
+    "bio": "Hat eine Vorliebe für strukturierte Dokumentation und Schokolade."
+  }
+  },
   "homeTitle": "Willkommen bei PetConnect",
   "homeIntro": "Finde dein neues Haustier oder biete eines zur Adoption an.",
   "searchButton": "Suchen",

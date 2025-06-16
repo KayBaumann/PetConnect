@@ -114,25 +114,44 @@
   "Login": "Accesso",
   "Register": "Registrazione",
   "createAdTitle": "Crea annuncio per animale",
-"createAdButton": "Crea annuncio",
-"shelter.addButton": "Aggiungi rifugio",
-"form": {
-  "name": "Nome",
-  "type": "Tipo",
-  "breed": "Razza",
-  "age": "Età",
-  "gender": "Genere",
-  "male": "Maschio",
-  "location": "Posizione",
-  "vaccinated": "Vaccinato",
-  "description": "Descrizione",
-  "imageUrl": "URL immagine",
-  "imagePlaceholder": "Inserisci link immagine",
-  "address": "Indirizzo",
-  "owner": "Responsabile",
-  "animalCount": "Numero di animali",
-  "email": "Email",
-  "imageUrlOptional": "URL immagine (opzionale)",
-  "submit": "Invia"
-}
+  "createAdButton": "Crea annuncio",
+  "shelter.addButton": "Aggiungi rifugio",
+  "form": {
+    "name": "Nome",
+    "type": "Tipo",
+    "breed": "Razza",
+    "age": "Età",
+    "gender": "Genere",
+    "male": "Maschio",
+    "location": "Posizione",
+    "vaccinated": "Vaccinato",
+    "description": "Descrizione",
+    "imageUrl": "URL immagine",
+    "imagePlaceholder": "Inserisci link immagine",
+    "address": "Indirizzo",
+    "owner": "Responsabile",
+    "animalCount": "Numero di animali",
+    "email": "Email",
+    "imageUrlOptional": "URL immagine (opzionale)",
+    "submit": "Invia"
+  },
+  "about": {
+    "title": "Chi siamo",
+    "description": "Conosci il nostro team",
+    "alice": {
+      "role": "Sviluppatrice Frontend",
+      "description": "Responsabile delle interfacce utente e dell'esperienza UX.",
+      "bio": "Ama i cani, il caffè e il codice pulito."
+    },
+    "bob": {
+      "role": "Sviluppatore Backend",
+      "description": "Specialista in API e database.",
+      "bio": "Apprezza MongoDB, Express e le passeggiate con il suo cane."
+    },
+    "charlie": {
+      "role": "Project Manager",
+      "description": "Coordina il team e garantisce flussi di lavoro fluidi.",
+      "bio": "Appassionato di documentazione strutturata e cioccolato."
+    }
+  }
 }

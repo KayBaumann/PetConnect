@@ -114,25 +114,44 @@
   "Login": "Connexion",
   "Register": "Inscription",
   "createAdTitle": "Créer une annonce pour animal",
-"createAdButton": "Créer l'annonce",
-"shelter.addButton": "Ajouter un refuge",
-"form": {
-  "name": "Nom",
-  "type": "Type",
-  "breed": "Race",
-  "age": "Âge",
-  "gender": "Sexe",
-  "male": "Mâle",
-  "location": "Lieu",
-  "vaccinated": "Vacciné",
-  "description": "Description",
-  "imageUrl": "URL de l'image",
-  "imagePlaceholder": "Insérer un lien d'image",
-  "address": "Adresse",
-  "owner": "Propriétaire",
-  "animalCount": "Nombre d'animaux",
-  "email": "E-mail",
-  "imageUrlOptional": "URL de l'image (optionnel)",
-  "submit": "Soumettre"
-}
+  "createAdButton": "Créer l'annonce",
+  "shelter.addButton": "Ajouter un refuge",
+  "form": {
+    "name": "Nom",
+    "type": "Type",
+    "breed": "Race",
+    "age": "Âge",
+    "gender": "Sexe",
+    "male": "Mâle",
+    "location": "Lieu",
+    "vaccinated": "Vacciné",
+    "description": "Description",
+    "imageUrl": "URL de l'image",
+    "imagePlaceholder": "Insérer un lien d'image",
+    "address": "Adresse",
+    "owner": "Propriétaire",
+    "animalCount": "Nombre d'animaux",
+    "email": "E-mail",
+    "imageUrlOptional": "URL de l'image (optionnel)",
+    "submit": "Soumettre"
+  },
+  "about": {
+    "title": "À propos de nous",
+    "description": "Rencontrez notre équipe",
+    "alice": {
+      "role": "Développeuse Frontend",
+      "description": "Responsable des interfaces utilisateur et de l'expérience UX.",
+      "bio": "Aime les chiens, le café et le code propre."
+    },
+    "bob": {
+      "role": "Développeur Backend",
+      "description": "Spécialiste des API et des bases de données.",
+      "bio": "Apprécie MongoDB, Express et les promenades avec son chien."
+    },
+    "charlie": {
+      "role": "Chef de projet",
+      "description": "Coordonne l'équipe et assure le bon déroulement du travail.",
+      "bio": "Passionné par la documentation structurée et le chocolat."
+    }
+  }
 }
