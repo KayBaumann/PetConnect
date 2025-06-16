@@ -134,8 +134,10 @@
     "imageUrlOptional": "URL immagine (opzionale)",
     "submit": "Invia",
     "adSuccess": "L’annuncio è stato creato con successo!",
-    "shelterCreated": "Il rifugio è stato creato con successo!"
+    "shelterCreated": "Il rifugio è stato creato con successo!",
+    "adDeleted": "L’annuncio è stato eliminato con successo!"
   },
+  "confirmDelete": "Sei sicuro di voler eliminare questo annuncio?",
   "about": {
     "title": "Chi siamo",
     "description": "Conosci il nostro team",

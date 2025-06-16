@@ -134,8 +134,10 @@
     "imageUrlOptional": "URL de l'image (optionnel)",
     "submit": "Soumettre",
     "adSuccess": "L’annonce a été créée avec succès !",
-    "shelterCreated": "Le refuge a été créé avec succès !"
+    "shelterCreated": "Le refuge a été créé avec succès !",
+    "adDeleted": "L’annonce a été supprimée avec succès !"
   },
+  "confirmDelete": "Êtes-vous sûr de vouloir supprimer cette annonce ?",
   "about": {
     "title": "À propos de nous",
     "description": "Rencontrez notre équipe",

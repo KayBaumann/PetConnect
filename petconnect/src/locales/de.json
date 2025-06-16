@@ -108,8 +108,10 @@
     "imageUrlOptional": "Bild-URL (optional)",
     "submit": "Absenden",
     "adSuccess": "Die Anzeige wurde erfolgreich erstellt!",
-    "shelterCreated": "Das Tierheim wurde erfolgreich erstellt!"
+    "shelterCreated": "Das Tierheim wurde erfolgreich erstellt!",
+    "adDeleted": "Die Anzeige wurde erfolgreich gelöscht!"
   },
+  "confirmDelete": "Bist du sicher, dass du diese Anzeige löschen möchtest?",
   "about": {
   "title": "Über uns",
   "description": "Lerne unser Team kennen",
