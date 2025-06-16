@@ -118,7 +118,7 @@ export default {
 header {
   background-color: #1f2937;
   padding: 15px 30px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -144,7 +144,7 @@ nav ul li {
 }
 
 nav ul li a {
-  color: #ffffff;
+  color: #fff;
   text-decoration: none;
   font-weight: 600;
   font-size: 1rem;
@@ -201,7 +201,7 @@ button img {
   list-style: none;
   padding: 10px 0;
   margin: 0;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 10px 20px rgb(0 0 0 / 25%);
   z-index: 100;
   color: white;
   display: none;
@@ -236,7 +236,7 @@ button img {
 }
 
 .dropdown-menu li:hover {
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: rgb(255 255 255 / 8%);
   transform: scale(1.05);
   border-radius: 10px;
 }

@@ -23,7 +23,7 @@
         <p>{{ $t('noSavedPets') }}</p>
       </div>
       <div v-else class="pets-list">
-        <div v-for="pet in savedPets" :key="pet._id" class="pet-card">
+        <div v-for="pet in savedPets" :key="pet._id" class="advertisement-card">
           <router-link
             :to="{ name: 'advertisement', params: { id: pet._id } }"
             class="advertisement-card-link"
@@ -46,7 +46,7 @@
         <p>{{ $t('noAds') }}</p>
       </div>
       <div v-else class="pets-list">
-        <div v-for="pet in myPets" :key="pet._id" class="pet-card">
+        <div v-for="pet in myPets" :key="pet._id" class="advertisement-card">
           <router-link
             :to="{ name: 'advertisement', params: { id: pet._id } }"
             class="advertisement-card-link"
