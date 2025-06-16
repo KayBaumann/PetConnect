@@ -9,6 +9,7 @@ const petsRoute = require('./routes/pets');
 const authRoutes = require('./routes/auth');
 const donationRoutes = require('./routes/donation');
 const shelterRoutes = require('./routes/shelter');
+const messageRoutes = require('./routes/messages'); // <-- Wichtig!
 
 const app = express();
 
@@ -41,8 +42,9 @@ app.use('/api/pets', petsRoute);
 app.use('/api/auth', authRoutes);
 app.use('/api', donationRoutes);
 app.use('/api/shelters', shelterRoutes);
+app.use('/api/messages', messageRoutes); // <-- Route einbinden
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`✅ Server is running on http://localhost:${PORT}`);
 });

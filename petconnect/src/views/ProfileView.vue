@@ -25,15 +25,15 @@
       <div v-else class="pets-list">
         <div v-for="pet in savedPets" :key="pet._id" class="pet-card">
           <router-link
-          :to="{ name: 'advertisement', params: { id: pet._id } }"
-          class="advertisement-card-link"
-        >
-          <img :src="pet.image" :alt="pet.name" class="pet-image" />
-          <h3>{{ pet.name }}</h3>
-          <p>{{ pet.type }} - {{ pet.breed }}</p>
-          <button @click="removeFromSaved(pet._id)">
-            {{ $t('remove') }}
-          </button>
+            :to="{ name: 'advertisement', params: { id: pet._id } }"
+            class="advertisement-card-link"
+          >
+            <img :src="pet.image" :alt="pet.name" class="pet-image" />
+            <h3>{{ pet.name }}</h3>
+            <p>{{ pet.type }} - {{ pet.breed }}</p>
+            <button @click.stop.prevent="removeFromSaved(pet._id)">
+              {{ $t('remove') }}
+            </button>
           </router-link>
         </div>
       </div>
@@ -47,23 +47,35 @@
       </div>
       <div v-else class="pets-list">
         <div v-for="pet in myPets" :key="pet._id" class="pet-card">
-        <router-link
-          :to="{ name: 'advertisement', params: { id: pet._id } }"
-          class="advertisement-card-link"
-        >
-          <img :src="pet.image" :alt="pet.name" class="pet-image" />
-          <h3>{{ pet.name }}</h3>
-          <p>{{ pet.type }} - {{ pet.breed }}</p>
-          <p>{{ pet.location }}</p>
-        </router-link>
+          <router-link
+            :to="{ name: 'advertisement', params: { id: pet._id } }"
+            class="advertisement-card-link"
+          >
+            <img :src="pet.image" :alt="pet.name" class="pet-image" />
+            <h3>{{ pet.name }}</h3>
+            <p>{{ pet.type }} - {{ pet.breed }}</p>
+            <p>{{ pet.location }}</p>
+          </router-link>
 
-        <button @click="deleteMyPet(pet._id)">
-          {{ $t('delete') }}
-        </button>
+          <button @click="deleteMyPet(pet._id)">
+            {{ $t('delete') }}
+          </button>
+        </div>
       </div>
+    </div>
 
-
+    <!-- Nachrichten -->
+    <div class="inbox">
+      <h2>{{ $t('inbox') }}</h2>
+      <div v-if="messages.length === 0">
+        <p>{{ $t('noMessages') }}</p>
       </div>
+      <ul v-else>
+        <li v-for="msg in messages" :key="msg._id">
+          📬 <strong>{{ msg.petId.name }}:</strong><br />
+          {{ msg.text }}
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -78,7 +90,8 @@ export default {
       isDarkMode: localStorage.getItem('isDarkMode') === 'true',
       user: null,
       savedPets: [],
-      myPets: []
+      myPets: [],
+      messages: []
     };
   },
   methods: {
@@ -94,7 +107,6 @@ export default {
         alert(this.$t('form.adDeleteFailed'));
       }
     },
-
     async fetchUserData() {
       try {
         const userId = localStorage.getItem('userId');
@@ -128,12 +140,22 @@ export default {
       } catch (err) {
         console.error('Error loading user pets:', err);
       }
+    },
+    async loadMessages() {
+      try {
+        const userId = localStorage.getItem('userId');
+        const res = await api.get(`/messages/owner/${userId}`);
+        this.messages = res.data;
+      } catch (err) {
+        console.error('Error loading messages:', err);
+      }
     }
   },
   async created() {
     await this.fetchUserData();
     this.loadSavedPets();
     await this.loadMyPets();
+    await this.loadMessages();
   },
 };
 </script>
