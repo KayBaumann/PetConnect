@@ -1,28 +1,31 @@
 <template>
   <div class="contact-view">
-    <div class="contact-header">
+    <div class="contact-form-wrapper">
       <h1>{{ $t('contact') }}</h1>
       <p>{{ $t('contactDescription') }}</p>
+
+      <form @submit.prevent="submitForm">
+        <div class="input-group">
+          <input id="name" type="text" v-model="form.name" placeholder=" " required />
+          <label for="name">{{ $t('yourName') }}</label>
+        </div>
+
+        <div class="input-group">
+          <input id="email" type="email" v-model="form.email" placeholder=" " required />
+          <label for="email">{{ $t('yourEmail') }}</label>
+        </div>
+
+        <div class="input-group">
+          <textarea id="message" v-model="form.message" rows="5" placeholder=" " required></textarea>
+          <label for="message">{{ $t('yourMessage') }}</label>
+        </div>
+
+        <button type="submit" class="contact-button">{{ $t('sendMessage') }}</button>
+        <p v-if="success" class="success-message">{{ $t('contactSuccess') }}</p>
+      </form>
     </div>
-    <form class="contact-form" @submit.prevent="submitForm">
-      <div class="form-group">
-        <label for="name">{{ $t('yourName') }}</label>
-        <input type="text" id="name" v-model="form.name" required />
-      </div>
-      <div class="form-group">
-        <label for="email">{{ $t('yourEmail') }}</label>
-        <input type="email" id="email" v-model="form.email" required />
-      </div>
-      <div class="form-group">
-        <label for="message">{{ $t('yourMessage') }}</label>
-        <textarea id="message" v-model="form.message" rows="5" required></textarea>
-      </div>
-      <button type="submit" class="contact-button">{{ $t('sendMessage') }}</button>
-      <p v-if="success" class="success-message">{{ $t('contactSuccess') }}</p>
-    </form>
   </div>
 </template>
-
 <script>
 import emailjs from 'emailjs-com';
 
