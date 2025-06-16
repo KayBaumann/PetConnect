@@ -24,12 +24,17 @@
       </div>
       <div v-else class="pets-list">
         <div v-for="pet in savedPets" :key="pet._id" class="pet-card">
+          <router-link
+          :to="{ name: 'advertisement', params: { id: pet._id } }"
+          class="advertisement-card-link"
+        >
           <img :src="pet.image" :alt="pet.name" class="pet-image" />
           <h3>{{ pet.name }}</h3>
           <p>{{ pet.type }} - {{ pet.breed }}</p>
           <button @click="removeFromSaved(pet._id)">
             {{ $t('remove') }}
           </button>
+          </router-link>
         </div>
       </div>
     </div>
@@ -42,14 +47,21 @@
       </div>
       <div v-else class="pets-list">
         <div v-for="pet in myPets" :key="pet._id" class="pet-card">
+        <router-link
+          :to="{ name: 'advertisement', params: { id: pet._id } }"
+          class="advertisement-card-link"
+        >
           <img :src="pet.image" :alt="pet.name" class="pet-image" />
           <h3>{{ pet.name }}</h3>
           <p>{{ pet.type }} - {{ pet.breed }}</p>
           <p>{{ pet.location }}</p>
-          <button @click="deleteMyPet(pet._id)">
-            {{ $t('delete') }}
-          </button>
-        </div>
+        </router-link>
+
+        <button @click="deleteMyPet(pet._id)">
+          {{ $t('delete') }}
+        </button>
+      </div>
+
 
       </div>
     </div>
