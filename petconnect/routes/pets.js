@@ -15,6 +15,24 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Alle Tiere eines Users laden
+router.get('/user/:userId', async (req, res) => {
+  const { userId } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(userId)) {
+    return res.status(400).json({ message: 'Ungültige Benutzer-ID' });
+  }
+
+  try {
+    const pets = await Pet.find({ fk_userId: userId });
+    res.json(pets);
+  } catch (err) {
+    console.error('Fehler beim Laden der Nutzertiere:', err.message);
+    res.status(500).json({ message: 'Fehler beim Abrufen', error: err.message });
+  }
+});
+
+
 // Get a single pet by ID
 router.get('/:id', async (req, res) => {
   console.log(`GET /api/pets/${req.params.id} request received`);
@@ -29,17 +47,38 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// Create a new pet
+const mongoose = require('mongoose');
+
 router.post('/', async (req, res) => {
-  console.log('Create advertisement route hit');
-  const { name, type, breed, age, gender, location, vaccinated, description, image } = req.body;
-  console.log('Create advertisement attempt:', name);
+  console.log('📥 Create advertisement route hit');
+  console.log('📦 Incoming request body:', JSON.stringify(req.body, null, 2));
+
+  const {
+    name,
+    type,
+    breed,
+    age,
+    gender,
+    location,
+    vaccinated,
+    description,
+    image,
+    fk_userId
+  } = req.body;
 
   try {
+    // 🧱 Pflichtfelder prüfen
     if (!name || !type || !breed) {
       return res.status(400).json({ message: res.__('pet.missing_fields') });
     }
 
+    // 🆔 ObjectId validieren
+    if (!mongoose.Types.ObjectId.isValid(fk_userId)) {
+      console.warn('⚠️ Ungültige Benutzer-ID erhalten:', fk_userId);
+      return res.status(400).json({ message: 'Ungültige Benutzer-ID' });
+    }
+
+    // 🐶 Neues Tierinserat erstellen
     const newPet = new Pet({
       name,
       type,
@@ -50,17 +89,25 @@ router.post('/', async (req, res) => {
       vaccinated,
       description,
       image,
+      fk_userId: new mongoose.Types.ObjectId(fk_userId) // 🧠 entscheidend!
     });
 
+    // 💾 Speichern
     const savedPet = await newPet.save();
-    console.log('Saved advertisement:', savedPet);
+    console.log('✅ Saved advertisement:', savedPet);
 
     res.status(201).json({ message: res.__('pet.created'), petId: savedPet._id });
   } catch (err) {
-    console.error('Error during advertisement creation:', err);
-    res.status(500).json({ message: res.__('errors.server'), error: err });
+    console.error('❌ Error during advertisement creation:', err.message);
+    console.error(err.stack);
+    res.status(500).json({
+      message: res.__('errors.server'),
+      error: err.message
+    });
   }
 });
+
+
 
 // Update a pet
 router.put('/:id', async (req, res) => {

@@ -65,6 +65,7 @@ export default {
         vaccinated: false,
         description: '',
         image: '',
+        fk_userId: ''
       },
     };
   },
@@ -76,6 +77,14 @@ export default {
       }
 
       try {
+        const userId = localStorage.getItem('userId');
+        if (!userId) {
+          alert(this.$t('form.notLoggedIn'));
+          return;
+        }
+
+        this.newAd.fk_userId = userId;
+
         const res = await api.post('/pets', this.newAd);
         console.log('New advertisement created:', res.data);
         alert(this.$t('form.adSuccess'));
@@ -84,8 +93,7 @@ export default {
         console.error('Error creating advertisement:', err.response?.data || err);
         alert(err.response?.data?.message || this.$t('form.adFail'));
       }
-    },
+    }
   },
 };
 </script>
-

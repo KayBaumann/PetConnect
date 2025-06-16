@@ -16,6 +16,7 @@
       {{ isDarkMode ? $t('switchToBright') : $t('switchToDark') }}
     </button>
 
+    <!-- Gespeicherte Tiere -->
     <div class="saved-pets">
       <h2>{{ $t('savedPets') }}</h2>
       <div v-if="savedPets.length === 0">
@@ -32,6 +33,22 @@
         </div>
       </div>
     </div>
+
+    <!-- Eigene Inserate -->
+    <div class="my-pets">
+      <h2>{{ $t('myAds') }}</h2>
+      <div v-if="myPets.length === 0">
+        <p>{{ $t('noAds') }}</p>
+      </div>
+      <div v-else class="pets-list">
+        <div v-for="pet in myPets" :key="pet._id" class="pet-card">
+          <img :src="pet.image" :alt="pet.name" class="pet-image" />
+          <h3>{{ pet.name }}</h3>
+          <p>{{ pet.type }} - {{ pet.breed }}</p>
+          <p>{{ pet.location }}</p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -45,6 +62,7 @@ export default {
       isDarkMode: localStorage.getItem('isDarkMode') === 'true',
       user: null,
       savedPets: [],
+      myPets: []
     };
   },
   methods: {
@@ -72,10 +90,21 @@ export default {
       this.savedPets = this.savedPets.filter((pet) => pet._id !== petId);
       localStorage.setItem('savedPets', JSON.stringify(this.savedPets));
     },
+    async loadMyPets() {
+      try {
+        const userId = localStorage.getItem('userId');
+        if (!userId) throw new Error('User ID not found');
+        const res = await api.get(`/pets/user/${userId}`);
+        this.myPets = res.data;
+      } catch (err) {
+        console.error('Error loading user pets:', err);
+      }
+    }
   },
   async created() {
     await this.fetchUserData();
     this.loadSavedPets();
+    await this.loadMyPets();
   },
 };
 </script>

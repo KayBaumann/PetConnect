@@ -50,6 +50,7 @@ export default {
           identifier: this.identifier,
           password: this.password
         });
+        localStorage.setItem('token', res.data.token);
         localStorage.setItem('isAuthenticated', 'true');
         localStorage.setItem('userId', res.data.userId);
         alert(this.$t('loginSuccess'));

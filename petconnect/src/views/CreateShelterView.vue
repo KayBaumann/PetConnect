@@ -11,6 +11,8 @@
       <button type="submit">{{ $t('form.submit') }}</button>
     </form>
   </div>
+  
+
 </template>
 
 <script>
