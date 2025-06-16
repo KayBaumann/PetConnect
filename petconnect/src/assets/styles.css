@@ -48,10 +48,6 @@ body.dark-mode a:hover {
   color: #528bff;
 }
 
-body.dark-mode button {
-  background-color: #1a73e8;
-}
-
 body.dark-mode button:hover {
   background-color: #0056b3;
 }
