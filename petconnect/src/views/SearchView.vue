@@ -1,6 +1,6 @@
 <!-- src/views/SearchView.vue -->
 <template>
-  <div class="search-view">
+  <div :class="['search-view', { 'dark-mode': isDarkMode }]">
     <h1>{{ $t('search') }}</h1>
     <form @submit.prevent="applyFilters" class="filter-form">
       <div class="form-group">
@@ -107,6 +107,9 @@ export default {
     uniqueLocations() {
       return [...new Set(this.pets.map((pet) => pet.location))];
     },
+    isDarkMode() {
+      return localStorage.getItem('isDarkMode') === 'true';
+    },
   },
   async created() {
     try {
@@ -138,8 +141,63 @@ export default {
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
-  background: var(--background-color, linear-gradient(135deg, #1a202c 0%, #2d3748 100%)); /* Dark mode background */
-  color: var(--text-color, #f7fafc); /* Default text color for dark mode */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Dark mode */
+.search-view.dark-mode {
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  color: #f7fafc;
+}
+
+/* Bright (light) mode */
+.search-view:not(.dark-mode) {
+  background: #fff;
+  color: #222;
+}
+
+/* Light mode overrides for cards and form */
+.search-view:not(.dark-mode) .pet-card {
+  background: #fff;
+  color: #222;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+}
+
+.search-view:not(.dark-mode) .filter-form {
+  background: #f7fafc;
+  color: #222;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.06);
+}
+
+.search-view:not(.dark-mode) input {
+  background: #fff;
+  color: #222;
+  border: 1px solid #cbd5e1;
+}
+
+.search-view:not(.dark-mode) input:focus {
+  outline: 2px solid #3182ce;
+  border-color: #3182ce;
+}
+
+.search-view:not(.dark-mode) label {
+  color: #2d3748;
+}
+
+.search-view:not(.dark-mode) .clear-button {
+  color: #4a5568;
+}
+
+.search-view:not(.dark-mode) .pet-image {
+  border: 2px solid #cbd5e1;
+}
+
+.search-view:not(.dark-mode) h3 {
+  color: #2563eb;
+}
+
+.search-view:not(.dark-mode) p {
+  color: #2d3748;
 }
 
 .filter-form {
