@@ -90,6 +90,25 @@
     "appreciation": "The animals really appreciate it",
     "backHome": "Back to Home"
   },
+  "about": {
+    "title": "About Us",
+    "description": "Meet our team",
+    "alice": {
+      "role": "Frontend Developer",
+      "description": "Responsible for user interfaces and UX.",
+      "bio": "Loves dogs, coffee, and clean code."
+    },
+    "bob": {
+      "role": "Backend Developer",
+      "description": "Specialist in APIs and databases.",
+      "bio": "Enjoys MongoDB, Express, and walks with his dog."
+    },
+    "charlie": {
+      "role": "Project Manager",
+      "description": "Coordinates the team and ensures smooth workflows.",
+      "bio": "Passionate about structured documentation and chocolate."
+    }
+  },
   "homeTitle": "Welcome to PetConnect",
   "homeIntro": "Find your new pet or offer one for adoption.",
   "searchButton": "Search",
@@ -114,25 +133,25 @@
   "Login": "Login",
   "Register": "Register",
   "createAdTitle": "Create Pet Advertisement",
-"createAdButton": "Create Advertisement",
-"shelter.addButton": "Add Shelter",
-"form": {
-  "name": "Name",
-  "type": "Type",
-  "breed": "Breed",
-  "age": "Age",
-  "gender": "Gender",
-  "male": "Male",
-  "location": "Location",
-  "vaccinated": "Vaccinated",
-  "description": "Description",
-  "imageUrl": "Image URL",
-  "imagePlaceholder": "Insert image link",
-  "address": "Address",
-  "owner": "Owner",
-  "animalCount": "Number of animals",
-  "email": "Email",
-  "imageUrlOptional": "Image URL (optional)",
-  "submit": "Submit"
-}
+  "createAdButton": "Create Advertisement",
+  "shelter.addButton": "Add Shelter",
+  "form": {
+    "name": "Name",
+    "type": "Type",
+    "breed": "Breed",
+    "age": "Age",
+    "gender": "Gender",
+    "male": "Male",
+    "location": "Location",
+    "vaccinated": "Vaccinated",
+    "description": "Description",
+    "imageUrl": "Image URL",
+    "imagePlaceholder": "Insert image link",
+    "address": "Address",
+    "owner": "Owner",
+    "animalCount": "Number of animals",
+    "email": "Email",
+    "imageUrlOptional": "Image URL (optional)",
+    "submit": "Submit"
+  }
 }

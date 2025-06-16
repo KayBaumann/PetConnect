@@ -29,35 +29,35 @@
 <script>
 export default {
   name: 'AboutView',
-  data() {
-    return {
-      students: [
+  computed: {
+    students() {
+      return [
         {
           id: 1,
           name: 'Alice Johnson',
-          role: 'about.alice.role',
-          description: 'about.alice.description',
-          bio: 'about.alice.bio',
+          role: this.$t('about.alice.role'),
+          description: this.$t('about.alice.description'),
+          bio: this.$t('about.alice.bio'),
           image: '/src/assets/flynn_background.jpg'
         },
         {
           id: 2,
           name: 'Bob Smith',
-          role: 'about.bob.role',
-          description: 'about.bob.description',
-          bio: 'about.bob.bio',
+          role: this.$t('about.bob.role'),
+          description: this.$t('about.bob.description'),
+          bio: this.$t('about.bob.bio'),
           image: '/src/assets/flynn_background.jpg'
         },
         {
           id: 3,
           name: 'Charlie Brown',
-          role: 'about.charlie.role',
-          description: 'about.charlie.description',
-          bio: 'about.charlie.bio',
+          role: this.$t('about.charlie.role'),
+          description: this.$t('about.charlie.description'),
+          bio: this.$t('about.charlie.bio'),
           image: '/src/assets/flynn_background.jpg'
         }
-      ]
-    };
+      ];
+    }
   }
 };
 </script>
@@ -142,6 +142,6 @@ export default {
   height: auto;
   border-radius: 8px;
   object-fit: cover;
-  border: 2px solid var(--image-border-color, #4a5568); /* Added border for better contrast */
+  border: 2px solid var(--image-border-color, #4a5568); 
 }
 </style>
