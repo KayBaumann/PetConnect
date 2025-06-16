@@ -63,9 +63,14 @@ body.dark-mode .advertisement-view,
 body.dark-mode .profile-view,
 body.dark-mode .donate-view,
 body.dark-mode .create-advertisement-container {
-  background-color: #121212;
-  color: #ffffff;
+  background-color: #1e1e1e;
+  color: #f7fafc;
 }
+
+body.dark-mode .create-advertisement-container label {
+  color: #e2e8f0;
+}
+
 
 body.dark-mode .advertisement-card,
 body.dark-mode .card {
@@ -498,6 +503,12 @@ body.dark-mode .create-advertisement {
 }
 
 /* --- ContactView --- */
+
+body.dark-mode .contact-view {
+  background-color: #121212;
+  color: #f7fafc;
+}
+
 .contact-view {
   display: flex;
   justify-content: center;
@@ -584,15 +595,17 @@ body.dark-mode .input-group textarea {
 .input-group textarea:not(:placeholder-shown) + label {
   top: -10px;
   left: 10px;
-  background: #ffffff;
   padding: 0 6px;
   font-size: 0.75rem;
   color: #2563eb;
+  background: inherit;
 }
 
-body.dark-mode .input-group label {
+body.dark-mode .input-group input:focus + label,
+body.dark-mode .input-group textarea:focus + label {
   background: #1e1e1e;
 }
+
 
 .checkbox-group {
   display: flex;
@@ -636,8 +649,13 @@ body.dark-mode .checkbox-group {
   display: flex;
   flex-direction: column;
   box-shadow: 0 8px 32px rgba(37,99,235,0.10), 0 1.5px 4px rgba(0,0,0,0.06);
-  transition: background 0.3s, color 0.3s;
+  
 }
+body.dark-mode .form-container {
+  background-color: #1e1e1e;
+  color: #f7fafc;
+}
+
 .form-container h1 {
   text-align: center;
   margin-bottom: 28px;
@@ -660,7 +678,7 @@ body.dark-mode .checkbox-group {
 .form-container input:focus {
   outline: 2px solid #2563eb;
   border-color: #2563eb;
-  background: #fff;
+  
 }
 .form-container button {
   padding: 13px;
@@ -1336,7 +1354,6 @@ p {
   }
 }
 
-<<<<<<< HEAD
 .adopt-button:hover {
   background: var(--button-hover-background, linear-gradient(to right, #285e61, #2c5282));
 }
@@ -1484,19 +1501,5 @@ p {
   .ad-title {
     font-size: 1.1rem;
   }
-=======
-.pet-card button {
-  margin-top: 10px;
-  padding: 6px 12px;
-  background-color: #ef4444;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
 
-.pet-card button:hover {
-  background-color: #dc2626;
->>>>>>> 3654298d4225b360064cecc29fb7e1f567cdcc1f
 }

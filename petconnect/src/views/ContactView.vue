@@ -1,31 +1,34 @@
 <template>
-  <div class="contact-view">
-    <div class="contact-form-wrapper">
-      <h1>{{ $t('contact') }}</h1>
-      <p>{{ $t('contactDescription') }}</p>
-
-      <form @submit.prevent="submitForm">
-        <div class="input-group">
-          <input id="name" type="text" v-model="form.name" placeholder=" " required />
-          <label for="name">{{ $t('yourName') }}</label>
-        </div>
-
-        <div class="input-group">
-          <input id="email" type="email" v-model="form.email" placeholder=" " required />
-          <label for="email">{{ $t('yourEmail') }}</label>
-        </div>
-
-        <div class="input-group">
-          <textarea id="message" v-model="form.message" rows="5" placeholder=" " required></textarea>
-          <label for="message">{{ $t('yourMessage') }}</label>
-        </div>
-
-        <button type="submit" class="contact-button">{{ $t('sendMessage') }}</button>
-        <p v-if="success" class="success-message">{{ $t('contactSuccess') }}</p>
-      </form>
-    </div>
+  <div class="form-container">
+    <h1>{{ $t('contact') }}</h1>
+    <form @submit.prevent="submitForm">
+      <input
+        type="text"
+        v-model="form.name"
+        :placeholder="$t('yourName')"
+        required
+      />
+      <input
+        type="email"
+        v-model="form.email"
+        :placeholder="$t('yourEmail')"
+        required
+      />
+      <div style="position: relative;">
+        <textarea
+          v-model="form.message"
+          :placeholder="$t('yourMessage')"
+          rows="5"
+          required
+          style="resize: none; min-height: 120px; min-width: 500px;"
+        ></textarea>
+      </div>
+      <button type="submit">{{ $t('sendMessage') }}</button>
+      <p v-if="success" class="success-message">{{ $t('contactSuccess') }}</p>
+    </form>
   </div>
 </template>
+
 <script>
 import emailjs from 'emailjs-com';
 
@@ -68,3 +71,11 @@ export default {
 };
 </script>
 
+<style scoped>
+.success-message {
+  color: #22c55e;
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: bold;
+}
+</style>
