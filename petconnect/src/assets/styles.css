@@ -1363,8 +1363,6 @@ p {
   cursor: not-allowed;
 }
 
-<<<<<<< HEAD
-
 .adopt-view {
   max-width: 600px;
   margin: 50px auto;
@@ -1409,8 +1407,7 @@ button {
 
 button:hover {
   background: linear-gradient(90deg, #34d399 0%, #2563eb 100%);
-  transform: scale(1.02);
-=======
+  transform: scale(1.02);}
 .save-button {
   padding: 10px 20px;
   background-color: #34d399;
@@ -1550,5 +1547,5 @@ button:hover {
     font-size: 1.1rem;
   }
 
->>>>>>> b1657a15748101a5936713c8c79044d795f767fe
+
 }
