@@ -16,14 +16,14 @@ router.post('/create-checkout-session', async (req, res) => {
         price_data: {
           currency: 'chf',
           product_data: {
-            name: 'Spende für PetConnect', // dieser Text ist frontendseitig sichtbar
+            name: 'Spende für PetConnect', 
           },
           unit_amount: amount * 100,
         },
         quantity: 1,
       }],
       success_url: 'http://localhost:5173/success',
-      cancel_url: 'http://localhost:5173/cancel',
+      cancel_url: 'http://localhost:5173/donate', 
     });
 
     res.status(200).json({
