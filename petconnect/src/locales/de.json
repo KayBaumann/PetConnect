@@ -102,32 +102,43 @@
     "description": "Beschreibung",
     "imageUrl": "Bild-URL",
     "imagePlaceholder": "Link zum Bild einfügen",
-
     "address": "Adresse",
     "owner": "Besitzer",
     "animalCount": "Anzahl Tiere",
     "email": "E-Mail",
     "imageUrlOptional": "Bild-URL (optional)",
-    "submit": "Absenden"
+    "submit": "Absenden",
+    "messageSent": "Nachricht erfolgreich gesendet!",
+    "messageSendError": "Senden fehlgeschlagen. Versuche es erneut.",
+    "notLoggedIn": "Bitte melde dich zuerst an.",
+    "fullname": "Dein vollständiger Name",
+    "messageToOwner": "Nachricht an den Besitzer",
+    "adSuccess": "Anzeige erfolgreich erstellt.",
+    "adFail": "Fehler beim Erstellen der Anzeige.",
+    "adDeleted": "Anzeige erfolgreich gelöscht.",
+    "adDeleteFailed": "Löschen fehlgeschlagen.",
+    "missingFields": "Bitte fülle alle Pflichtfelder aus.",
+    "shelterCreated": "Tierheim erfolgreich erstellt.",
+    "shelterFailed": "Tierheim konnte nicht erstellt werden."
   },
   "about": {
-  "title": "Über uns",
-  "description": "Lerne unser Team kennen",
-  "alice": {
-    "role": "Frontend Entwicklerin",
-    "description": "Verantwortlich für Benutzeroberflächen und UX.",
-    "bio": "Liebt Hunde, Kaffee und sauberen Code."
-  },
-  "bob": {
-    "role": "Backend Entwickler",
-    "description": "Spezialist für APIs und Datenbanken.",
-    "bio": "Mag MongoDB, Express und Spaziergänge mit seinem Hund."
-  },
-  "charlie": {
-    "role": "Projektleiter",
-    "description": "Koordiniert das Team und sorgt für einen reibungslosen Ablauf.",
-    "bio": "Hat eine Vorliebe für strukturierte Dokumentation und Schokolade."
-  }
+    "title": "Über uns",
+    "description": "Lerne unser Team kennen",
+    "alice": {
+      "role": "Frontend Entwicklerin",
+      "description": "Verantwortlich für Benutzeroberflächen und UX.",
+      "bio": "Liebt Hunde, Kaffee und sauberen Code."
+    },
+    "bob": {
+      "role": "Backend Entwickler",
+      "description": "Spezialist für APIs und Datenbanken.",
+      "bio": "Mag MongoDB, Express und Spaziergänge mit seinem Hund."
+    },
+    "charlie": {
+      "role": "Projektleiter",
+      "description": "Koordiniert das Team und sorgt für einen reibungslosen Ablauf.",
+      "bio": "Hat eine Vorliebe für strukturierte Dokumentation und Schokolade."
+    }
   },
   "homeTitle": "Willkommen bei PetConnect",
   "homeIntro": "Finde dein neues Haustier oder biete eines zur Adoption an.",
@@ -153,5 +164,7 @@
   "Login": "Einloggen",
   "Register": "Registrieren",
   "createAdButton": "Anzeige erstellen",
-  "shelter.addButton": "Tierheim hinzufügen"
+  "adoptThisPet": "Tier adoptieren",
+  "pleaseFillForm": "Bitte fülle das Formular aus, um den Besitzer zu kontaktieren.",
+  "sendAdoptionRequest": "Adoptionsanfrage senden"
 }
