@@ -33,10 +33,10 @@
         >
           <div class="advertisement-card">
             <img
-              v-if="ad.image"
-              :src="ad.image"
+              :src="ad.image || fallbackImage"
               :alt="ad.name"
               class="ad-image"
+              @error="handleImageError"
             />
             <div class="ad-content">
               <h3 class="ad-title">{{ ad.name }}</h3>
@@ -53,12 +53,14 @@
 
 <script>
 import api from '../api';
+import fallbackImage from '../assets/pets_placeholder.png';
 
 export default {
   name: 'HomeView',
   data() {
     return {
       ads: [],
+      fallbackImage
     };
   },
   computed: {
@@ -69,13 +71,19 @@ export default {
   async created() {
     try {
       const res = await api.get('/pets');
-      this.ads = res.data;
+      this.ads = res.data.map(ad => ({
+        ...ad,
+        image: ad.image?.trim() || null
+      }));
     } catch (err) {
       console.error('Error fetching pets in frontend:', err);
       alert(this.$t('errorLoadingPets'));
     }
   },
+  methods: {
+    handleImageError(event) {
+      event.target.src = this.fallbackImage;
+    }
+  }
 };
 </script>
-
-

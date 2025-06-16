@@ -3,9 +3,10 @@
     <div v-if="advertisement" class="advertisement-detail-card">
       <div class="advertisement-image-section">
         <img
-          :src="advertisement.image"
+          :src="advertisement.image || fallbackImage"
           :alt="advertisement.name"
           class="advertisement-image"
+          @error="handleImageError"
         />
         <div class="adoption-banner">
           🐾 {{ $t('advertisement.banner') }}
@@ -61,12 +62,14 @@
 
 <script>
 import api from '../api';
+import fallbackImage from '../assets/pets_placeholder.png';
 
 export default {
   name: 'AdvertisementView',
   data() {
     return {
-      advertisement: null
+      advertisement: null,
+      fallbackImage
     };
   },
   async created() {
@@ -77,12 +80,19 @@ export default {
         alert(this.$t('advertisement.not_found'));
         return;
       }
-      this.advertisement = res.data;
+
+      this.advertisement = {
+        ...res.data,
+        image: res.data.image?.trim() || null
+      };
     } catch (err) {
       alert(err.response?.data?.message || this.$t('advertisement.load_error'));
     }
   },
   methods: {
+    handleImageError(event) {
+      event.target.src = this.fallbackImage;
+    },
     saveToFavorites() {
       const savedPets = JSON.parse(localStorage.getItem('savedPets')) || [];
       if (!savedPets.some(pet => pet._id === this.advertisement._id)) {
