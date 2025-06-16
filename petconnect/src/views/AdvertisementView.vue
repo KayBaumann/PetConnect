@@ -3,9 +3,10 @@
     <div v-if="advertisement" class="advertisement-detail-card">
       <div class="advertisement-image-section">
         <img
-          :src="advertisement.image"
+          :src="advertisement.image || fallbackImage"
           :alt="advertisement.name"
           class="advertisement-image"
+          @error="handleImageError"
         />
         <div class="adoption-banner">
           🐾 {{ $t('advertisement.banner') }}
