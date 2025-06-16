@@ -1,5 +1,6 @@
 <template>
   <div :class="['success-message', { 'dark-mode': isDarkMode }]">
+  <div class="success-message">
     <h1>{{ $t('donation.thankYou') }}</h1>
     <p>{{ $t('donation.appreciation') }}</p>
     <router-link to="/" class="back-home-button">

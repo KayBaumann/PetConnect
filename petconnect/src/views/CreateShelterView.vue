@@ -1,5 +1,6 @@
 <template>
   <div :class="['form-container', { 'dark-mode': isDarkMode }]">
+  <div class="form-container">
     <h1>{{ $t('createShelterTitle') }}</h1>
     <form @submit.prevent="submitForm">
       <input v-model="form.name" :placeholder="$t('form.name')" required />

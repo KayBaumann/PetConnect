@@ -1,17 +1,20 @@
-<!-- src/views/SearchView.vue -->
 <template>
   <div :class="['search-view', { 'dark-mode': isDarkMode }]">
     <h1>{{ $t('search') }}</h1>
+  <div class="search-view">
+    <h1>{{ $t('search.title') }}</h1>
+
     <form @submit.prevent="applyFilters" class="filter-form">
+      <!-- Type Filter -->
       <div class="form-group">
-        <label for="type">{{ $t('type') }}</label>
+        <label for="type">{{ $t('search.type') }}</label>
         <div class="input-wrapper">
           <input
             type="text"
             id="type"
             v-model="filters.type"
             list="type-options"
-            placeholder="e.g., Dog, Cat"
+            :placeholder="$t('search.placeholderType')"
           />
           <button v-if="filters.type" type="button" class="clear-button" @click="filters.type = ''">x</button>
         </div>
@@ -19,15 +22,17 @@
           <option v-for="type in uniqueTypes" :key="type" :value="type" />
         </datalist>
       </div>
+
+      <!-- Breed Filter -->
       <div class="form-group">
-        <label for="breed">{{ $t('breed') }}</label>
+        <label for="breed">{{ $t('search.breed') }}</label>
         <div class="input-wrapper">
           <input
             type="text"
             id="breed"
             v-model="filters.breed"
             list="breed-options"
-            placeholder="e.g., Labrador"
+            :placeholder="$t('search.placeholderBreed')"
           />
           <button v-if="filters.breed" type="button" class="clear-button" @click="filters.breed = ''">x</button>
         </div>
@@ -35,15 +40,17 @@
           <option v-for="breed in uniqueBreeds" :key="breed" :value="breed" />
         </datalist>
       </div>
+
+      <!-- Location Filter -->
       <div class="form-group">
-        <label for="location">{{ $t('location') }}</label>
+        <label for="location">{{ $t('search.location') }}</label>
         <div class="input-wrapper">
           <input
             type="text"
             id="location"
             v-model="filters.location"
             list="location-options"
-            placeholder="e.g., New York"
+            :placeholder="$t('search.placeholderLocation')"
           />
           <button v-if="filters.location" type="button" class="clear-button" @click="filters.location = ''">x</button>
         </div>
@@ -51,18 +58,27 @@
           <option v-for="location in uniqueLocations" :key="location" :value="location" />
         </datalist>
       </div>
+
+      <!-- Age Filter -->
       <div class="form-group">
-        <label for="age">{{ $t('age') }}</label>
+        <label for="age">{{ $t('search.age') }}</label>
         <div class="input-wrapper">
-          <input type="number" id="age" v-model="filters.age" placeholder="e.g., 2" />
+          <input
+            type="number"
+            id="age"
+            v-model="filters.age"
+            :placeholder="$t('search.placeholderAge')"
+          />
           <button v-if="filters.age" type="button" class="clear-button" @click="filters.age = null">x</button>
         </div>
       </div>
-      <button type="submit" class="filter-button">{{ $t('applyFilters') }}</button>
+
+      <button type="submit" class="filter-button">{{ $t('search.applyFilters') }}</button>
     </form>
 
-    <div class="results">  
-      <p v-if="filteredPets.length === 0">{{ $t('noResults') }}</p>
+    <!-- Results -->
+    <div class="results">
+      <p v-if="filteredPets.length === 0">{{ $t('search.noResults') }}</p>
       <router-link
         v-for="pet in filteredPets"
         :key="pet._id"
@@ -71,10 +87,10 @@
       >
         <img :src="pet.image" :alt="pet.name" class="pet-image" />
         <h3>{{ pet.name }}</h3>
-        <p>{{ $t('type') }}: {{ pet.type }}</p>
-        <p>{{ $t('breed') }}: {{ pet.breed }}</p>
-        <p>{{ $t('age') }}: {{ pet.age }} {{ $t('years') }}</p>
-        <p>{{ $t('location') }}: {{ pet.location }}</p>
+        <p>{{ $t('search.type') }}: {{ pet.type }}</p>
+        <p>{{ $t('search.breed') }}: {{ pet.breed }}</p>
+        <p>{{ $t('search.age') }}: {{ pet.age }} {{ $t('search.years') }}</p>
+        <p>{{ $t('search.location') }}: {{ pet.location }}</p>
       </router-link>
     </div>
   </div>
@@ -115,19 +131,19 @@ export default {
     try {
       const res = await api.get('/pets');
       this.pets = res.data;
-      this.filteredPets = this.pets; // Initialize with all pets
+      this.filteredPets = res.data;
     } catch (err) {
       console.error('Error fetching pets:', err);
-      alert(this.$t('fetchError'));
+      alert(this.$t('error.fetchPets'));
     }
   },
   methods: {
     applyFilters() {
       this.filteredPets = this.pets.filter((pet) => {
         return (
-          (!this.filters.type || pet.type.toLowerCase().includes(this.filters.type.toLowerCase())) &&
-          (!this.filters.breed || pet.breed.toLowerCase().includes(this.filters.breed.toLowerCase())) &&
-          (!this.filters.location || pet.location.toLowerCase().includes(this.filters.location.toLowerCase())) &&
+          (!this.filters.type || pet.type?.toLowerCase().includes(this.filters.type.toLowerCase())) &&
+          (!this.filters.breed || pet.breed?.toLowerCase().includes(this.filters.breed.toLowerCase())) &&
+          (!this.filters.location || pet.location?.toLowerCase().includes(this.filters.location.toLowerCase())) &&
           (!this.filters.age || pet.age === this.filters.age)
         );
       });
