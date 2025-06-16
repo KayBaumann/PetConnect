@@ -1,5 +1,5 @@
 <template>
-  <div class="about-view">
+  <div :class="['about-view', { 'dark-mode': isDarkMode }]">
     <div class="about-header">
       <h1>{{ $t('about.title') }}</h1>
       <p>{{ $t('about.description') }}</p>
@@ -29,35 +29,39 @@
 <script>
 export default {
   name: 'AboutView',
+  computed: {
+    students() {
+      return [
   data() {
     return {
+      isDarkMode: localStorage.getItem('isDarkMode') === 'true',
       students: [
         {
           id: 1,
           name: 'Alice Johnson',
-          role: 'about.alice.role',
-          description: 'about.alice.description',
-          bio: 'about.alice.bio',
-          image: '/src/assets/flynn_background.jpg'
+          role: this.$t('about.alice.role'),
+          description: this.$t('about.alice.description'),
+          bio: this.$t('about.alice.bio'),
+          image: '/src/assets/frontend_Guy.png'
         },
         {
           id: 2,
           name: 'Bob Smith',
-          role: 'about.bob.role',
-          description: 'about.bob.description',
-          bio: 'about.bob.bio',
-          image: '/src/assets/flynn_background.jpg'
+          role: this.$t('about.bob.role'),
+          description: this.$t('about.bob.description'),
+          bio: this.$t('about.bob.bio'),
+          image: '/src/assets/Backend_Guy.png'
         },
         {
           id: 3,
           name: 'Charlie Brown',
-          role: 'about.charlie.role',
-          description: 'about.charlie.description',
-          bio: 'about.charlie.bio',
-          image: '/src/assets/flynn_background.jpg'
+          role: this.$t('about.charlie.role'),
+          description: this.$t('about.charlie.description'),
+          bio: this.$t('about.charlie.bio'),
+          image: '/src/assets/Designer_Guy.png'
         }
-      ]
-    };
+      ];
+    }
   }
 };
 </script>
@@ -68,8 +72,10 @@ export default {
   flex-direction: column;
   align-items: center;
   padding: 40px 20px;
-  background-color: var(--background-color, #1a202c); /* Dark mode background */
-  color: var(--text-color, #f7fafc); /* Default text color for dark mode */
+  background-color: #f3f4f6;
+  color: #1a202c;
+  min-height: 100vh;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .about-header {
@@ -81,29 +87,31 @@ export default {
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 15px;
-  color: var(--header-color, #63b3ed); /* Adjusted header color for dark mode */
+  color: #2563eb;
 }
 
 .about-header p {
   font-size: 1.2rem;
-  color: var(--header-text-color, #a0aec0); /* Adjusted text color */
+  color: #374151;
 }
 
 .students-section {
   width: 100%;
+  max-width: 1100px;
 }
 
 .student-section {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 32px;
   margin-bottom: 40px;
-  padding: 20px;
-  background: var(--card-background, rgba(45, 55, 72, 0.95)); /* Darker card background */
-  color: var(--card-text-color, #edf2f7); /* Text color for card */
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Adjusted shadow for dark mode */
+  padding: 28px 20px;
+  background: #fff;
+  color: #1a202c;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: background 0.3s, color 0.3s;
 }
 
 .student-section.reverse {
@@ -119,12 +127,12 @@ export default {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 10px;
-  color: var(--student-name-color, #63b3ed); /* Adjusted student name color */
+  color: #2563eb;
 }
 
 .student-text p {
   font-size: 1.1rem;
-  color: var(--student-text-color, #e2e8f0); /* Adjusted text color */
+  color: #374151;
   margin-bottom: 10px;
   line-height: 1.6;
 }
@@ -140,8 +148,42 @@ export default {
   width: 100%;
   max-width: 300px;
   height: auto;
-  border-radius: 8px;
+  border-radius: 12px;
   object-fit: cover;
-  border: 2px solid var(--image-border-color, #4a5568); /* Added border for better contrast */
+  border: 2px solid var(--image-border-color, #4a5568); 
+  border: 2px solid #cbd5e1;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+/* Dark mode styles */
+.about-view.dark-mode {
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  color: #f7fafc;
+}
+
+.about-view.dark-mode .about-header h1 {
+  color: #63b3ed;
+}
+
+.about-view.dark-mode .about-header p {
+  color: #a0aec0;
+}
+
+.about-view.dark-mode .student-section {
+  background: rgba(45, 55, 72, 0.97);
+  color: #f7fafc;
+  box-shadow: 0 4px 16px rgba(99,179,237,0.10);
+}
+
+.about-view.dark-mode .student-text h2 {
+  color: #63b3ed;
+}
+
+.about-view.dark-mode .student-text p {
+  color: #e2e8f0;
+}
+
+.about-view.dark-mode .student-image {
+  border: 2px solid #4a5568;
 }
 </style>

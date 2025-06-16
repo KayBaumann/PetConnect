@@ -114,16 +114,18 @@ export default {
   padding: 20px;
   text-align: center;
   transition: background-color 0.3s, color 0.3s;
+  background: #f3f4f6;
+  color: #1a202c;
 }
 
 .profile-view.dark-mode {
-  background-color: #121212;
-  color: #ffffff;
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  color: #f7fafc;
 }
 
 .profile-view:not(.dark-mode) {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: #f3f4f6;
+  color: #1a202c;
 }
 
 button {
@@ -155,12 +157,13 @@ button:hover {
 }
 
 .pet-card {
-  background: white;
+  background: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 10px;
   text-align: center;
   width: 200px;
+  color: #1a202c;
 }
 
 .pet-image {
@@ -169,4 +172,41 @@ button:hover {
   object-fit: cover;
   border-radius: 8px;
 }
+<<<<<<< HEAD
 </style>
+=======
+
+button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #1d4ed8;
+}
+
+/* Dark mode for pet cards */
+.profile-view.dark-mode .pet-card {
+  background: rgba(45, 55, 72, 0.97);
+  color: #f7fafc;
+  box-shadow: 0 4px 16px rgba(99,179,237,0.10);
+}
+
+.profile-view.dark-mode .pet-card h3 {
+  color: #63b3ed;
+}
+
+.profile-view.dark-mode .pet-card p {
+  color: #e2e8f0;
+}
+
+.profile-view.dark-mode .pet-image {
+  border: 2px solid #4a5568;
+}
+</style>
+>>>>>>> 500e87337a1c5ce86ed4e67ce27a617e948750d3

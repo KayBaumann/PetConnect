@@ -1,5 +1,5 @@
 <template>
-  <div class="contact-view">
+  <div :class="['contact-view', { 'dark-mode': isDarkMode }]">
     <div class="contact-header">
       <h1>{{ $t('contact') }}</h1>
       <p>{{ $t('contactDescription') }}</p>
@@ -35,7 +35,8 @@ export default {
         email: '',
         message: ''
       },
-      success: false
+      success: false,
+      isDarkMode: localStorage.getItem('isDarkMode') === 'true'
     };
   },
   methods: {
@@ -73,6 +74,7 @@ export default {
   padding: 40px 20px;
   background-color: #f3f4f6;
   color: #1f2937;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .contact-header {
@@ -152,5 +154,56 @@ textarea:focus {
   color: #22c55e;
   margin-top: 10px;
   text-align: center;
+}
+
+/* Dark mode styles */
+.contact-view.dark-mode {
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  color: #f7fafc;
+}
+
+.contact-view.dark-mode .contact-header h1 {
+  color: #63b3ed;
+}
+
+.contact-view.dark-mode .contact-header p {
+  color: #a0aec0;
+}
+
+.contact-view.dark-mode .contact-form {
+  background: rgba(45, 55, 72, 0.97);
+  color: #f7fafc;
+  box-shadow: 0 4px 16px rgba(99,179,237,0.10);
+}
+
+.contact-view.dark-mode label {
+  color: #f7fafc;
+}
+
+.contact-view.dark-mode input,
+.contact-view.dark-mode textarea {
+  background-color: #232946;
+  color: #f7fafc;
+  border: 1.5px solid #4a5568;
+}
+
+.contact-view.dark-mode input:focus,
+.contact-view.dark-mode textarea:focus {
+  outline: 2px solid #63b3ed;
+  border-color: #63b3ed;
+  background-color: #1a202c;
+}
+
+.contact-view.dark-mode .contact-button {
+  background-color: #374151;
+  color: #f7fafc;
+}
+
+.contact-view.dark-mode .contact-button:hover {
+  background-color: #2563eb;
+}
+
+.contact-view.dark-mode .success-message {
+  color: #22c55e;
 }
 </style>
