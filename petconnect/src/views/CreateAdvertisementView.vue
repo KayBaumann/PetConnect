@@ -1,5 +1,5 @@
 <template>
-  <div class="create-advertisement-container">
+  <div :class="['create-advertisement-container', { 'dark-mode': isDarkMode }]">
     <div class="create-advertisement">
       <h2>{{ $t('createAdTitle') }}</h2>
       <form @submit.prevent="createAdvertisement">
@@ -66,6 +66,7 @@ export default {
         description: '',
         image: '',
       },
+      isDarkMode: localStorage.getItem('isDarkMode') === 'true'
     };
   },
   methods: {
@@ -95,96 +96,157 @@ export default {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #e5e7eb; /* Slightly darker gray for better contrast */
+  background: linear-gradient(135deg, #f3f4f6 0%, #e0e7ef 100%);
   padding: 20px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .create-advertisement {
   width: 100%;
-  max-width: 450px; /* Adjusted width for better fit */
-  background: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  max-width: 450px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 8px 32px rgba(37,99,235,0.10), 0 1.5px 4px rgba(0,0,0,0.06);
+  padding: 28px 20px;
+  color: #1f2937;
+  transition: background 0.3s, color 0.3s;
 }
 
 .create-advertisement h2 {
   text-align: center;
   margin-bottom: 20px;
-  font-size: 1.8rem;
-  color: #111827; /* Darker text color for better readability */
+  font-size: 2rem;
+  color: #2563eb;
+  font-weight: 800;
+  letter-spacing: 0.01em;
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 18px;
 }
 
 label {
   display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-  color: #1f2937; /* Darker gray for labels */
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #1f2937;
+  letter-spacing: 0.01em;
 }
 
 input,
 textarea,
 select {
   width: 100%;
-  padding: 7.5px;
-  border: 1px solid #d1d5db;
-  border-radius: 4px;
+  padding: 10px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 6px;
   font-size: 1rem;
-  background-color: #f9fafb; /* Light background */
-  color: #111827; /* Darker text color for inputs */
+  background-color: #f9fafb;
+  color: #111827;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
 input:focus,
 textarea:focus,
 select:focus {
-  outline: 2px solid #2563eb; /* Blue focus outline for accessibility */
+  outline: 2px solid #2563eb;
   border-color: #2563eb;
+  background-color: #fff;
 }
 
 textarea {
   resize: vertical;
 }
 
-button {
+button,
+.cta-button {
   width: 100%;
-  padding: 12px;
-  background-color: #2563eb; /* Vibrant blue for buttons */
-  color: #ffffff;
+  padding: 13px;
+  background: linear-gradient(90deg, #2563eb 0%, #34d399 100%);
+  color: #fff;
   border: none;
-  border-radius: 4px;
-  font-size: 1rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+  margin-top: 10px;
+  transition: background 0.3s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.08);
 }
 
-button:hover {
-  background-color: #1d4ed8; /* Slightly darker blue on hover */
-  transform: scale(1.02);
+button:hover,
+.cta-button:hover {
+  background: linear-gradient(90deg, #34d399 0%, #2563eb 100%);
+  transform: scale(1.03);
 }
 
-button:focus {
-  outline: 2px solid #1d4ed8; /* Focus outline for buttons */
+button:focus,
+.cta-button:focus {
+  outline: 2px solid #2563eb;
+}
+
+/* Dark mode styles */
+.create-advertisement-container.dark-mode {
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  color: #f7fafc;
+}
+
+.create-advertisement-container.dark-mode .create-advertisement {
+  background: rgba(45, 55, 72, 0.97);
+  color: #f7fafc;
+  box-shadow: 0 8px 32px rgba(99,179,237,0.13), 0 1.5px 4px rgba(0,0,0,0.10);
+}
+
+.create-advertisement-container.dark-mode .create-advertisement h2 {
+  color: #63b3ed;
+}
+
+.create-advertisement-container.dark-mode label {
+  color: #f7fafc;
+}
+
+.create-advertisement-container.dark-mode input,
+.create-advertisement-container.dark-mode textarea,
+.create-advertisement-container.dark-mode select {
+  background-color: #232946;
+  color: #f7fafc;
+  border: 1.5px solid #4a5568;
+}
+
+.create-advertisement-container.dark-mode input:focus,
+.create-advertisement-container.dark-mode textarea:focus,
+.create-advertisement-container.dark-mode select:focus {
+  outline: 2px solid #63b3ed;
+  border-color: #63b3ed;
+  background-color: #1a202c;
+}
+
+.create-advertisement-container.dark-mode button,
+.create-advertisement-container.dark-mode .cta-button {
+  background: linear-gradient(90deg, #63b3ed 0%, #34d399 100%);
+  color: #232946;
+}
+
+.create-advertisement-container.dark-mode button:hover,
+.create-advertisement-container.dark-mode .cta-button:hover {
+  background: linear-gradient(90deg, #34d399 0%, #63b3ed 100%);
 }
 
 /* Responsive Design */
 @media (max-width: 600px) {
   .create-advertisement {
-    max-width: 90%; /* Adjust width for smaller screens */
+    max-width: 95%;
     padding: 15px;
   }
 
   .create-advertisement h2 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 
-  button {
+  button,
+  .cta-button {
     padding: 10px;
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 }
 </style>
