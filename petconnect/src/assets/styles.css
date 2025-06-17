@@ -1054,3 +1054,27 @@
          font-size: 1.1rem;
     }
 }
+
+.edit-pet-view {
+  max-width: 600px;
+  margin: auto;
+}
+
+label {
+  display: block;
+  margin: 10px 0;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  font-weight: bold;
+  cursor: pointer;
+}

@@ -1,3 +1,4 @@
+// AdvertisementView.vue
 <template>
   <div class="advertisement-view">
     <div v-if="advertisement" class="advertisement-detail-card">
@@ -72,24 +73,27 @@ export default {
       fallbackImage
     };
   },
-  async created() {
-    const id = this.$route.params.id;
-    try {
-      const res = await api.get(`/pets/${id}`);
-      if (!res.data) {
-        alert(this.$t('advertisement.not_found'));
-        return;
+  watch: {
+    '$route.params.id': {
+      immediate: true,
+      handler() {
+        this.fetchAdvertisement();
       }
-
-      this.advertisement = {
-        ...res.data,
-        image: res.data.image?.trim() || null
-      };
-    } catch (err) {
-      alert(err.response?.data?.message || this.$t('advertisement.load_error'));
     }
   },
   methods: {
+    async fetchAdvertisement() {
+      const id = this.$route.params.id;
+      try {
+        const res = await api.get(`/pets/${id}`);
+        this.advertisement = {
+          ...res.data,
+          image: res.data.image?.trim() || null
+        };
+      } catch (err) {
+        alert(err.response?.data?.message || this.$t('advertisement.load_error'));
+      }
+    },
     handleImageError(event) {
       event.target.src = this.fallbackImage;
     },

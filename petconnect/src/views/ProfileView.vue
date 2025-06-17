@@ -57,9 +57,19 @@
             <p>{{ pet.location }}</p>
           </router-link>
 
-          <button @click="deleteMyPet(pet._id)">
-            {{ $t('delete') }}
-          </button>
+          <div class="pet-actions">
+            <router-link
+              :to="{ name: 'edit-pet', params: { id: pet._id } }"
+              class="edit-btn"
+            >
+              ✏️ {{ $t('edit') }}
+            </router-link>
+
+            <button @click="deleteMyPet(pet._id)" class="delete-btn">
+              🗑️ {{ $t('delete') }}
+            </button>
+          </div>
+
         </div>
       </div>
     </div>
