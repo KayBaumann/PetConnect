@@ -122,6 +122,7 @@
     "age": "Età",
     "gender": "Genere",
     "male": "Maschio",
+    "female": "Femmina",
     "location": "Posizione",
     "vaccinated": "Vaccinato",
     "description": "Descrizione",
@@ -135,7 +136,13 @@
     "submit": "Invia",
     "adSuccess": "L’annuncio è stato creato con successo!",
     "shelterCreated": "Il rifugio è stato creato con successo!",
-    "adDeleted": "L’annuncio è stato eliminato con successo!"
+    "adDeleted": "L’annuncio è stato eliminato con successo!",
+    "fullname": "Nome completo",
+    "messageToOwner": "Messaggio al proprietario",
+    "notLoggedIn": "Per favore, accedi prima.",
+    "messageSent": "Messaggio inviato con successo!",
+    "messageSendError": "Invio fallito. Riprova.",
+    "imageUrlPlaceholder": "Inserisci il link dell'immagine"
   },
   "confirmDelete": "Sei sicuro di voler eliminare questo annuncio?",
   "about": {
@@ -168,5 +175,19 @@
     "vaccinated": "Vaccinato",
     "adopted": "Adottato",
     "banner": "In adozione"
+  },
+  "adoptThisPet": "Adotta questo animale",
+  "pleaseFillForm": "Compila il modulo per contattare il proprietario.",
+  "sendAdoptionRequest": "Invia richiesta di adozione",
+  "nav": {
+    "search": "Cerca",
+    "shelters": "Rifugi",
+    "about": "Chi siamo"
+  },
+  "login": {
+    "title": "Accesso",
+    "username": "Nome utente",
+    "password": "Password",
+    "button": "Accedi"
   }
 }

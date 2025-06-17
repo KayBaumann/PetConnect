@@ -40,9 +40,9 @@
             />
             <div class="ad-content">
               <h3 class="ad-title">{{ ad.name }}</h3>
-              <p class="ad-description">{{ $t('species') }}: {{ ad.type }}</p>
-              <p class="ad-description">{{ $t('age') }}: {{ ad.age }} {{ $t('years') }}</p>
-              <p class="ad-description">{{ $t('adopted') }}: {{ ad.adopted ? $t('yes') : $t('no') }}</p>
+              <p class="ad-description">{{ $t('advertisement.type') }}: {{ ad.type }}</p>
+              <p class="ad-description">{{ $t('advertisement.age') }}: {{ ad.age }} {{ $t('advertisement.years') }}</p>
+              <p class="ad-description">{{ $t('advertisement.adopted') }}: {{ ad.adopted ? $t('yes') : $t('no') }}</p>
             </div>
           </div>                        
         </router-link>

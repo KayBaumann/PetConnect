@@ -122,6 +122,7 @@
     "age": "Âge",
     "gender": "Sexe",
     "male": "Mâle",
+    "female": "Femelle",
     "location": "Lieu",
     "vaccinated": "Vacciné",
     "description": "Description",
@@ -135,7 +136,13 @@
     "submit": "Soumettre",
     "adSuccess": "L’annonce a été créée avec succès !",
     "shelterCreated": "Le refuge a été créé avec succès !",
-    "adDeleted": "L’annonce a été supprimée avec succès !"
+    "adDeleted": "L’annonce a été supprimée avec succès !",
+    "fullname": "Nom complet",
+    "messageToOwner": "Message au propriétaire",
+    "notLoggedIn": "Veuillez d'abord vous connecter.",
+    "messageSent": "Message envoyé avec succès !",
+    "messageSendError": "Échec de l'envoi. Veuillez réessayer.",
+    "imageUrlPlaceholder": "Insérer le lien de l'image"
   },
   "confirmDelete": "Êtes-vous sûr de vouloir supprimer cette annonce ?",
   "about": {
@@ -168,5 +175,19 @@
     "vaccinated": "Vacciné",
     "adopted": "Adopté",
     "banner": "À l’adoption"
+  },
+  "adoptThisPet": "Adopter cet animal",
+  "pleaseFillForm": "Veuillez remplir le formulaire pour contacter le propriétaire.",
+  "sendAdoptionRequest": "Envoyer la demande d'adoption",
+  "nav": {
+    "search": "Rechercher",
+    "shelters": "Refuges",
+    "about": "À propos"
+  },
+  "login": {
+    "title": "Connexion",
+    "username": "Nom d'utilisateur",
+    "password": "Mot de passe",
+    "button": "Se connecter"
   }
 }

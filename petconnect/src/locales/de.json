@@ -97,6 +97,7 @@
     "age": "Alter",
     "gender": "Geschlecht",
     "male": "Männlich",
+    "female": "Weiblich",
     "location": "Ort",
     "vaccinated": "Geimpft",
     "description": "Beschreibung",
@@ -119,7 +120,9 @@
     "adDeleteFailed": "Löschen fehlgeschlagen.",
     "missingFields": "Bitte fülle alle Pflichtfelder aus.",
     "shelterCreated": "Tierheim erfolgreich erstellt.",
-    "shelterFailed": "Tierheim konnte nicht erstellt werden."
+    "shelterFailed": "Tierheim konnte nicht erstellt werden.",
+    "email": "E-Mail",
+    "imageUrlPlaceholder": "Link zum Bild einfügen"
   },
   "confirmDelete": "Bist du sicher, dass du diese Anzeige löschen möchtest?",
   "about": {
@@ -179,5 +182,16 @@
   "createAdButton": "Anzeige erstellen",
   "adoptThisPet": "Tier adoptieren",
   "pleaseFillForm": "Bitte fülle das Formular aus, um den Besitzer zu kontaktieren.",
-  "sendAdoptionRequest": "Adoptionsanfrage senden"
+  "sendAdoptionRequest": "Adoptionsanfrage senden",
+  "nav": {
+    "search": "Suchen",
+    "shelters": "Tierheime",
+    "about": "Über uns"
+  },
+  "login": {
+    "title": "Einloggen",
+    "username": "Benutzername",
+    "password": "Passwort",
+    "button": "Anmelden"
+  }
 }

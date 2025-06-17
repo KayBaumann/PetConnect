@@ -141,6 +141,7 @@
     "age": "Age",
     "gender": "Gender",
     "male": "Male",
+    "female": "Female",
     "location": "Location",
     "vaccinated": "Vaccinated",
     "description": "Description",
@@ -154,7 +155,13 @@
     "submit": "Submit",
     "adSuccess": "The advertisement was successfully created!",
     "shelterCreated": "The shelter was successfully created!",
-    "adDeleted": "The advertisement was successfully deleted!"
+    "adDeleted": "The advertisement was successfully deleted!",
+    "fullname": "Full name",
+    "messageToOwner": "Message to the owner",
+    "notLoggedIn": "Please log in first.",
+    "messageSent": "Message sent successfully!",
+    "messageSendError": "Sending failed. Please try again.",
+    "imageUrlPlaceholder": "Insert image link"
   },
   "confirmDelete": "Are you sure you want to delete this advertisement?",
   "advertisement": {
@@ -168,5 +175,19 @@
     "vaccinated": "Vaccinated",
     "adopted": "Adopted",
     "banner": "For Adoption"
+  },
+  "adoptThisPet": "Adopt this pet",
+  "pleaseFillForm": "Please fill out the form to contact the owner.",
+  "sendAdoptionRequest": "Send adoption request",
+  "nav": {
+    "search": "Search",
+    "shelters": "Shelters",
+    "about": "About"
+  },
+  "login": {
+    "title": "Login",
+    "username": "Username",
+    "password": "Password",
+    "button": "Sign in"
   }
 }
