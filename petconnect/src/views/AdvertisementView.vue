@@ -70,7 +70,7 @@ export default {
   data() {
     return {
       advertisement: null,
-      fallbackImage
+      fallbackImage,
     };
   },
   watch: {
