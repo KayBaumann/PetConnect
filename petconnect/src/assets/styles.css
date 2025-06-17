@@ -81,7 +81,7 @@
      cursor: pointer;
      transition: background 0.2s, transform 0.2s;
      margin-top: 10px;
-     text-align: center;
+     text-align: center;    
 }
  button:hover, .form-container button:hover, .save-button:hover, .adopt-button:hover, .cta-button:hover, .back-home-button:hover, .filter-button:hover {
      background: #1d4ed8;
@@ -290,7 +290,6 @@
      grid-template-columns: 1fr 1fr;
      gap: 15px 30px;
      font-size: 1.1rem;
-     color: #374151;
      transition: color 0.3s;
 }
  body.dark-mode .info-grid {
