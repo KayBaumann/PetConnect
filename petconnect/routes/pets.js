@@ -109,14 +109,35 @@ router.post('/', async (req, res) => {
 
 
 
-// Update a pet
 router.put('/:id', async (req, res) => {
   try {
-    const { name, type, breed, age, adopted, image, description } = req.body;
+    const {
+      name,
+      type,
+      breed,
+      age,
+      adopted,
+      image,
+      description,
+      gender,
+      location,
+      vaccinated
+    } = req.body;
 
     const updatedPet = await Pet.findByIdAndUpdate(
       req.params.id,
-      { name, type, breed, age, adopted, image, description },
+      {
+        name,
+        type,
+        breed,
+        age,
+        adopted,
+        image,
+        description,
+        gender,
+        location,
+        vaccinated
+      },
       { new: true, runValidators: true }
     );
 
@@ -126,6 +147,7 @@ router.put('/:id', async (req, res) => {
     res.status(500).json({ message: res.__('errors.server'), error: err.message });
   }
 });
+
 
 // Delete a pet
 router.delete('/:id', async (req, res) => {
