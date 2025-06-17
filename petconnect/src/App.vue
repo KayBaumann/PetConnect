@@ -4,9 +4,9 @@
       <nav>
         <ul>
           <li><router-link to="/">{{ $t('home') }}</router-link></li>
-          <li><router-link to="/search">{{ $t('search') }}</router-link></li>
-          <li><router-link to="/shelters">{{ $t('shelters') }}</router-link></li>
-          <li><router-link to="/about">{{ $t('about') }}</router-link></li>
+          <li><router-link to="/search">{{ $t('nav.search') }}</router-link></li>
+          <li><router-link to="/shelters">{{ $t('nav.shelters') }}</router-link></li>
+          <li><router-link to="/about">{{ $t('nav.about') }}</router-link></li>
           <li><router-link to="/donate">{{ $t('donate') }}</router-link></li>
           <li><router-link to="/contact">{{ $t('contact') }}</router-link></li>
 
