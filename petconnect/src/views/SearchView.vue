@@ -93,7 +93,7 @@
         <h3>{{ pet.name }}</h3>
         <p>{{ $t('search.type') }}: {{ pet.type }}</p>
         <p>{{ $t('search.breed') }}: {{ pet.breed }}</p>
-        <p>{{ $t('search.age') }}: {{ pet.age }} {{ $t('search.years') }}</p>
+        <p>{{ $t('search.age') }}: {{ pet.age }} {{ $t('advertisement.years') }}</p>
         <p>{{ $t('search.location') }}: {{ pet.location }}</p>
       </router-link>
     </div>
