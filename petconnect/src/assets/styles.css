@@ -710,18 +710,28 @@
      border-color: var(--input-focus-color, #63b3ed);
 }
  .clear-button {
-     position: absolute;
-     top: 50%;
-     right: 10px;
-     transform: translateY(-50%);
-     background: none;
-     border: none;
-     color: var(--clear-button-color, #a0aec0);
-     font-size: 1rem;
-     cursor: pointer;
+    font-size: 1.3rem;
+    font-weight: bold;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #a0aec0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
 }
- .clear-button:hover {
-     color: #2563eb;
+.clear-button:hover {
+    background: #e2e8f0;
+    color: #2563eb;
+}
+body.dark-mode .clear-button:hover {
+    background: #222c3a;
+    color: #63b3ed;
 }
  .filter-button {
      padding: 12px 20px;
@@ -1076,4 +1086,73 @@ button {
   padding: 8px 12px;
   font-weight: bold;
   cursor: pointer;
+}
+
+/* Verbesserte Darstellung der Filter-Eingabefelder */
+.filter-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 24px;
+  border-radius: 10px;
+  background-color: #f3f4f6;
+}
+
+/* Optional dunkler Modus */
+body.dark-mode .filter-form {
+  background-color: #1f2937;
+}
+
+/* Einheitliche Felder */
+.filter-form input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  background: #fff;
+  color: #1a202c;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  transition: border 0.2s ease;
+}
+
+body.dark-mode .filter-form input {
+  background: #2d3748;
+  color: #f7fafc;
+  border: 1px solid #4a5568;
+}
+
+/* Placeholder-Farbe anpassen */
+.filter-form input::placeholder {
+  color: #a0aec0;
+}
+
+/* Labels harmonisieren */
+.filter-form label {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+/* Eingabefelder zusammen mit Clear-Button */
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper input {
+  flex: 1;
+}
+
+.input-wrapper .clear-button {
+  margin-left: -32px;
+  background: transparent;
+  color: #718096;
+  font-size: 1.2rem;
+  border: none;
+  cursor: pointer;
+}
+
+.input-wrapper .clear-button:hover {
+  color: #2563eb;
+  background: transparent;
 }
