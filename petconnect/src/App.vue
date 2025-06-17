@@ -10,40 +10,35 @@
           <li><router-link to="/donate">{{ $t('donate') }}</router-link></li>
           <li><router-link to="/contact">{{ $t('contact') }}</router-link></li>
 
-          <li
-            v-if="isAuthenticated"
-            class="dropdown"
-            @mouseenter="showProfileDropdown"
-            @mouseleave="hideProfileDropdown"
-          >
+          <!-- Profile Dropdown -->
+          <li v-if="isAuthenticated" class="dropdown">
             <div class="dropdown-trigger">
               <button>
                 <img src="/src/assets/profile-icon-white.png" alt="Profile" class="icon-size" />
               </button>
-              <ul class="dropdown-menu" v-if="isProfileDropdownVisible">
+              <ul class="dropdown-menu">
                 <li><router-link to="/profile">{{ $t('profile') }}</router-link></li>
+
                 <li><router-link to="/create-advertisement">{{ $t('createAdvertisement') }}</router-link></li>
                 <li><button @click="logout">{{ $t('Logout') }}</button></li>
               </ul>
             </div>
           </li>
 
-          <li
-            class="dropdown"
-            @mouseenter="showDropdown"
-            @mouseleave="hideDropdown"
-          >
+          <!-- Language Dropdown -->
+          <li class="dropdown">
             <div class="dropdown-trigger">
               <button>
                 <img :src="currentLanguageIcon" :alt="currentLanguageAlt" class="icon-size" />
               </button>
-              <ul class="dropdown-menu" v-if="isDropdownVisible">
+              <ul class="dropdown-menu">
                 <li
                   v-for="(icon, lang) in languageIcons"
                   :key="lang"
                   @click="changeLanguage(lang)"
                 >
                   <img :src="icon.src" :alt="icon.alt" />
+                  <span>{{ icon.alt }}</span>
                 </li>
               </ul>
             </div>
@@ -60,7 +55,6 @@
   </div>
 </template>
 
-
 <script>
 export default {
   name: 'App',
@@ -74,9 +68,7 @@ export default {
       },
       currentLocale: localStorage.getItem('lang') || 'de',
       isNavbarHidden: false,
-      lastScrollPosition: 0,
-      isDropdownVisible: false,
-      isProfileDropdownVisible: false
+      lastScrollPosition: 0
     };
   },
   computed: {
@@ -95,24 +87,11 @@ export default {
       this.currentLocale = language;
       this.$i18n.locale = language;
       localStorage.setItem('lang', language);
-      this.isDropdownVisible = false;
     },
     handleScroll() {
       const currentScrollPosition = window.scrollY;
       this.isNavbarHidden = currentScrollPosition > this.lastScrollPosition && currentScrollPosition > 100;
       this.lastScrollPosition = currentScrollPosition;
-    },
-    showDropdown() {
-      this.isDropdownVisible = true;
-    },
-    hideDropdown() {
-      this.isDropdownVisible = false;
-    },
-    showProfileDropdown() {
-      this.isProfileDropdownVisible = true;
-    },
-    hideProfileDropdown() {
-      this.isProfileDropdownVisible = false;
     },
     logout() {
       localStorage.setItem('isAuthenticated', 'false');
@@ -134,11 +113,12 @@ export default {
 };
 </script>
 
+
 <style scoped>
 header {
   background-color: #1f2937;
   padding: 15px 30px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -164,7 +144,7 @@ nav ul li {
 }
 
 nav ul li a {
-  color: #ffffff;
+  color: #fff;
   text-decoration: none;
   font-weight: 600;
   font-size: 1rem;
@@ -202,58 +182,76 @@ button img {
 .dropdown-trigger {
   position: relative;
   display: inline-block;
-  padding-bottom: 10px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: flex;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .dropdown-menu {
   position: absolute;
-  top: 100%;
+  top: 110%;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #1f2937;
-  border-radius: 8px;
+  background: linear-gradient(145deg, #1f2937, #2a3649);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
   list-style: none;
   padding: 10px 0;
   margin: 0;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 20px rgb(0 0 0 / 25%);
   z-index: 100;
   color: white;
-  display: flex;
+  display: none;
   flex-direction: column;
-  width: 200px;
+  width: 150px;
   text-align: center;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .dropdown-menu li {
-  padding: 12px 0;
+  padding: 12px;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-  white-space: nowrap;
+  transition: all 0.25s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 .dropdown-menu li img {
   width: 28px;
   height: 28px;
   border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.dropdown-menu li span {
+  font-size: 0.95rem;
+  font-weight: 500;
 }
 
 .dropdown-menu li:hover {
-  background-color: #374151;
+  background-color: rgb(255 255 255 / 8%);
   transform: scale(1.05);
+  border-radius: 10px;
+}
+
+.dropdown-menu li:hover img {
+  transform: rotate(10deg) scale(1.1);
 }
 
 .dropdown-menu li button {
   background: none;
   border: none;
   color: inherit;
-  font: inherit;
+  font: 600 0.95rem 'Segoe UI', sans-serif;
   cursor: pointer;
-}
-
-.profile-icon {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
+  padding: 0;
 }
 
 .icon-size {

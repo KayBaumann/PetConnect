@@ -36,7 +36,7 @@
         :placeholder="$t('form.location')"
         required
       />
-      <div style="display: flex; align-items: center; margin-bottom: 18px;">
+      <div class="checkbox-group" style="margin-bottom: 18px;">
         <input
           type="checkbox"
           id="vaccinated"

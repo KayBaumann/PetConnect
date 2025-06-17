@@ -1,5 +1,5 @@
 <template>
-  <div class="adopt-view" :class="{ 'dark-mode': isDarkMode }">
+  <div class="form-container" :class="{ 'dark-mode': isDarkMode }">
     <h1 class="adopt-title">{{ $t('adoptThisPet') }}</h1>
     <p class="adopt-subtitle">{{ $t('pleaseFillForm') }}</p>
 
@@ -20,6 +20,7 @@
         v-model="form.message"
         :placeholder="$t('form.messageToOwner')"
         required
+        style="resize: none; min-height: 120px; min-width: 500px;"
       ></textarea>
 
       <button type="submit">{{ $t('sendAdoptionRequest') }}</button>

@@ -1,29 +1,20 @@
 <template>
-  <div class="login-view">
-    <h1>{{ $t('loginTitle') }}</h1>
-    <form @submit.prevent="handleLogin">
-      <div class="form-group">
-        <label for="identifier">{{ $t('emailOrUsername') }}</label>
-        <input
-          type="text"
-          id="identifier"
-          v-model="identifier"
-          :placeholder="$t('emailOrUsernamePlaceholder')"
-          required
-        />        
-      </div>
-      <div class="form-group">
-        <label for="password">{{ $t('password') }}</label>
-        <input
-          type="password"
-          id="password"
-          v-model="password"
-          :placeholder="$t('pwPlaceholder')"
-          required
-        />
-      </div>
-      <button type="submit">{{ $t('loginButton') }}</button>
-      <router-link to="/register" class="register-link">{{ $t('register') }}</router-link>
+  <div class="form-container">
+    <h1>{{ $t('login.title') }}</h1>
+    <form @submit.prevent="login">
+      <input
+        type="text"
+        v-model="username"
+        :placeholder="$t('login.username')"
+        required
+      />
+      <input
+        type="password"
+        v-model="password"
+        :placeholder="$t('login.password')"
+        required
+      />
+      <button type="submit">{{ $t('login.button') }}</button>
     </form>
   </div>
 </template>
@@ -35,22 +26,21 @@ export default {
   name: 'LoginView',
   data() {
     return {
-      identifier: '',
+      username: '',
       password: ''
     };
   },
   methods: {
-    async handleLogin() {
-      if (!this.identifier || !this.password) {
+    async login() {
+      if (!this.username || !this.password) {
         alert(this.$t('fillAllFields'));
         return;
       }
       try {
         const res = await api.post('/auth/login', {
-          identifier: this.identifier,
+          identifier: this.username,
           password: this.password
         });
-        localStorage.setItem('token', res.data.token);
         localStorage.setItem('isAuthenticated', 'true');
         localStorage.setItem('userId', res.data.userId);
         alert(this.$t('loginSuccess'));

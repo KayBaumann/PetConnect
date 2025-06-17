@@ -35,7 +35,7 @@
             <img
               :src="ad.image || fallbackImage"
               :alt="ad.name"
-              class="ad-image"
+              class="pet-image"
               @error="handleImageError"
             />
             <div class="ad-content">

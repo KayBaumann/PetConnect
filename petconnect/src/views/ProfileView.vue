@@ -23,7 +23,7 @@
         <p>{{ $t('noSavedPets') }}</p>
       </div>
       <div v-else class="pets-list">
-        <div v-for="pet in savedPets" :key="pet._id" class="pet-card">
+        <div v-for="pet in savedPets" :key="pet._id" class="advertisement-card">
           <router-link
             :to="{ name: 'advertisement', params: { id: pet._id } }"
             class="advertisement-card-link"
@@ -46,7 +46,7 @@
         <p>{{ $t('noAds') }}</p>
       </div>
       <div v-else class="pets-list">
-        <div v-for="pet in myPets" :key="pet._id" class="pet-card">
+        <div v-for="pet in myPets" :key="pet._id" class="advertisement-card">
           <router-link
             :to="{ name: 'advertisement', params: { id: pet._id } }"
             class="advertisement-card-link"
@@ -67,15 +67,29 @@
     <!-- Nachrichten -->
     <div class="inbox">
       <h2>{{ $t('inbox') }}</h2>
-      <div v-if="messages.length === 0">
+
+      <div v-if="messages.length === 0" class="no-messages">
         <p>{{ $t('noMessages') }}</p>
       </div>
-      <ul v-else>
-        <li v-for="msg in messages" :key="msg._id">
-          📬 <strong>{{ msg.petId.name }}:</strong><br />
-          {{ msg.text }}
-        </li>
-      </ul>
+
+      <div v-else class="inbox-list">
+        <div class="message-card" v-for="msg in messages" :key="msg._id">
+          <div class="header">
+            📬 <span class="pet-name">{{ msg.petId.name }}</span>
+          </div>
+
+          <div class="body" v-if="parseMessage(msg.text)">
+            <p><strong>{{ $t('name') }}:</strong> {{ parseMessage(msg.text).name }}</p>
+            <p><strong>{{ $t('email') }}:</strong> {{ parseMessage(msg.text).email }}</p>
+            <p><strong>{{ $t('message') }}:</strong> {{ parseMessage(msg.text).message }}</p>
+          </div>
+
+          <div class="message-actions">
+            <button @click="replyToMessage(msg)" class="reply-btn">✉️ {{ $t('reply') }}</button>
+            <button @click="deleteMessage(msg._id)" class="delete-btn">🗑️ {{ $t('delete') }}</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -97,7 +111,6 @@ export default {
   methods: {
     async deleteMyPet(petId) {
       if (!confirm(this.$t('confirmDelete'))) return;
-
       try {
         await api.delete(`/pets/${petId}`);
         this.myPets = this.myPets.filter(pet => pet._id !== petId);
@@ -128,13 +141,12 @@ export default {
       this.savedPets = saved;
     },
     removeFromSaved(petId) {
-      this.savedPets = this.savedPets.filter((pet) => pet._id !== petId);
+      this.savedPets = this.savedPets.filter(pet => pet._id !== petId);
       localStorage.setItem('savedPets', JSON.stringify(this.savedPets));
     },
     async loadMyPets() {
       try {
         const userId = localStorage.getItem('userId');
-        if (!userId) throw new Error('User ID not found');
         const res = await api.get(`/pets/user/${userId}`);
         this.myPets = res.data;
       } catch (err) {
@@ -149,6 +161,38 @@ export default {
       } catch (err) {
         console.error('Error loading messages:', err);
       }
+    },
+    parseMessage(text) {
+      const result = { name: '', email: '', message: '' };
+      const lines = text.split('\n').map(l => l.trim()).filter(Boolean);
+      lines.forEach(line => {
+        if (line.startsWith('Name:')) {
+          result.name = line.replace('Name:', '').trim();
+        } else if (line.startsWith('E-Mail:')) {
+          result.email = line.replace('E-Mail:', '').trim();
+        } else if (line.startsWith('Nachricht:')) {
+          result.message = line.replace('Nachricht:', '').trim();
+        }
+      });
+      return result;
+    },
+    replyToMessage(msg) {
+      const parsed = this.parseMessage(msg.text);
+      if (parsed.email) {
+        window.location.href = `mailto:${parsed.email}`;
+      } else {
+        alert(this.$t('form.emailMissing'));
+      }
+    },
+    async deleteMessage(messageId) {
+      if (!confirm(this.$t('confirmDeleteMessage'))) return;
+      try {
+        await api.delete(`/messages/${messageId}`);
+        this.messages = this.messages.filter(msg => msg._id !== messageId);
+      } catch (err) {
+        console.error('Error deleting message:', err);
+        alert(this.$t('form.messageDeleteFailed'));
+      }
     }
   },
   async created() {
@@ -156,6 +200,34 @@ export default {
     this.loadSavedPets();
     await this.loadMyPets();
     await this.loadMessages();
-  },
+  }
 };
 </script>
+
+<style scoped>
+.message-actions {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.message-actions button {
+  background-color: #2563eb;
+  border: none;
+  padding: 6px 12px;
+  color: white;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.message-actions .delete-btn {
+  background-color: #dc2626;
+}
+
+.message-actions button:hover {
+  opacity: 0.85;
+}
+</style>
