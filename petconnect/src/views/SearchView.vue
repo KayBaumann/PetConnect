@@ -32,7 +32,9 @@
             list="breed-options"
             :placeholder="$t('search.placeholderBreed')"
           />
-          <button v-if="filters.breed" type="button" class="clear-button" @click="filters.breed = ''">x</button>
+          <button v-if="filters.breed" type="button" class="clear-button" @click="filters.breed = ''" aria-label="Feld leeren">
+            ×
+          </button>
         </div>
         <datalist id="breed-options">
           <option v-for="breed in uniqueBreeds" :key="breed" :value="breed" />
@@ -50,7 +52,9 @@
             list="location-options"
             :placeholder="$t('search.placeholderLocation')"
           />
-          <button v-if="filters.location" type="button" class="clear-button" @click="filters.location = ''">x</button>
+          <button v-if="filters.location" type="button" class="clear-button" @click="filters.location = ''" aria-label="Feld leeren">
+            ×
+          </button>
         </div>
         <datalist id="location-options">
           <option v-for="location in uniqueLocations" :key="location" :value="location" />
@@ -67,7 +71,9 @@
             v-model="filters.age"
             :placeholder="$t('search.placeholderAge')"
           />
-          <button v-if="filters.age" type="button" class="clear-button" @click="filters.age = null">x</button>
+          <button v-if="filters.age" type="button" class="clear-button" @click="filters.age = null" aria-label="Feld leeren">
+            ×
+          </button>
         </div>
       </div>
 
