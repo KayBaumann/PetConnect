@@ -1,9 +1,9 @@
 <template>
   <div class="form-container">
-    <h1>{{ $t('registerTitle') }}</h1>
+    <h1>{{ $t('register.title') }}</h1>
     <form @submit.prevent="handleRegister">
       <div class="form-group">
-        <label for="username">{{ $t('username') }}</label>
+        <label for="username">{{ $t('register.username') }}</label>
         <input
           type="text"
           id="username"
@@ -13,7 +13,7 @@
         />
       </div>
       <div class="form-group">
-        <label for="firstName">{{ $t('firstName') }}</label>
+        <label for="firstName">{{ $t('register.firstName') }}</label>
         <input
           type="text"
           id="firstName"
@@ -23,7 +23,7 @@
         />
       </div>
       <div class="form-group">
-        <label for="lastName">{{ $t('lastName') }}</label>
+        <label for="lastName">{{ $t('register.lastName') }}</label>
         <input
           type="text"
           id="lastName"
@@ -33,7 +33,7 @@
         />
       </div>
       <div class="form-group">
-        <label for="email">{{ $t('email') }}</label>
+        <label for="email">{{ $t('register.email') }}</label>
         <input
           type="email"
           id="email"
@@ -43,7 +43,7 @@
         />
       </div>
       <div class="form-group">
-        <label for="password">{{ $t('password') }}</label>
+        <label for="password">{{ $t('register.password') }}</label>
         <input
           type="password"
           id="password"
@@ -53,7 +53,7 @@
         />
       </div>
       <div class="form-group">
-        <label for="confirmPassword">{{ $t('confirmPassword') }}</label>
+        <label for="confirmPassword">{{ $t('register.confirmPassword') }}</label>
         <input
           type="password"
           id="confirmPassword"
@@ -62,7 +62,7 @@
           required
         />
       </div>
-      <button type="submit">{{ $t('registerButton') }}</button>
+      <button type="submit">{{ $t('register.button') }}</button>
     </form>
   </div>
 </template>
@@ -103,11 +103,11 @@ export default {
           password: this.password
         });
         console.log('Registration response:', res.data);
-        alert(this.$t('registrationSuccess'));
+        alert(this.$t('register.success'));
         this.$router.push('/login');
       } catch (err) {
         console.error('Registration error:', err.response?.data || err);
-        alert(err.response?.data?.message || this.$t('registrationFailed'));
+        alert(err.response?.data?.message || this.$t('register.failed'));
       }
     }
   }

@@ -26,14 +26,11 @@
   "donateAmount": "Spendenbetrag eingeben:",
   "donateNow": "Jetzt spenden",
   "loginButton": "Einloggen",
-  "registerButton": "Registrieren",
   "pwPlaceholder": "Gib dein Passwort ein",
   "emailPlaceholder": "Gib deine E-Mail-Adresse ein",
   "email": "E-Mail",
   "password": "Passwort",
   "loginTitle": "Einloggen",
-  "registerTitle": "Registrieren",
-  "register": "Registrieren",
   "username": "Benutzername",
   "firstname": "Vorname",
   "lastname": "Nachname",
@@ -178,7 +175,6 @@
   "noData": "Keine Daten vorhanden.",
   "logout": "Abmelden",
   "Login": "Einloggen",
-  "Register": "Registrieren",
   "createAdButton": "Anzeige erstellen",
   "adoptThisPet": "Tier adoptieren",
   "pleaseFillForm": "Bitte fülle das Formular aus, um den Besitzer zu kontaktieren.",
@@ -193,5 +189,19 @@
     "username": "Benutzername",
     "password": "Passwort",
     "button": "Anmelden"
-  }
+  },
+  "register": {
+    "title": "Registrieren",
+    "button": "Registrieren",
+    "username": "Benutzername",
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "confirmPassword": "Passwort bestätigen",
+    "success": "Registrierung erfolgreich!",
+    "failed": "Registrierung fehlgeschlagen."
+  },
+  "firstNamePlaceholder": "Gib deinen Vornamen ein",
+  "lastNamePlaceholder": "Gib deinen Nachnamen ein"
 }

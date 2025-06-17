@@ -17,7 +17,7 @@
       <button type="submit">{{ $t('login.button') }}</button>
     </form>
     <router-link to="/register" class="form-container-register-link">
-      <button type="button">{{ $t('registerButton') }}</button>
+      <button type="button">{{ $t('register.button') }}</button>
     </router-link>
   </div>
 </template>

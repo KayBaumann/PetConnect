@@ -26,10 +26,7 @@
   "donateAmount": "Entrez le montant du don :",
   "donateNow": "Faire un don maintenant",
   "loginButton": "Se connecter",
-  "registerButton": "S'inscrire",
   "loginTitle": "Connexion",
-  "registerTitle": "Inscription",
-  "register": "S'inscrire",
   "email": "E-mail",
   "password": "Mot de passe",
   "confirmPassword": "Confirmer le mot de passe",
@@ -111,7 +108,6 @@
   "noData": "Aucune donnée disponible.",
   "logout": "Se déconnecter",
   "Login": "Connexion",
-  "Register": "Inscription",
   "createAdTitle": "Créer une annonce pour animal",
   "createAdButton": "Créer l'annonce",
   "shelter.addButton": "Ajouter un refuge",
@@ -189,5 +185,19 @@
     "username": "Nom d'utilisateur",
     "password": "Mot de passe",
     "button": "Se connecter"
-  }
+  },
+  "register": {
+    "title": "Inscription",
+    "button": "S'inscrire",
+    "username": "Nom d'utilisateur",
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "confirmPassword": "Confirmer le mot de passe",
+    "success": "Inscription réussie !",
+    "failed": "Échec de l'inscription."
+  },
+  "firstNamePlaceholder": "Entrez votre prénom",
+  "lastNamePlaceholder": "Entrez votre nom"
 }

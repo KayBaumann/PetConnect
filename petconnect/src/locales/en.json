@@ -26,10 +26,7 @@
   "donateAmount": "Enter donation amount:",
   "donateNow": "Donate Now",
   "loginButton": "Login",
-  "registerButton": "Register",
   "loginTitle": "Login",
-  "registerTitle": "Register",
-  "register": "Register",
   "email": "Email",
   "password": "Password",
   "confirmPassword": "Confirm Password",
@@ -130,7 +127,6 @@
   "noData": "No data available.",
   "logout": "Logout",
   "Login": "Login",
-  "Register": "Register",
   "createAdTitle": "Create Pet Advertisement",
   "createAdButton": "Create Advertisement",
   "shelter.addButton": "Add Shelter",
@@ -189,5 +185,19 @@
     "username": "Username",
     "password": "Password",
     "button": "Sign in"
-  }
+  },
+  "register": {
+    "title": "Register",
+    "button": "Register",
+    "username": "Username",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "success": "Registration successful!",
+    "failed": "Registration failed."
+  },
+  "firstNamePlaceholder": "Enter your first name",
+  "lastNamePlaceholder": "Enter your last name"
 }
