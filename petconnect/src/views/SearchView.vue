@@ -81,14 +81,14 @@
         v-for="pet in filteredPets"
         :key="pet._id"
         :to="{ name: 'advertisement', params: { id: pet._id } }"
-        class="pet-card"
+        class="advertisement-card"
       >
         <img :src="pet.image" :alt="pet.name" class="pet-image" />
         <h3>{{ pet.name }}</h3>
-        <p>{{ $t('search.type') }}: {{ pet.type }}</p>
-        <p>{{ $t('search.breed') }}: {{ pet.breed }}</p>
-        <p>{{ $t('search.age') }}: {{ pet.age }} {{ $t('search.years') }}</p>
-        <p>{{ $t('search.location') }}: {{ pet.location }}</p>
+        <p class="">{{ $t('search.type') }}: {{ pet.type }}</p>
+        <p class="ad-description">{{ $t('search.breed') }}: {{ pet.breed }}</p>
+        <p class="ad-description">{{ $t('search.age') }}: {{ pet.age }} {{ $t('search.years') }}</p>
+        <p class="ad-description">{{ $t('search.location') }}: {{ pet.location }}</p>
       </router-link>
     </div>
   </div>

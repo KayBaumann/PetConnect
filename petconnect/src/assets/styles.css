@@ -40,9 +40,7 @@
  body.dark-mode a:hover {
      color: #528bff;
 }
- body.dark-mode button:hover {
-     background-color: #0056b3;
-}
+
  body.dark-mode .advertisement-section, body.dark-mode .home-view, body.dark-mode .advertisement-view, body.dark-mode .profile-view, body.dark-mode .donate-view {
      background-color: #1e1e1e;
      color: #f7fafc;
@@ -83,7 +81,7 @@
      margin-top: 10px;
      text-align: center;
 }
- button:hover, .form-container button:hover, .save-button:hover, .adopt-button:hover, .cta-button:hover, .back-home-button:hover, .filter-button:hover {
+.form-container button:hover, .save-button:hover, .adopt-button:hover, .cta-button:hover, .back-home-button:hover, .filter-button:hover {
      background: #1d4ed8;
      transform: scale(1.03);
 }
@@ -744,6 +742,7 @@
      flex-wrap: wrap;
      gap: 20px;
      justify-content: center;
+     text-decoration: none;
 }
 
  .pet-image {
@@ -981,6 +980,7 @@
      flex-wrap: wrap;
      gap: 20px;
      justify-content: center;
+     text-decoration: none;
 }
  .advertisement-card-link {
      text-decoration: none;
@@ -997,6 +997,7 @@
      flex-direction: column;
      align-items: center;
      transition: transform 0.2s, box-shadow 0.2s;
+     text-decoration: none;
 }
  .advertisement-card:hover {
      transform: scale(1.05);
@@ -1015,6 +1016,7 @@
  .ad-description {
      font-size: 1rem;
      color: #6b7280;
+     text-decoration: none;
 }
  @media (width <= 900px) {
      .advertisements {

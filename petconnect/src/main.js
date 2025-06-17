@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap'
 
 
+
 import en from './locales/en.json';
 import de from './locales/de.json';
 import fr from './locales/fr.json';
