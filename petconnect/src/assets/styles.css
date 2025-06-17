@@ -279,7 +279,7 @@
      font-size: 1.2rem;
      font-weight: 500;
      margin-bottom: 30px;
-     color: #374151;
+    
      transition: color 0.3s;
 }
  body.dark-mode .tagline {
