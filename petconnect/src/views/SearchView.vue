@@ -81,7 +81,7 @@
         v-for="pet in filteredPets"
         :key="pet._id"
         :to="{ name: 'advertisement', params: { id: pet._id } }"
-        class="pet-card"
+        class="advertisement-card"
       >
         <img :src="pet.image" :alt="pet.name" class="pet-image" />
         <h3>{{ pet.name }}</h3>
