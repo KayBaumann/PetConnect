@@ -56,9 +56,9 @@ export default {
           fromUserId: senderId,
           petId: this.petId,
           text: `
-Name: ${this.form.fullname}
-E-Mail: ${this.form.email}
-Nachricht: ${this.form.message}
+          Name: ${this.form.fullname}
+          E-Mail: ${this.form.email}
+          Nachricht: ${this.form.message}
           `
         });
 
