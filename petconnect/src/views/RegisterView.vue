@@ -1,5 +1,5 @@
 <template>
-  <div class="register-view">
+  <div class="form-container">
     <h1>{{ $t('registerTitle') }}</h1>
     <form @submit.prevent="handleRegister">
       <div class="form-group">
