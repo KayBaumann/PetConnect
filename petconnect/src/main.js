@@ -11,7 +11,7 @@ import fr from './locales/fr.json';
 import it from './locales/it.json';
 
 const i18n = createI18n({
-  legacy: true,
+  legacy: false,
   globalInjection: true,
   locale: localStorage.getItem('lang') || 'de',
   messages: { en, de, fr, it }
