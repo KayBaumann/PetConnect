@@ -73,6 +73,11 @@ export default {
       fallbackImage,
     };
   },
+  computed: {
+    isAuthenticated() {
+      return localStorage.getItem('isAuthenticated') === 'true';
+    }
+  },
   watch: {
     '$route.params.id': {
       immediate: true,
@@ -99,6 +104,12 @@ export default {
     },
     saveToFavorites() {
       const savedPets = JSON.parse(localStorage.getItem('savedPets')) || [];
+
+      if (!this.isAuthenticated) {
+        this.$router.push('/login');
+        return;
+      }
+
       if (!savedPets.some(pet => pet._id === this.advertisement._id)) {
         savedPets.push(this.advertisement);
         localStorage.setItem('savedPets', JSON.stringify(savedPets));
@@ -110,3 +121,4 @@ export default {
   }
 };
 </script>
+
