@@ -6,6 +6,5 @@ export default defineConfig({
   base: './',
   build: {
     outDir: '../httpdocs',
-    emptyOutDir: true
   }
 })
