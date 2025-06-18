@@ -34,7 +34,7 @@ export default {
       students: [
         {
           id: 1,
-          name: 'Alice Johnson',
+          name: 'Timon Soom',
           role: this.$t('about.alice.role'),
           description: this.$t('about.alice.description'),
           bio: this.$t('about.alice.bio'),
@@ -42,7 +42,7 @@ export default {
         },
         {
           id: 2,
-          name: 'Bob Smith',
+          name: 'Kay Baumann',
           role: this.$t('about.bob.role'),
           description: this.$t('about.bob.description'),
           bio: this.$t('about.bob.bio'),
@@ -50,7 +50,7 @@ export default {
         },
         {
           id: 3,
-          name: 'Charlie Brown',
+          name: 'Sarujan Uthayachandran',
           role: this.$t('about.charlie.role'),
           description: this.$t('about.charlie.description'),
           bio: this.$t('about.charlie.bio'),

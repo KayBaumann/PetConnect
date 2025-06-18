@@ -7,9 +7,16 @@
         <p>{{ $t('homeDescription') }}</p>
         <div class="cta-buttons">
           <template v-if="!isAuthenticated">
-            <button class="cta-button">{{ $t('ctaLookingForPet') }}</button>
-            <button class="cta-button">{{ $t('ctaOfferingPet') }}</button>
-            <button class="cta-button">{{ $t('ctaWantToHelp') }}</button>
+            <router-link to="/search">
+              <button class="cta-button">{{ $t('ctaLookingForPet') }}</button>
+            </router-link>
+            <router-link to="/login">
+              <button class="cta-button">{{ $t('ctaOfferingPet') }}</button>
+            </router-link>
+            <router-link to="/donate">
+              <button class="cta-button">{{ $t('ctaWantToHelp') }}</button>
+            </router-link>
+            
           </template>
           <template v-else>
             <router-link to="/create-advertisement" class="cta-button">
