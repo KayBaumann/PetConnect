@@ -14,7 +14,7 @@
           <li v-if="isAuthenticated" class="dropdown">
             <div class="dropdown-trigger">
               <button>
-                <img src="/src/assets/profile-icon-white.png" alt="Profile" class="icon-size" />
+                <img src="/assets/profile-icon-white.png" alt="Profile" class="icon-size" />
               </button>
               <ul class="dropdown-menu">
                 <li><router-link to="/profile">{{ $t('profile') }}</router-link></li>
