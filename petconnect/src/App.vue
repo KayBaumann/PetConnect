@@ -10,7 +10,6 @@
           <li><router-link to="/donate">{{ $t('donate') }}</router-link></li>
           <li><router-link to="/contact">{{ $t('contact') }}</router-link></li>
 
-          <!-- Profile Dropdown -->
           <li v-if="isAuthenticated" class="dropdown">
             <div class="dropdown-trigger">
               <button>
@@ -18,14 +17,12 @@
               </button>
               <ul class="dropdown-menu">
                 <li><router-link to="/profile">{{ $t('profile') }}</router-link></li>
-
                 <li><router-link to="/create-advertisement">{{ $t('createAdvertisement') }}</router-link></li>
                 <li><button @click="logout">{{ $t('Logout') }}</button></li>
               </ul>
             </div>
           </li>
 
-          <!-- Language Dropdown -->
           <li class="dropdown">
             <div class="dropdown-trigger">
               <button>
@@ -55,64 +52,59 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'App',
-  data() {
-    return {
-      languageIcons: {
-        en: { src: '/assets/united-kingdom.png', alt: 'English' },
-        de: { src: '/assets/german.png', alt: 'Deutsch' },
-        fr: { src: '/assets/france.png', alt: 'Français' },
-        it: { src: '/assets/italy.png', alt: 'Italiano' }
-      },
-      currentLocale: localStorage.getItem('lang') || 'de',
-      isNavbarHidden: false,
-      lastScrollPosition: 0
-    };
-  },
-  computed: {
-    currentLanguageIcon() {
-      return this.languageIcons[this.currentLocale]?.src || '/assets/united-kingdom.png';
-    },
-    currentLanguageAlt() {
-      return this.languageIcons[this.currentLocale]?.alt || 'English';
-    },
-    isAuthenticated() {
-      return localStorage.getItem('isAuthenticated') === 'true';
-    }
-  },
-  methods: {
-    changeLanguage(language) {
-      this.currentLocale = language;
-      this.$i18n.locale = language;
-      localStorage.setItem('lang', language);
-    },
-    handleScroll() {
-      const currentScrollPosition = window.scrollY;
-      this.isNavbarHidden = currentScrollPosition > this.lastScrollPosition && currentScrollPosition > 100;
-      this.lastScrollPosition = currentScrollPosition;
-    },
-    logout() {
-      localStorage.setItem('isAuthenticated', 'false');
-      this.$router.push('/');
-      window.location.reload();
-    }
-  },
-  mounted() {
-    const savedLang = localStorage.getItem('lang');
-    if (savedLang) {
-      this.currentLocale = savedLang;
-      this.$i18n.locale = savedLang;
-    }
-    window.addEventListener('scroll', this.handleScroll);
-  },
-  beforeUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
-  }
-};
-</script>
+<script setup>
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
+import { useI18n } from 'vue-i18n';
+import { useRouter } from 'vue-router';
 
+const router = useRouter();
+const { locale } = useI18n();
+
+const languageIcons = {
+  en: { src: '/assets/united-kingdom.png', alt: 'English' },
+  de: { src: '/assets/german.png', alt: 'Deutsch' },
+  fr: { src: '/assets/france.png', alt: 'Français' },
+  it: { src: '/assets/italy.png', alt: 'Italiano' }
+};
+
+const currentLocale = ref(localStorage.getItem('lang') || 'de');
+locale.value = currentLocale.value;
+
+function changeLanguage(language) {
+  currentLocale.value = language;
+  locale.value = language;
+  localStorage.setItem('lang', language);
+}
+
+const isAuthenticated = ref(localStorage.getItem('isAuthenticated') === 'true');
+
+function logout() {
+  localStorage.setItem('isAuthenticated', 'false');
+  router.push('/');
+  window.location.reload();
+}
+
+const currentLanguageIcon = computed(() => languageIcons[currentLocale.value]?.src || '/assets/united-kingdom.png');
+const currentLanguageAlt = computed(() => languageIcons[currentLocale.value]?.alt || 'English');
+
+// Navbar Scroll Hiding
+const isNavbarHidden = ref(false);
+let lastScrollPosition = 0;
+
+function handleScroll() {
+  const currentScrollPosition = window.scrollY;
+  isNavbarHidden.value = currentScrollPosition > lastScrollPosition && currentScrollPosition > 100;
+  lastScrollPosition = currentScrollPosition;
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', handleScroll);
+});
+</script>
 
 <style scoped>
 header {

@@ -3,8 +3,9 @@ import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
   plugins: [vue()],
-  base: './',
+  base: '/',  // <- GANZ WICHTIG für dein Plesk Deployment!
   build: {
-    outDir: '../httpdocs',
+    outDir: 'httpdocs',
+    emptyOutDir: true
   }
 })
