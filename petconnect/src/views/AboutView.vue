@@ -38,7 +38,7 @@ export default {
           role: this.$t('about.alice.role'),
           description: this.$t('about.alice.description'),
           bio: this.$t('about.alice.bio'),
-          image: '/src/assets/frontend_Guy.png'
+          image: '/assets/frontend_Guy.png'
         },
         {
           id: 2,
@@ -46,7 +46,7 @@ export default {
           role: this.$t('about.bob.role'),
           description: this.$t('about.bob.description'),
           bio: this.$t('about.bob.bio'),
-          image: '/src/assets/Backend_Guy.png'
+          image: '/assets/Backend_Guy.png'
         },
         {
           id: 3,
@@ -54,7 +54,7 @@ export default {
           role: this.$t('about.charlie.role'),
           description: this.$t('about.charlie.description'),
           bio: this.$t('about.charlie.bio'),
-          image: '/src/assets/Designer_Guy.png'
+          image: '/assets/Designer_Guy.png'
         }
       ]
     };
