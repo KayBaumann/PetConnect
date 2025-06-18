@@ -61,10 +61,10 @@ export default {
   data() {
     return {
       languageIcons: {
-        en: { src: '/src/assets/united-kingdom.png', alt: 'English' },
-        de: { src: '/src/assets/german.png', alt: 'Deutsch' },
-        fr: { src: '/src/assets/france.png', alt: 'Français' },
-        it: { src: '/src/assets/italy.png', alt: 'Italiano' }
+        en: { src: '/assets/united-kingdom.png', alt: 'English' },
+        de: { src: '/assets/german.png', alt: 'Deutsch' },
+        fr: { src: '/assets/france.png', alt: 'Français' },
+        it: { src: '/assets/italy.png', alt: 'Italiano' }
       },
       currentLocale: localStorage.getItem('lang') || 'de',
       isNavbarHidden: false,
@@ -73,7 +73,7 @@ export default {
   },
   computed: {
     currentLanguageIcon() {
-      return this.languageIcons[this.currentLocale]?.src || '/src/assets/united-kingdom.png';
+      return this.languageIcons[this.currentLocale]?.src || '/assets/united-kingdom.png';
     },
     currentLanguageAlt() {
       return this.languageIcons[this.currentLocale]?.alt || 'English';
@@ -103,7 +103,7 @@ export default {
     const savedLang = localStorage.getItem('lang');
     if (savedLang) {
       this.currentLocale = savedLang;
-      this.$i18n.locale.value = savedLang;
+      this.$i18n.locale = savedLang;
     }
     window.addEventListener('scroll', this.handleScroll);
   },
