@@ -203,5 +203,9 @@
     "failed": "Registrierung fehlgeschlagen."
   },
   "firstNamePlaceholder": "Gib deinen Vornamen ein",
-  "lastNamePlaceholder": "Gib deinen Nachnamen ein"
+  "lastNamePlaceholder": "Gib deinen Nachnamen ein",
+  "noAds": "Keine Anzeigen",
+  "myAds": "Meine Anzeigen",
+  "inbox": "Posteingang",
+  "noMessages": "Keine Nachrichten"
 }

@@ -199,5 +199,9 @@
     "failed": "Échec de l'inscription."
   },
   "firstNamePlaceholder": "Entrez votre prénom",
-  "lastNamePlaceholder": "Entrez votre nom"
+  "lastNamePlaceholder": "Entrez votre nom",
+  "noAds": "Aucune annonce",
+  "myAds": "Mes annonces",
+  "inbox": "Boîte de réception",
+  "noMessages": "Aucun message"
 }

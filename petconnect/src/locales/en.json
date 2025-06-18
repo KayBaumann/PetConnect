@@ -199,5 +199,9 @@
     "failed": "Registration failed."
   },
   "firstNamePlaceholder": "Enter your first name",
-  "lastNamePlaceholder": "Enter your last name"
+  "lastNamePlaceholder": "Enter your last name",
+  "noAds": "No ads",
+  "myAds": "My ads",
+  "inbox": "Inbox",
+  "noMessages": "No messages"
 }
